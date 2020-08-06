@@ -19,15 +19,3 @@
 .buttons-list>* {
     margin-bottom: 20px;
 }
-
-.bottom-image {
-    position: absolute;
-    right: 110px;
-    top: 0;
-}
-
-.top-image {
-    position: absolute;
-    right: 0;
-    top: 0;
-}
