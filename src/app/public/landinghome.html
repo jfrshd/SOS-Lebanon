@@ -1,10 +1,8 @@
-<a name="about"></a>
 <div class="intro-header">
     <div class="container">
         <br>
-        <br>
         <div class="row">
-            <div class="intro-text col-lg-4 col-sm-12">
+            <div class="intro-text col-lg-3 col-sm-12">
                 <h2>We see the opportunity to make a difference.</h2>
                 <p>
                     Hand in hand, towards a better Lebanon. We're here to help everyone in need and open an opportunity
@@ -14,23 +12,19 @@
                     Volunteer
                 </button>
             </div>
-            <div class="col-lg-8 col-sm-12">
-                <img width="auto" height="400" [src]="slides[selectedIndex].image" />
-                <br>
-                <span *ngFor="let pointer of slides; let index = index" class="slide-pointer fa fa-circle"
-                    [class.active]="index === selectedIndex" (click)="selectSlide(index)" style="cursor: pointer;">
-                </span>
-                <ul class="list-inline intro-social-buttons">
-                    <li>
-                    </li>
-                </ul>
+            <div class="col-lg-9 col-sm-12" style="height: 620px">
+                <img class="bottom-image" width="auto" height="500"
+                    src="./../../assets/landing page/pictures/picture1.png" />
+                <img class="top-image" width="auto" height="600"
+                    src="./../../assets/landing page/pictures/lebanon.png" />
             </div>
 
             <div class="col-sm-12">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-10 buttons-list">
                     <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let button of buttons">
-                        <a class="btn btn-light col-sm-10 col-sm-offset-1">
+                        <a [routerLink]="[button.route]" [queryParams]="button.params"
+                            class="btn btn-light col-sm-10 col-sm-offset-1">
                             <img [src]="button.image" width="auto" height="40" />
                             <br>
                             <b>{{button.title}}</b>

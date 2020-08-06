@@ -22,6 +22,7 @@ import {LogoutComponent, RegistrationConfirmationComponent} from './public/auth/
 import {ResendCodeComponent} from './public/auth/resend/resendCode.component';
 import {NewPasswordComponent} from './public/auth/newpassword/newpassword.component';
 import { MFAComponent } from './public/auth/mfa/mfa.component';
+import { LookupComponent } from './public/lookup/lookup.component';
 
 @NgModule({
     declarations: [
@@ -39,6 +40,7 @@ import { MFAComponent } from './public/auth/mfa/mfa.component';
         HomeComponent,
         UseractivityComponent,
         MyProfileComponent,
+        LookupComponent,
         SecureHomeComponent,
         JwtComponent,
         AppComponent
