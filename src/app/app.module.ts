@@ -25,8 +25,9 @@ import { MFAComponent } from './public/auth/mfa/mfa.component';
 import { ListingEntryComponent } from './public/listing-entry/listing-entry.component';
 import { InternationalPhoneNumberModule } from 'ngx-international-phone-number';
 import { ListingComponent } from './public/listing/listing.component';
-import { MyListingsComponent } from './secure/my-listings/my-listings.component';
 import { CreateListingComponent } from './secure/create-listing/create-listing.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { MyListingsComponent } from './secure/my-listings/my-listings.component';
 
 @NgModule({
     declarations: [
@@ -58,6 +59,7 @@ import { CreateListingComponent } from './secure/create-listing/create-listing.c
         HttpModule,
         ReactiveFormsModule,
         InternationalPhoneNumberModule,
+        ModalModule.forRoot(),
         routing
     ],
     providers: [
