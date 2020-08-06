@@ -3,15 +3,16 @@ import { Router } from '@angular/router';
 import { UserLoginService } from '../../../service/user-login.service';
 import { ChallengeParameters, CognitoCallback, LoggedInCallback } from '../../../service/cognito.service';
 import { DynamoDBService } from '../../../service/ddb.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
     selector: 'awscognito-angular2-app',
-    templateUrl: './login.html'
+    templateUrl: './login.html',
+    styleUrls: ['./login.css']
 })
 export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit {
-    email: string;
-    password: string;
     errorMessage: string;
+    form: FormGroup
     mfaStep = false;
     mfaData = {
         destination: '',
@@ -28,15 +29,20 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
         this.errorMessage = null;
         console.log('Checking if the user is already authenticated. If so, then redirect to the secure site');
         this.userService.isAuthenticated(this);
+
+        this.form = new FormGroup({
+            email : new FormControl(null, [Validators.required, Validators.email]),
+            password: new FormControl(null, [Validators.required])
+        })
     }
 
     onLogin() {
-        if (this.email == null || this.password == null) {
+        if (!this.form.controls['email'].value  || !this.form.controls['password'].value) {
             this.errorMessage = 'All fields are required';
             return;
         }
         this.errorMessage = null;
-        this.userService.authenticate(this.email, this.password, this);
+        this.userService.authenticate(this.form.controls['email'].value, this.form.controls['password'].value, this);
     }
 
     cognitoCallback(message: string, result: any) {
@@ -45,7 +51,7 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
             console.log('result: ' + this.errorMessage);
             if (this.errorMessage === 'User is not confirmed.') {
                 console.log('redirecting');
-                this.router.navigate(['/home/confirmRegistration', this.email]);
+                this.router.navigate(['/home/confirmRegistration', this.form.controls['email'].value]);
             } else if (this.errorMessage === 'User needs to set password.') {
                 console.log('redirecting to set new password');
                 this.router.navigate(['/home/newPassword']);

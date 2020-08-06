@@ -1,35 +1,43 @@
-<form class="form-signin" method="POST" action="#" role="form">
-    <div class="form-group">
-        <h2>Login</h2>
+<form class="form-login container" method="POST" action="#" role="form" [formGroup]="form" (ngSubmit)="onLogin()">
+    <div class="form-heading">
+        <h1>Welcome Back!</h1>
+        <h4>Login to your SOS Lebanon account</h4>
     </div>
-    <div *ngIf="errorMessage!=null" class="alert alert-danger">
+    <div *ngIf="errorMessage!=null" class="alert alert-error">
         {{ errorMessage }}
     </div>
     <div *ngIf="!mfaStep">
-        <div class="form-group">
-            <label class="control-label" for="signupEmail">Email</label>
-            <input id="signupEmail" required type="email" maxlength="100" class="form-control" [(ngModel)]="email"
-                   [ngModelOptions]="{standalone: true}">
+        <div class="row">
+            <div class="form-group col-lg-12 col-md-12 col-sm-12 input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-envelope"></i>
+                </div>
+                <input type="email" maxlength="50" class="form-control" placeholder="Email address"
+                       formControlName="email">
+            </div>
         </div>
-
-        <div class="form-group">
-            <label class="control-label" for="signupPassword">Password</label>
-            <input id="signupPassword" required type="password" maxlength="25" class="form-control"
-                   length="40" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+        <div class="row">
+            <div class="form-group col-lg-12 col-md-12 col-sm-12 input-group mb-3">
+                <div class="input-group-addon">
+                  <i class="fa fa-lock"></i>
+                </div>
+                <input type="password" maxlength="50" class="form-control" placeholder="Password"
+                       formControlName="password">
+            </div>
         </div>
-        <div class="form-group">
-            <button (click)="onLogin()" id="signupSubmit" type="submit" class="btn btn-info btn-block">
-                Login
-            </button>
+        <div class="row ">
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 no-padding">
+                <button id="signupSubmit" type="submit" class="btn btn-default  col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    Login
+                </button>
+            </div>
+            <div class="col-lg-2  col-md-2 col-sm-2 col-xs-2 no-padding"></div>
+            <div class="col-lg-5  col-md-5 col-sm-5 col-xs-5 no-padding">
+                <button  type="button" class="btn btn-default col-lg-12 col-md-12 col-sm-12 col-xs-12 " [routerLink]="'/home/register'">
+                    Volunteer
+                </button>
+            </div>
         </div>
-
-        <hr>
-        <p>
-            <a [routerLink]="['/home/register']"> <i class="fa fa-fw fa-group"></i> Register</a>
-            <a [routerLink]="['/home/forgotPassword']"> <i class="fa fa-fw fa-group"></i> Forgot Password?</a><br/>
-            <a [routerLink]="['/home/resendCode']"> <i class="fa fa-fw fa-group"></i> Resend Confirmation Code</a>
-        </p>
-
     </div>
 
     <div class="form-group" *ngIf="mfaStep">
@@ -39,4 +47,3 @@
         <a (click)="cancelMFA()" href="">Cancel</a>
     </div>
 </form>
-

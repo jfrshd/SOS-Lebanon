@@ -22,7 +22,7 @@
     <div class="row">
         <div class="form-group col-lg-6 col-md-12 col-sm-12" [class.has-error]="form.controls['email'].invalid">
             <label class="control-label">Email</label>
-            <input type="text" maxlength="50" class="form-control"
+            <input type="email" maxlength="50" class="form-control"
                    formControlName="email">
         </div>
         <div class="form-group col-lg-6 col-md-12 col-sm-12" >
@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="form-group">
-        <button (click)="onRegister()" id="signupSubmit" type="submit" class="btn btn-default pull-right">
+        <button id="signupSubmit" type="submit" class="btn btn-default pull-right">
             <span class="fa fa-send pull-left"></span> Submit
         </button>
     </div>
