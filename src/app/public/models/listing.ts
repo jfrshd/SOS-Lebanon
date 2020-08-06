@@ -1,4 +1,5 @@
-export class LookupData {
+export class Listing {
+    public id: number;
     public image?: string;
     public type: string;
     public title: string;
@@ -8,7 +9,8 @@ export class LookupData {
     public phoneNumber: string;
     public fulfilled?: boolean;
 
-    constructor(obj: LookupData = {} as LookupData) {
+    constructor(obj: Listing = {} as Listing) {
+        this.id = obj.id;
         this.image = obj.image;
         this.type = obj.type;
         this.title = obj.title;

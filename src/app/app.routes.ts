@@ -11,7 +11,9 @@ import { ForgotPassword2Component, ForgotPasswordStep1Component } from './public
 import { LogoutComponent, RegistrationConfirmationComponent } from './public/auth/confirm/confirmRegistration.component';
 import { ResendCodeComponent } from './public/auth/resend/resendCode.component';
 import { NewPasswordComponent } from './public/auth/newpassword/newpassword.component';
-import { LookupComponent } from './public/lookup/lookup.component';
+import { MyListingsComponent } from './secure/my-listings/my-listings.component';
+import { ListingComponent } from './public/listing/listing.component';
+import { CreateListingComponent } from './secure/create-listing/create-listing.component';
 
 const homeRoutes: Routes = [
     {
@@ -31,7 +33,10 @@ const homeRoutes: Routes = [
             { path: 'forgotPassword/:email', component: ForgotPassword2Component },
             { path: 'forgotPassword', component: ForgotPasswordStep1Component },
             { path: 'newPassword', component: NewPasswordComponent },
-            { path: 'lookup', component: LookupComponent },
+            { path: 'listings', component: ListingComponent },
+            { path: 'listings/new', component: CreateListingComponent },
+            { path: 'listings/:id', component: CreateListingComponent },
+            { path: 'my-listings', component: MyListingsComponent },
             { path: '', component: HomeLandingComponent }
         ]
     },

@@ -1,4 +1,6 @@
-<div class="lookup-data col-xs-12 row">
+<button id="deleteModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<div class="listing-data col-xs-12 row">
     <span class="col-xs-2 col-sm-1 data-image">
         <img alt="{{data.type}}" title="{{data.type}}"
             src="./../../../assets/landing page/pictures/{{data.type.toLocaleLowerCase()}}.png" />
@@ -17,15 +19,18 @@
         </span>
     </section>
     <div class="data-text col-xs-offset-2 col-sm-offset-1 col-md-offset-0 col-xs-12 col-md-2 col-lg-1 color-black">
-        <span *ngIf="showActions">
-            <i class="fa fa-edit"></i>
-            <i class="fa fa-trash"></i>
+        <div class="color-red" *ngIf="showActions">
+            <a class="link-unstyled" [routerLink]="['/home/listings/' + data.id]">
+                <i class="fa fa-2x fa-pencil"></i>&nbsp;&nbsp;
+            </a>
+            <i class="fa fa-2x fa-trash" (click)="delete()"></i>
             <br>
-            <span class="color-red">
-                Mark as fulfilled
-                <input type="checkbox" class="form-control" [(ngModel)]="data.fulfilled" />
-            </span>
-        </span>
+            <div class="form-check">
+                <label class="form-check-label" for="fulfilled">Mark as fulfilled</label>
+                <input type="checkbox" class="data-fulfill form-check-input" id="fulfilled" [(ngModel)]="data.fulfilled"
+                    (change)="fulfill()">
+            </div>
+        </div>
         <span *ngIf="!showActions">
             <span class="no-padding col-xs-6 col-md-12">
                 <i class="fa fa-map-marker"></i>&nbsp;&nbsp;{{data.location}}

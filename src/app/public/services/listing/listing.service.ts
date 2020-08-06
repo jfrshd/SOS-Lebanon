@@ -1,19 +1,21 @@
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { LookupData } from '../../models/lookup-data';
+import { Listing } from '../../models';
 
-export class LookupDataService {
+export class ListingService {
     private MOCK_DATA = [
-        new LookupData({
-            type: 'Shelter',
+        new Listing({
+            id: 1,
+            type: 'Shelters',
             user: 'John Smith',
             title: '2 Bedroom apartment hazmieh',
             description: 'Description does here, everything that should be known will be written in this box',
             phoneNumber: '71555555',
             location: 'Hazmieh'
         }),
-        new LookupData({
-            type: 'Shelter',
+        new Listing({
+            id: 2,
+            type: 'Shelters',
             user: 'Anas Khattar',
             title: '2 Bedroom apartment Dbayeh',
             description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. \
@@ -27,7 +29,7 @@ export class LookupDataService {
         })
     ];
 
-    public get(type: string, keyword: string): Observable<LookupData[]> {
+    public get(type: string, keyword: string): Observable<Listing[]> {
         let data = this.MOCK_DATA;
 
         if (keyword) {
@@ -48,5 +50,32 @@ export class LookupDataService {
         }
 
         return of(data);
+    }
+
+    public getById(id: number): Observable<Listing> {
+        const index = this.MOCK_DATA.findIndex(f => f.id === id);
+        if (index > -1) {
+            return of(this.MOCK_DATA[index]);
+        }
+
+        return of(null);
+    }
+
+    public delete(id: number): Observable<Listing> {
+        const index = this.MOCK_DATA.findIndex(f => f.id === id);
+        if (index > -1) {
+            this.MOCK_DATA.splice(index, 1);
+        }
+
+        return of(this.MOCK_DATA[index]);
+    }
+
+    public fulfill(id: number, flag: boolean): Observable<Listing> {
+        const index = this.MOCK_DATA.findIndex(f => f.id === id);
+        if (index > -1) {
+            this.MOCK_DATA[index].fulfilled = flag;
+        }
+
+        return of(this.MOCK_DATA[index]);
     }
 }

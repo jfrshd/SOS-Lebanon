@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HomePageButton } from './models/home-page-button';
+import { ListingType } from './models';
+import { ListingTypeService } from './services/listing-type/listing-type.service';
 
 declare let AWS: any;
 declare let AWSCognito: any;
@@ -15,39 +16,19 @@ export class AboutComponent {
 @Component({
     selector: 'awscognito-angular2-app',
     templateUrl: './landinghome.html',
-    styleUrls: ['./landinghome.css']
+    styleUrls: ['./landinghome.css'],
+    providers: [ListingTypeService]
 })
-export class HomeLandingComponent {
-    buttons: HomePageButton[] = [
-        new HomePageButton({
-            route: 'lookup',
-            params: { filter: 'shelter' },
-            image: 'assets/landing page/pictures/shelter.png',
-            title: 'Shelters',
-            description: 'Find a place to stay if your home was destroyed.'
-        }),
-        new HomePageButton({
-            route: 'lookup',
-            params: { filter: 'medicine' },
-            image: 'assets/landing page/pictures/medicine.png',
-            title: 'Medicine',
-            description: 'If you\'re short on medicine, we got you.'
-        }),
-        new HomePageButton({
-            route: 'lookup',
-            params: { filter: 'food' },
-            image: 'assets/landing page/pictures/food.png',
-            title: 'Food',
-            description: 'Do not worry about your next meal.'
-        }),
-        new HomePageButton({
-            route: 'lookup',
-            params: { filter: 'other' },
-            image: 'assets/landing page/pictures/others.png',
-            title: 'Others',
-            description: 'See everything we may help you with.'
-        })
-    ];
+export class HomeLandingComponent implements OnInit {
+    types: ListingType[];
+
+    constructor(private dataTypeService: ListingTypeService) {
+    }
+
+    ngOnInit() {
+        this.dataTypeService.get()
+            .subscribe(data => this.types = data);
+    }
 }
 
 @Component({
@@ -58,7 +39,6 @@ export class HomeLandingComponent {
 export class HomeComponent implements OnInit {
 
     constructor() {
-        console.log('HomeComponent constructor');
     }
 
     ngOnInit() {

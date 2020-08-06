@@ -1,4 +1,4 @@
-.lookup-data {
+.listing-data {
     padding: 0 25px;
     margin-bottom: 15px;
     padding-bottom: 15px;
@@ -6,7 +6,7 @@
     text-align: left;
 }
 
-.lookup-data .data-image {
+.listing-data .data-image {
     max-width: 85px;
 }
 
@@ -18,6 +18,11 @@
     -webkit-box-orient: vertical;
 }
 
-.lookup-data .data-header {
+.listing-data .data-header {
     font-size: 20px;
+}
+
+.listing-data .data-fulfill {
+    width: 20px;
+    height: 20px;
 }
