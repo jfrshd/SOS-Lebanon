@@ -1,0 +1,23 @@
+.lookup-data {
+    padding: 0 25px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid lightgrey;
+    text-align: left;
+}
+
+.lookup-data .data-image {
+    max-width: 85px;
+}
+
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.lookup-data .data-header {
+    font-size: 20px;
+}

@@ -24,6 +24,7 @@ import {NewPasswordComponent} from './public/auth/newpassword/newpassword.compon
 import { MFAComponent } from './public/auth/mfa/mfa.component';
 import { LookupComponent } from './public/lookup/lookup.component';
 import {InternationalPhoneNumberModule} from 'ngx-international-phone-number';
+import { LookupDataComponent } from './public/lookup-data/lookup-data.component';
 
 @NgModule({
     declarations: [
@@ -42,6 +43,7 @@ import {InternationalPhoneNumberModule} from 'ngx-international-phone-number';
         UseractivityComponent,
         MyProfileComponent,
         LookupComponent,
+        LookupDataComponent,
         SecureHomeComponent,
         JwtComponent,
         AppComponent

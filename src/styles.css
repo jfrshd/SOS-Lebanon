@@ -3,9 +3,11 @@
     --primary-color: #BC2C3D;
     --default-text-color: #222222;
     --error-color: #BC2C3D;
-
 }
 
+.no-padding {
+    padding: 0;
+}
 
 .container {
     margin-left: 20px;
