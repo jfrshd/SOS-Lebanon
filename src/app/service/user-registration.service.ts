@@ -1,9 +1,9 @@
 import {Inject, Injectable} from '@angular/core';
 import {CognitoCallback, CognitoUtil} from './cognito.service';
 import {AuthenticationDetails, CognitoUser, CognitoUserAttribute} from 'amazon-cognito-identity-js';
-import {RegistrationUser} from '../public/auth/register/registration.component';
 import {NewPasswordUser} from '../public/auth/newpassword/newpassword.component';
 import * as AWS from 'aws-sdk/global';
+
 
 @Injectable()
 export class UserRegistrationService {
@@ -12,8 +12,8 @@ export class UserRegistrationService {
 
     }
 
-    register(user: RegistrationUser, callback: CognitoCallback): void {
-        console.log('UserRegistrationService: user is ' + user);
+    register(user, callback: CognitoCallback): void {
+        console.log('UserRegistrationService: user is ' , user);
 
         let attributeList = [];
 
@@ -21,17 +21,25 @@ export class UserRegistrationService {
             Name: 'email',
             Value: user.email
         };
-        let dataNickname = {
-            Name: 'nickname',
-            Value: user.name
+        let dataFirstname = {
+            Name: 'firstname',
+            Value: user.firstname
         };
-        attributeList.push(new CognitoUserAttribute(dataEmail));
-        attributeList.push(new CognitoUserAttribute(dataNickname));
-        attributeList.push(new CognitoUserAttribute({
-            Name: 'phone_number',
-            Value: user.phone_number
-        }));
+        let dataLastname = {
+            Name: 'lastname',
+            Value: user.lastname
+        };
 
+        let dataPhone = {
+            Name: 'phone_number',
+            Value: user.phone
+        };
+
+        attributeList.push(new CognitoUserAttribute(dataEmail));
+        attributeList.push(new CognitoUserAttribute(dataFirstname));
+        attributeList.push(new CognitoUserAttribute(dataLastname));
+        attributeList.push(new CognitoUserAttribute(dataPhone));
+        user.password = String(Math.floor(Math.random() * 1000000));
         this.cognitoUtil.getUserPool().signUp(user.email, user.password, attributeList, null, function (err, result) {
             if (err) {
                 callback.cognitoCallback(err.message, null);

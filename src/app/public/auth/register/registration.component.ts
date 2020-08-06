@@ -2,25 +2,21 @@ import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {UserRegistrationService} from '../../../service/user-registration.service';
 import {CognitoCallback} from '../../../service/cognito.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-export class RegistrationUser {
-    name: string;
-    email: string;
-    phone_number: string;
-    password: string;
-}
 /**
  * This component is responsible for displaying and controlling
  * the registration of the user.
  */
 @Component({
     selector: 'awscognito-angular2-app',
-    templateUrl: './registration.html'
+    templateUrl: './registration.html',
+    styleUrls: ['./registration.css']
 })
 export class RegisterComponent implements CognitoCallback {
-    registrationUser: RegistrationUser;
     router: Router;
     errorMessage: string;
+    form: FormGroup
 
     constructor(public userRegistration: UserRegistrationService, router: Router) {
         this.router = router;
@@ -28,13 +24,26 @@ export class RegisterComponent implements CognitoCallback {
     }
 
     onInit() {
-        this.registrationUser = new RegistrationUser();
         this.errorMessage = null;
+        this.form = new FormGroup({
+                firstname: new FormControl(null, []),
+                lastname: new FormControl(null, []),
+                email: new FormControl(null, [Validators.required, Validators.email]),
+                phone: new FormControl(null, []),
+                help_note: new FormControl(null, []),
+            }
+        )
+
     }
 
     onRegister() {
         this.errorMessage = null;
-        this.userRegistration.register(this.registrationUser, this);
+        if (this.form.controls['email'].invalid) {
+            this.errorMessage = 'Please enter a correct email'
+            return;
+        }
+
+        this.userRegistration.register(this.form.value, this);
     }
 
     cognitoCallback(message: string, result: any) {

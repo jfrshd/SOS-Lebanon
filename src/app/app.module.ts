@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {AppComponent} from './app.component';
 import {UserRegistrationService} from './service/user-registration.service';
@@ -23,6 +23,7 @@ import {ResendCodeComponent} from './public/auth/resend/resendCode.component';
 import {NewPasswordComponent} from './public/auth/newpassword/newpassword.component';
 import { MFAComponent } from './public/auth/mfa/mfa.component';
 import { LookupComponent } from './public/lookup/lookup.component';
+import {InternationalPhoneNumberModule} from 'ngx-international-phone-number';
 
 @NgModule({
     declarations: [
@@ -49,6 +50,8 @@ import { LookupComponent } from './public/lookup/lookup.component';
         BrowserModule,
         FormsModule,
         HttpModule,
+        ReactiveFormsModule,
+        InternationalPhoneNumberModule,
         routing
     ],
     providers: [

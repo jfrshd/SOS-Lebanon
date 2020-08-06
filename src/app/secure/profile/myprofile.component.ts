@@ -4,7 +4,7 @@ import { CognitoUtil, LoggedInCallback } from '../../service/cognito.service';
 import { UserParametersService } from '../../service/user-parameters.service';
 import { Router } from '@angular/router';
 import { GetParametersCallback } from './get-parameters-callback';
-import { Parameters } from './Parameters';
+import {Parameters} from './parameters';
 
 
 @Component({

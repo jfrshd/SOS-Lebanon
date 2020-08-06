@@ -1,0 +1,25 @@
+.form-register {
+    max-width: 600px;
+    margin: auto;
+    color: var(--default-text-color);
+}
+
+.form-heading {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.control-label {
+    font-weight: normal;
+    text-align: left;
+}
+
+.form-group {
+    text-align: left;
+}
+
+
+.form-control {
+    font-style: italic;
+    font-weight: normal;
+}

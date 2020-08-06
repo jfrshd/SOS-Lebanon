@@ -1,37 +1,48 @@
-<form class="form-signin" method="POST" action="#" role="form">
-    <div class="form-group">
-        <h2>Create account</h2>
+<form class="form-register container" [formGroup]="form" method="POST" (ngSubmit)="onRegister()" action="#" role="form">
+    <div class="form-heading">
+        <h1>Join us in making lebanon a better place</h1>
+        <h4>Become a helping hand for the people in need</h4>
     </div>
-    <div *ngIf="errorMessage!=null" class="alert alert-danger">
+    <div *ngIf="errorMessage!=null" class="alert alert-error">
         {{ errorMessage }}
     </div>
-    <div class="form-group">
-        <label class="control-label" for="signupName">Name</label>
-        <input id="signupName" type="text" maxlength="50" class="form-control"
-               [(ngModel)]="registrationUser.name" [ngModelOptions]="{standalone: true}">
+    <div class="row">
+        <div class="form-group col-lg-6 col-md-12 col-sm-12" [class.has-error]="form.controls['firstname'].invalid">
+            <label class="control-label">First name</label>
+            <input type="text" maxlength="50" class="form-control"
+                   formControlName="firstname">
+        </div>
+        <div class="form-group col-lg-6 col-md-12 col-sm-12" [class.has-error]="form.controls['lastname'].invalid">
+            <label class="control-label" >Last name</label>
+            <input  type="text" maxlength="50" class="form-control"
+                   formControlName="lastname">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-lg-6 col-md-12 col-sm-12" [class.has-error]="form.controls['email'].invalid">
+            <label class="control-label">Email</label>
+            <input type="text" maxlength="50" class="form-control"
+                   formControlName="email">
+        </div>
+        <div class="form-group col-lg-6 col-md-12 col-sm-12" >
+            <label class="control-label" >Phone number</label>
+            <international-phone-number [defaultCountry]="'lb'"      formControlName="phone" ></international-phone-number>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+            <label class="control-label">How can you help?</label>
+            <textarea type="text" class="form-control"
+                      formControlName="help_note"></textarea>
+        </div>
     </div>
     <div class="form-group">
-        <label class="control-label" for="signupEmail">Email</label>
-        <input id="signupEmail" type="email" maxlength="50" class="form-control"
-               [(ngModel)]="registrationUser.email" [ngModelOptions]="{standalone: true}">
-    </div>
-    <div class="form-group">
-        <label class="control-label" for="signupPhone">Phone number</label>
-        <input id="signupPhone" type="text" maxlength="13" class="form-control"
-               [(ngModel)]="registrationUser.phone_number" [ngModelOptions]="{standalone: true}">
-    </div>
-    <div class="form-group">
-        <label class="control-label" for="signupPassword">Password</label>
-        <input id="signupPassword" type="password" maxlength="25" class="form-control"
-               placeholder="at least 8 characters" length="40" [(ngModel)]="registrationUser.password"
-               [ngModelOptions]="{standalone: true}">
-    </div>
-    <div class="form-group">
-        <button (click)="onRegister()" id="signupSubmit" type="submit" class="btn btn-info btn-block">
-            Create your account
+        <button (click)="onRegister()" id="signupSubmit" type="submit" class="btn btn-default pull-right">
+            <span class="fa fa-send pull-left"></span> Submit
         </button>
     </div>
     <hr>
-    <p>Already have an account? <a [routerLink]="['/home/login']"> <i class="fa fa-fw fa-lock"></i>Login</a></p>
 </form>
 
