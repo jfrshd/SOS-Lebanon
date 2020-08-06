@@ -1,0 +1,21 @@
+.slide-pointer {
+    margin-right: 5px;
+    color: #BC2C3D;
+}
+
+.slide-pointer.active {
+    color: #2C2627;
+}
+
+.intro-text {
+    margin-bottom: 50px;
+    color: rgb(45, 38, 38);
+}
+
+.intro-text h2 {
+    font-weight: 800;
+}
+
+.buttons-list>* {
+    margin-bottom: 20px;
+}

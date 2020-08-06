@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+.container {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: auto;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
