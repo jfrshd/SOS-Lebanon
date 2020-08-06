@@ -1,13 +1,14 @@
 export class Listing {
-    public id: number;
+    public id?: number;
     public image?: string;
-    public type: string;
-    public title: string;
-    public description: string;
-    public user: string;
-    public location: string;
-    public phoneNumber: string;
+    public type?: string;
+    public title?: string;
+    public description?: string;
+    public user?: string;
+    public location?: string;
+    public phoneNumber?: string;
     public fulfilled?: boolean;
+    public keywords?: [string];
 
     constructor(obj: Listing = {} as Listing) {
         this.id = obj.id;
@@ -19,5 +20,6 @@ export class Listing {
         this.location = obj.location;
         this.phoneNumber = obj.phoneNumber;
         this.fulfilled = !!obj.fulfilled;
+        this.keywords = obj.keywords;
     }
 }

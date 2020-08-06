@@ -9,13 +9,18 @@
                 </option>
             </select>
         </div>
-        <div class="col-xs-1 col-sm-6"></div>
-        <div class="col-xs-5 col-sm-4 input-group">
+        <div class="col-xs-1 col-sm-5"></div>
+        <div class="col-xs-3 col-sm-3 ">
+            <div class="input-group">
             <span class="input-group-addon" (click)="refresh()">
                 <i class="fa fa-search"></i>
             </span>
-            <input type="text" class="form-control" [(ngModel)]="keyword" (change)="refresh()"
-                placeholder="Search for specific needs">
+                <input type="text" class="form-control" [(ngModel)]="keyword" (change)="refresh()"
+                       placeholder="Search for specific needs">
+            </div>
+        </div>
+        <div class="col-xs-2 col-sm-2 ">
+            <button class="btn btn-dark btn-rounded" [routerLink]="'/home/listings/0/'"><i class="fa fa-plus"></i>&nbsp; Add new</button>
         </div>
         <br>
         <br>
@@ -25,4 +30,5 @@
             </sos-listing-entry>
         </div>
     </div>
+
 </div>

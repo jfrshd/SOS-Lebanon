@@ -13,7 +13,7 @@ import { ResendCodeComponent } from './public/auth/resend/resendCode.component';
 import { NewPasswordComponent } from './public/auth/newpassword/newpassword.component';
 import { MyListingsComponent } from './secure/my-listings/my-listings.component';
 import { ListingComponent } from './public/listing/listing.component';
-import { CreateListingComponent } from './secure/create-listing/create-listing.component';
+import {ListingFormComponent} from './secure/listing-form/listing-form.component';
 
 const homeRoutes: Routes = [
     {
@@ -34,8 +34,7 @@ const homeRoutes: Routes = [
             { path: 'forgotPassword', component: ForgotPasswordStep1Component },
             { path: 'newPassword', component: NewPasswordComponent },
             { path: 'listings', component: ListingComponent },
-            { path: 'listings/new', component: CreateListingComponent },
-            { path: 'listings/:id', component: CreateListingComponent },
+            { path: 'listings/:id', component: ListingFormComponent },
             { path: 'my-listings', component: MyListingsComponent },
             { path: '', component: HomeLandingComponent }
         ]

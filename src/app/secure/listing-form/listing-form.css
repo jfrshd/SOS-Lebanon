@@ -1,0 +1,52 @@
+.form-listing {
+    max-width: 800px;
+    margin: auto;
+    color: var(--default-text-color);
+}
+
+.form-listing  .form-heading {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.form-listing  .control-label {
+    font-weight: normal;
+    text-align: left;
+}
+
+.form-listing  .form-group {
+    text-align: left;
+}
+
+
+.form-listing  .form-control {
+    font-style: italic;
+    font-weight: normal;
+}
+
+
+.form-listing  .ng2-tag-input.ng2-tag-input--focused, .form-listing  .ng2-tag-input.ng2-tag-input {
+    border-bottom: none !important;
+}
+
+
+.form-listing  .ng2-tag-input__text-input {
+    padding: 0 !important;
+    height: 20px !important;
+    margin-top: -4px !important;
+}
+
+.form-listing  delete-icon {
+    margin-top: -3px !important;
+}
+
+.form-listing  tag {
+    margin-top: -6px !important;
+    height: 25px !important;
+    line-height: 28px !important;
+}
+
+.form-listing tag .tag__text {
+    font-size: 12px     ;
+}
+

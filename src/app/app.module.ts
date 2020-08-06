@@ -26,7 +26,9 @@ import { ListingEntryComponent } from './public/listing-entry/listing-entry.comp
 import { InternationalPhoneNumberModule } from 'ngx-international-phone-number';
 import { ListingComponent } from './public/listing/listing.component';
 import { MyListingsComponent } from './secure/my-listings/my-listings.component';
-import { CreateListingComponent } from './secure/create-listing/create-listing.component';
+import {ListingFormComponent} from './secure/listing-form/listing-form.component';
+import {TagInputModule} from 'ngx-chips';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -48,7 +50,7 @@ import { CreateListingComponent } from './secure/create-listing/create-listing.c
         ListingEntryComponent,
         SecureHomeComponent,
         MyListingsComponent,
-        CreateListingComponent,
+        ListingFormComponent,
         JwtComponent,
         AppComponent
     ],
@@ -56,8 +58,10 @@ import { CreateListingComponent } from './secure/create-listing/create-listing.c
         BrowserModule,
         FormsModule,
         HttpModule,
+        TagInputModule,
         ReactiveFormsModule,
         InternationalPhoneNumberModule,
+        BrowserAnimationsModule,
         routing
     ],
     providers: [
