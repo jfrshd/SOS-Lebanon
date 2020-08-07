@@ -1,4 +1,44 @@
-<button id="deleteModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
+<div class="modal modal-delete fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left color-red">Delete Listing</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="deleteModal.modal('hide')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body color-black">
+                Are you sure you wish to delete listing <span class="color-red">{{data.title}}</span>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="deleteListing()">Yes</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-fulfill fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left color-red">Fulfill Listing</h4>
+                <button type="button" class="close pull-right" aria-label="Close"
+                    (click)="data.fulfilled = !data.fulfilled; fulfillModal.modal('hide')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body color-black">
+                Are you sure you wish to fulfill listing <span class="color-red">{{data.title}}</span>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="fulfillListing()">Yes</button>
+                <button type="button" class="btn btn-light"
+                    (click)="data.fulfilled = !data.fulfilled; fulfillModal.modal('hide')">No</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="listing-data col-xs-12 row">
     <span class="col-xs-2 col-sm-1 data-image">

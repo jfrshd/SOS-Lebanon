@@ -25,6 +25,7 @@ import { MFAComponent } from './public/auth/mfa/mfa.component';
 import { ListingEntryComponent } from './public/listing-entry/listing-entry.component';
 import { InternationalPhoneNumberModule } from 'ngx-international-phone-number';
 import { ListingComponent } from './public/listing/listing.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { MyListingsComponent } from './secure/my-listings/my-listings.component';
 import {ListingFormComponent} from './secure/listing-form/listing-form.component';
 import {TagInputModule} from 'ngx-chips';
@@ -62,6 +63,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         ReactiveFormsModule,
         InternationalPhoneNumberModule,
         BrowserAnimationsModule,
+        ModalModule.forRoot(),
         routing
     ],
     providers: [
