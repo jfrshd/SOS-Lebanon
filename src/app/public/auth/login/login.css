@@ -1,0 +1,40 @@
+.form-login {
+    max-width: 450px;
+    margin: auto;
+    color: var(--default-text-color);
+    text-align: left;
+    padding: 40px;
+}
+
+.form-heading {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.control-label {
+    font-weight: normal;
+    text-align: left;
+}
+
+.form-group {
+    text-align: left;
+}
+
+
+.form-control {
+    font-style: italic;
+    font-weight: normal;
+}
+
+.input-group-addon {
+    background-color: #eeeeee;
+    border: none;
+    font-size: 16px;
+}
+
+input {
+    background-color: #eeeeee;
+    border: none;
+    box-shadow: none;
+    font-size: 16px;
+}

@@ -1,0 +1,36 @@
+<div class="intro-header">
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="intro-text col-lg-3 col-sm-12">
+                <h2>We see the opportunity to make a difference.</h2>
+                <p>
+                    Hand in hand, towards a better Lebanon. We're here to help everyone in need and open an opportunity
+                    for being a helping hand in these tough times.
+                </p>
+                <a [routerLink]="['/home/register']" class="btn btn-dark btn-lg">
+                    Volunteer
+                </a>
+            </div>
+            <div class="col-lg-9 col-sm-12" style="margin-bottom: 20px">
+                <img width="auto" height="600" src="./../../assets/landing page/pictures/landing page.png" />
+            </div>
+
+            <div class="col-sm-12">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10 buttons-list">
+                    <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let type of types">
+                        <a [routerLink]="['/home/listings']" [queryParams]="{ type: type.name }"
+                            class="btn btn-light col-sm-10 col-sm-offset-1">
+                            <img [src]="type.image" width="auto" height="40" />
+                            <br>
+                            <b>{{type.name}}</b>
+                            <br>
+                            <em>{{type.description}}</em>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="modal modal-delete fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left color-red">Delete Listing</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="deleteModal.modal('hide')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body color-black">
+                Are you sure you wish to delete listing <span class="color-red">{{data.title}}</span>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="deleteListing()">Yes</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-fulfill fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left color-red">Fulfill Listing</h4>
+                <button type="button" class="close pull-right" aria-label="Close"
+                    (click)="data.fulfilled = !data.fulfilled; fulfillModal.modal('hide')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body color-black">
+                Are you sure you wish to fulfill listing <span class="color-red">{{data.title}}</span>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="fulfillListing()">Yes</button>
+                <button type="button" class="btn btn-light"
+                    (click)="data.fulfilled = !data.fulfilled; fulfillModal.modal('hide')">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="listing-data col-xs-12 row">
+    <span class="col-xs-2 col-sm-1 data-image">
+        <img alt="{{data.type}}" title="{{data.type}}"
+            src="./../../../assets/landing page/pictures/{{data.type.toLocaleLowerCase()}}.png" />
+    </span>
+    <section class="data-text color-black col-xs-10 col-md-9 col-lg-10">
+        <span class="text-overflow data-header">{{data.title}}</span>
+        <p class="text-overflow">{{data.description}}</p>
+        <span *ngIf="showUser">
+            <i class="fa fa-user"></i>&nbsp;&nbsp;{{data.user}}
+        </span>
+        <span class="color-red" *ngIf="!showUser">
+            Listed in &nbsp;
+            <img width="20" height="auto" alt="{{data.type}}" title="{{data.type}}"
+                src="./../../../assets/landing page/pictures/{{data.type.toLocaleLowerCase()}}.png" />
+            &nbsp;<em>{{data.type}}</em>
+        </span>
+    </section>
+    <div class="data-text col-xs-offset-2 col-sm-offset-1 col-md-offset-0 col-xs-12 col-md-2 col-lg-1 color-black">
+        <div class="color-red" *ngIf="showActions">
+            <a class="link-unstyled" [routerLink]="['/home/listings/' + data.id]">
+                <i class="fa fa-2x fa-pencil"></i>&nbsp;&nbsp;
+            </a>
+            <i class="fa fa-2x fa-trash" (click)="delete()"></i>
+            <br>
+            <div class="form-check">
+                <label class="form-check-label" for="fulfilled">Mark as fulfilled</label>
+                <input type="checkbox" class="data-fulfill form-check-input" id="fulfilled" [(ngModel)]="data.fulfilled"
+                    (change)="fulfill()">
+            </div>
+        </div>
+        <span *ngIf="!showActions">
+            <span class="no-padding col-xs-6 col-md-12">
+                <i class="fa fa-map-marker"></i>&nbsp;&nbsp;{{data.location}}
+            </span>
+            <span class="no-padding col-xs-6 col-md-12">
+                <i class="fa fa-phone"></i>&nbsp;&nbsp;{{data.phoneNumber}}
+            </span>
+        </span>
+    </div>
+</div>
