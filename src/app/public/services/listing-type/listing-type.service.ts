@@ -1,7 +1,13 @@
 
-import { ListingType } from '../../models';
+import { ListingType, ApiResponse } from '../../models';
 import { Observable, of } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
+@Injectable({
+    providedIn: 'root'
+})
 export class ListingTypeService {
     private MOCK_DATA = [
         new ListingType({
@@ -26,9 +32,10 @@ export class ListingTypeService {
         })
     ];
 
-    public get(): Observable<ListingType[]> {
-        let data = this.MOCK_DATA;
+    constructor(private httpClient: HttpClient) {
+    }
 
-        return of(data);
+    public get(): Observable<ApiResponse<ListingType>> {
+        return this.httpClient.get<ApiResponse<ListingType>>(environment.url + '/type');
     }
 }

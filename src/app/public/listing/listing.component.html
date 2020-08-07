@@ -22,7 +22,7 @@
             <br>
         </div>
         <div class="col-xs-6 col-sm-2">
-            <button class="btn btn-dark btn-rounded" [routerLink]="'/home/listings'"><i class="fa fa-plus"></i>&nbsp;
+            <button class="btn btn-dark btn-rounded" [routerLink]="'/home/listings/0'"><i class="fa fa-plus"></i>&nbsp;
                 &nbsp;Add new&nbsp;
             </button>
             <br>
@@ -30,8 +30,13 @@
         <br>
         <br>
         <div class="row">
-            <sos-listing-entry class="col-xs-12" *ngFor="let element of data" [data]="element" [showUser]="true">
-            </sos-listing-entry>
+            <app-listing-entry class="col-xs-12" *ngFor="let element of data.result.Items | slice:0:count"
+                [data]="element" [showUser]="true">
+            </app-listing-entry>
+
+            <button class="btn btn-default" *ngIf="data.result.Count > count" (click)="loadMore()">
+                Load More
+            </button>
         </div>
     </div>
 </div>

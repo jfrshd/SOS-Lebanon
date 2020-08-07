@@ -1,4 +1,5 @@
-<form class="form-listing container" method="POST" action="#" role="form" [formGroup]="form" (ngSubmit)="onSaveListing()">
+<form class="form-listing container" method="POST" action="#" role="form" [formGroup]="form"
+    (ngSubmit)="onSaveListing()">
     <div class="form-heading">
         <h1>Add a new way of help</h1>
         <h4>How can you help today</h4>
@@ -10,12 +11,12 @@
         <div class="row">
             <div class="form-group col-lg-6 col-md-6 col-sm-12">
                 <label class="control-label">Title</label>
-                <input type="text" maxlength="50" class="form-control"
-                       formControlName="title">
+                <input type="text" maxlength="50" class="form-control" formControlName="title">
             </div>
             <div class="form-group col-lg-6 col-md-6 col-sm-12 input-group mb-3">
                 <label class="control-label">Contact number</label>
-                <international-phone-number [defaultCountry]="'lb'" formControlName="phone" ></international-phone-number>
+                <international-phone-number [defaultCountry]="'lb'" formControlName="phone">
+                </international-phone-number>
             </div>
         </div>
         <div class="row">
@@ -28,8 +29,8 @@
             </div>
             <div class="form-group col-lg-6 col-md-6 col-sm-12">
                 <label class="control-label">Location</label>
-                <select formControlName="type" class="form-control">
-                    <option *ngFor="let location of locations">{{location.name}}</option>
+                <select formControlName="location" class="form-control">
+                    <option *ngFor="let location of locations" [value]="location.id">{{location.name}}</option>
                 </select>
 
             </div>
@@ -37,15 +38,13 @@
         <div class="row">
             <div class="form-group col-lg-12 col-md-12 col-sm-12">
                 <label class="control-label">Description</label>
-                <textarea class="form-control"
-                          formControlName="description"></textarea>
+                <textarea class="form-control" formControlName="description"></textarea>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-lg-6 col-md-6 col-sm-12">
                 <label class="control-label">Keywords</label>
-                <tag-input class="form-control"
-                           formControlName="keywords"></tag-input>
+                <tag-input class="form-control" formControlName="keywords"></tag-input>
             </div>
             <div class="form-group col-lg-6 col-md-6 col-sm-12">
                 <label class="control-label">Images</label>
@@ -59,6 +58,4 @@
             </button>
         </div>
     </div>
-
-
 </form>

@@ -1,5 +1,6 @@
 export const environment = {
     production: false,
+    url: 'https://dcijvdcvue.execute-api.eu-west-1.amazonaws.com/prod',
 
     region: 'us-east-1',
 
