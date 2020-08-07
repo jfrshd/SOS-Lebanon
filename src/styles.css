@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --primary-color: #BC2C3D;
+    --default-text-color: #222222;
+    --error-color: #BC2C3D;
+}
+
+
+.link-unstyled,
+.link-unstyled:link,
+.link-unstyled:hover {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.container {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: auto;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+
+.alert-error {
+    background-color: transparent;
+    background-image: none;
+    border-color: var(--error-color);
+    color: var(--error-color);
+}
