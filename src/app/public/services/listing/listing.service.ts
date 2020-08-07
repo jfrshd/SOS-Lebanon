@@ -78,4 +78,8 @@ export class ListingService {
 
         return of(this.MOCK_DATA[index]);
     }
+
+    public post(listing: Listing): Observable<Listing> {
+        return of(this.MOCK_DATA[0]);
+    }
 }

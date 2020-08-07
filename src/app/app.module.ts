@@ -25,42 +25,46 @@ import { MFAComponent } from './public/auth/mfa/mfa.component';
 import { ListingEntryComponent } from './public/listing-entry/listing-entry.component';
 import { InternationalPhoneNumberModule } from 'ngx-international-phone-number';
 import { ListingComponent } from './public/listing/listing.component';
-import { CreateListingComponent } from './secure/create-listing/create-listing.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { MyListingsComponent } from './secure/my-listings/my-listings.component';
+import {ListingFormComponent} from './secure/listing-form/listing-form.component';
+import {TagInputModule} from 'ngx-chips';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [
-    NewPasswordComponent,
-    LoginComponent,
-    LogoutComponent,
-    RegistrationConfirmationComponent,
-    ResendCodeComponent,
-    ForgotPasswordStep1Component,
-    ForgotPassword2Component,
-    RegisterComponent,
-    MFAComponent,
-    AboutComponent,
-    HomeLandingComponent,
-    HomeComponent,
-    UseractivityComponent,
-    MyProfileComponent,
-    ListingComponent,
-    ListingEntryComponent,
-    SecureHomeComponent,
-    MyListingsComponent,
-    CreateListingComponent,
-    JwtComponent,
-    AppComponent
-  ],
-  imports: [
+    declarations: [
+        NewPasswordComponent,
+        LoginComponent,
+        LogoutComponent,
+        RegistrationConfirmationComponent,
+        ResendCodeComponent,
+        ForgotPasswordStep1Component,
+        ForgotPassword2Component,
+        RegisterComponent,
+        MFAComponent,
+        AboutComponent,
+        HomeLandingComponent,
+        HomeComponent,
+        UseractivityComponent,
+        MyProfileComponent,
+        ListingComponent,
+        ListingEntryComponent,
+        SecureHomeComponent,
+        MyListingsComponent,
+        ListingFormComponent,
+        JwtComponent,
+        AppComponent
+    ],
+    imports: [
         BrowserModule,
         FormsModule,
         HttpClientModule,
+        TagInputModule,
         ReactiveFormsModule,
         InternationalPhoneNumberModule,
+        BrowserAnimationsModule,
         ModalModule.forRoot(),
         AppRoutingModule
   ],
