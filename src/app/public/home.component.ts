@@ -34,7 +34,7 @@ export class HomeLandingComponent implements OnInit {
 @Component({
     selector: 'awscognito-angular2-app',
     templateUrl: './home.html',
-    styleUrls: ['/home.css']
+    styleUrls: ['./home.css']
 })
 export class HomeComponent implements OnInit {
 

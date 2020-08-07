@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
 import { Listing } from '../models';
 import { ListingService } from '../services/listing/listing.service';
 import { ListingType } from '../models';
 import { ListingTypeService } from '../services/listing-type/listing-type.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'awscognito-angular2-app',

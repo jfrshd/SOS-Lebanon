@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { ListingType } from '../../models';
+=======
+
+import { ListingType } from '../../models';
+import { Observable, of } from 'rxjs';
+>>>>>>> feature/upgrade upgrade to 10 and enabe aot
 
 export class ListingTypeService {
     private MOCK_DATA = [
