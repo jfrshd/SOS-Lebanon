@@ -1,35 +1,42 @@
 .color-red {
-    color: #BC2C3D
+  color: #BC2C3D
 }
 
 .color-black {
-    color: #2C2627;
+  color: #2C2627;
 }
 
 .color-grey {
-    color: #F2F2F2;
+  color: #F2F2F2;
 }
 
 
 .btn[class*='btn-'] {
-    color: #F2F2F2;
-    text-shadow: none;
-    border: none;
+  color: #F2F2F2;
+  text-shadow: none;
+  border: none;
+  font-size: 20px;
 }
 
 .btn[class*='btn-']:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
-.btn-default, .btn-default:hover, .btn-default:active {
-    background: #BC2C3D;
+.btn-default,
+.btn-default:hover,
+.btn-default:active {
+  background: #BC2C3D;
 }
 
-.btn-dark, .btn-dark:hover, .btn-dark:active {
-    background: rgb(45, 38, 38);
+.btn-dark,
+.btn-dark:hover,
+.btn-dark:active {
+  background: rgb(45, 38, 38);
 }
 
-.btn-light, .btn-light:hover, .btn-light:active {
-    background: #f2f2f2;
-    color: #2C2627 !important;
+.btn-light,
+.btn-light:hover,
+.btn-light:active {
+  background: #f2f2f2;
+  color: #2C2627 !important;
 }

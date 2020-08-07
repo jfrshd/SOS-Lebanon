@@ -13,7 +13,7 @@ import { ResendCodeComponent } from './public/auth/resend/resendCode.component';
 import { NewPasswordComponent } from './public/auth/newpassword/newpassword.component';
 import { MyListingsComponent } from './secure/my-listings/my-listings.component';
 import { ListingComponent } from './public/listing/listing.component';
-import {ListingFormComponent} from './secure/listing-form/listing-form.component';
+import { ListingFormComponent } from './secure/listing-form/listing-form.component';
 
 const homeRoutes: Routes = [
     {
