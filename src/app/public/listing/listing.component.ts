@@ -17,29 +17,23 @@ export class ListingComponent implements OnInit, OnDestroy {
     types: ListingType[] = [];
     sub: Subscription;
     data: ApiResponse<Listing> = new ApiResponse<Listing>();
-    private initialCount = 10;
-    count: number = this.initialCount;
+    private count = 2;
 
     constructor(private route: ActivatedRoute, private listingService: ListingService, private listingTypeService: ListingTypeService) {
     }
 
-    refresh(): void {
-        this.listingService.get(this.type)
+    refresh(loadMore: boolean): void {
+        this.listingService.get(this.type, this.keyword, this.count, this.data.result.Count)
             .subscribe(data => {
-                if (this.keyword) {
-                    const keyword = this.keyword.toLocaleLowerCase();
-                    data.result.Items = data.result.Items.filter(f =>
-                        (
-                            f.title.toLocaleLowerCase().indexOf(keyword) !== -1 ||
-                            f.description.toLocaleLowerCase().indexOf(keyword) !== -1 ||
-                            f.user.toLocaleLowerCase().indexOf(keyword) !== -1 ||
-                            f.location.toLocaleLowerCase().indexOf(keyword) !== -1 ||
-                            f.phoneNumber.toLocaleLowerCase().indexOf(keyword) !== -1
-                        )
-                    );
+                if (loadMore) {
+                    this.data.result.ScannedCount += data.result.ScannedCount;
+                    this.data.result.Items = [
+                        ...this.data.result.Items,
+                        ...data.result.Items
+                    ];
+                } else {
+                    this.data = data;
                 }
-
-                this.data = data;
             });
         this.listingTypeService.get()
             .subscribe(data => this.types = data.result.Items);
@@ -49,11 +43,11 @@ export class ListingComponent implements OnInit, OnDestroy {
         this.sub = this.route
             .queryParams
             .subscribe(params => this.type = params['type']);
-        this.refresh();
+        this.refresh(false);
     }
 
     loadMore(): void {
-        this.count += this.initialCount;
+        this.refresh(true);
     }
 
     ngOnDestroy(): void {

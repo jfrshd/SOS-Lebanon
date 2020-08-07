@@ -16,11 +16,10 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
     username: string;
     keyword: string;
     data: ApiResponse<Listing> = new ApiResponse<Listing>();
-    private initialCount = 10;
-    count: number = this.initialCount;
+    private count = 10;
 
     constructor(public router: Router, public userService: UserLoginService,
-        private cognitoUtil: CognitoUtil, private listingService: ListingService) {
+                private cognitoUtil: CognitoUtil, private listingService: ListingService) {
         this.userService.isAuthenticated(this);
         this.user = this.cognitoUtil.getCurrentUser();
         if (this.user) {
@@ -28,19 +27,29 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
         }
     }
 
-    refresh(): void {
-        this.listingService.get('')
-            .subscribe(data => this.data = data);
+    refresh(loadMore: boolean): void {
+        this.listingService.get('', this.keyword, this.count, this.data.result.Count)
+            .subscribe(data => {
+                if (loadMore) {
+                    this.data.result.ScannedCount += data.result.ScannedCount;
+                    this.data.result.Items = [
+                        ...this.data.result.Items,
+                        ...data.result.Items
+                    ];
+                } else {
+                    this.data = data;
+                }
+            });
     }
 
     ngOnInit(): void {
-        this.refresh();
+        this.refresh(false);
     }
 
     isLoggedIn(message: string, isLoggedIn: boolean): void {
-        // if (!isLoggedIn) {
-        //     this.router.navigate(['/home/login']);
-        // }
+        if (!isLoggedIn) {
+            this.router.navigate(['/home/login']);
+        }
     }
 
     onDelete(id: string): void {

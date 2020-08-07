@@ -3,7 +3,7 @@
     <br>
     <div class="row">
         <div class="col-xs-12 col-sm-4 col-md-3">
-            <select class="form-control" [(ngModel)]="type" (change)="refresh()">
+            <select class="form-control" [(ngModel)]="type" (change)="refresh(false)">
                 <option *ngFor="let type of types" [value]="type.name">
                     {{type.name | titlecase}}
                 </option>
@@ -13,10 +13,10 @@
         <div class="hidden-xs col-sm-1 col-md-3"></div>
         <div class="col-xs-6 col-sm-4">
             <div class="input-group">
-                <span class="input-group-addon" (click)="refresh()">
+                <span class="input-group-addon" (click)="refresh(false)">
                     <i class="fa fa-search"></i>
                 </span>
-                <input type="text" class="form-control" [(ngModel)]="keyword" (change)="refresh()"
+                <input type="text" class="form-control" [(ngModel)]="keyword" (change)="refresh(false)"
                     placeholder="Search for specific needs">
             </div>
             <br>

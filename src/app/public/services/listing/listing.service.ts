@@ -1,7 +1,8 @@
 
 import { Injectable } from '@angular/core';
 import { Listing, ApiResponse } from '../../models';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
@@ -38,10 +39,13 @@ export class ListingService {
     constructor(private httpClient: HttpClient) {
     }
 
-    public get(typeId: string): Observable<ApiResponse<Listing>> {
-        return this.httpClient.get<ApiResponse<Listing>>(environment.url + '/type-help', {
+    public get(typeId: string, keyword: string, limit: number = 10, skip: number = 0): Observable<ApiResponse<Listing>> {
+        return this.httpClient.get<ApiResponse<Listing>>(environment.url + '/type-post', {
             params: {
-                typeId
+                typeId,
+                limit: limit.toString(),
+                skip: skip.toString(),
+                keyword
             }
         });
     }
@@ -63,10 +67,10 @@ export class ListingService {
     }
 
     public create(listing: Listing): Observable<Listing> {
-        return this.httpClient.post<Listing>(environment.url + '/help', listing);
+        return this.httpClient.post<Listing>(environment.url + '/admin', listing);
     }
 
     public update(listing: Listing): Observable<Listing> {
-        return this.httpClient.put<Listing>(environment.url + '/help', listing);
+        return this.httpClient.post<Listing>(environment.url + '/admin', listing);
     }
 }

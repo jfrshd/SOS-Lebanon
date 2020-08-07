@@ -9,10 +9,10 @@
         <div class="col-xs-12 col-md-9">
             <div class="col-xs-9 col-lg-10">
                 <div class="input-group">
-                    <span class="input-group-addon" (click)="refresh()">
+                    <span class="input-group-addon" (click)="refresh(false)">
                         <i class="fa fa-search"></i>
                     </span>
-                    <input type="text" class="form-control" [(ngModel)]="keyword" (change)="refresh()"
+                    <input type="text" class="form-control" [(ngModel)]="keyword" (change)="refresh(false)"
                         placeholder="Search your uploads">
                 </div>
             </div>
