@@ -1,6 +1,5 @@
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
 import {ListingLocation} from '../../models/listing-location';
+import {Observable, of} from 'rxjs';
 
 export class ListingLocationService {
     private MOCK_DATA = [

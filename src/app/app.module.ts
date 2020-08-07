@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { UserRegistrationService } from './service/user-registration.service';
 import { UserParametersService } from './service/user-parameters.service';
 import { UserLoginService } from './service/user-login.service';
 import { CognitoUtil } from './service/cognito.service';
-import { routing } from './app.routes';
 import { AboutComponent, HomeComponent, HomeLandingComponent } from './public/home.component';
 import { AwsUtil } from './service/aws.service';
 import { UseractivityComponent } from './secure/useractivity/useractivity.component';
@@ -30,6 +30,8 @@ import { MyListingsComponent } from './secure/my-listings/my-listings.component'
 import {ListingFormComponent} from './secure/listing-form/listing-form.component';
 import {TagInputModule} from 'ngx-chips';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
     declarations: [
@@ -58,23 +60,22 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     imports: [
         BrowserModule,
         FormsModule,
-        HttpModule,
+        HttpClientModule,
         TagInputModule,
         ReactiveFormsModule,
         InternationalPhoneNumberModule,
         BrowserAnimationsModule,
         ModalModule.forRoot(),
-        routing
-    ],
-    providers: [
-        CognitoUtil,
-        AwsUtil,
-        DynamoDBService,
-        UserRegistrationService,
-        UserLoginService,
-        UserParametersService,
-    ],
-    bootstrap: [AppComponent]
+        AppRoutingModule
+  ],
+  providers: [
+    CognitoUtil,
+    AwsUtil,
+    DynamoDBService,
+    UserRegistrationService,
+    UserLoginService,
+    UserParametersService,
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
