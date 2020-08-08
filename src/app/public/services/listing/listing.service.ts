@@ -39,9 +39,10 @@ export class ListingService {
     }
 
     public get(typeId: string, keyword: string, limit: number = 10, evaluateKey: ApiEvaluatedKey = null): Observable<ApiResponse<Listing>> {
+        const evaluateKeyStr = JSON.stringify(evaluateKey);
         const params: any = {
             typeId,
-            LastEvaluatedKey: encodeURI(JSON.stringify(evaluateKey)),
+            LastEvaluatedKey: evaluateKeyStr === '{}' ? '' : encodeURI(evaluateKeyStr),
             limit: limit.toString(),
             keyword
         };
