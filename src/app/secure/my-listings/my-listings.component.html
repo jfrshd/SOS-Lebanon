@@ -25,11 +25,12 @@
     <br>
     <br>
     <div class="row">
-        <app-listing-entry class="col-xs-12" *ngFor="let element of data | slice:0:count" [data]="element"
-            [showActions]="true" (onDelete)="onDelete($event)">
+        <app-listing-entry class="col-xs-12" *ngFor="let element of data" [data]="element" [showActions]="true"
+            (onDelete)="onDelete($event)">
         </app-listing-entry>
 
-        <button class="btn btn-default" *ngIf="data.result.Count > count" (click)="loadMore()">
+        <button class="btn btn-default" *ngIf="data.result.LastEvaluatedKey && data.result.LastEvaluatedKey.id"
+            (click)="loadMore()">
             Load More
         </button>
     </div>

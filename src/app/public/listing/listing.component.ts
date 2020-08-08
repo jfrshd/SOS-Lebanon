@@ -23,7 +23,7 @@ export class ListingComponent implements OnInit, OnDestroy {
     }
 
     refresh(loadMore: boolean): void {
-        this.listingService.get(this.type, this.keyword, this.count, this.data.result.Count)
+        this.listingService.get(this.type, this.keyword, this.count, this.data.result.LastEvaluatedKey)
             .subscribe(data => {
                 if (loadMore) {
                     this.data.result.ScannedCount += data.result.ScannedCount;
@@ -31,6 +31,7 @@ export class ListingComponent implements OnInit, OnDestroy {
                         ...this.data.result.Items,
                         ...data.result.Items
                     ];
+                    this.data.result.LastEvaluatedKey = data.result.LastEvaluatedKey;
                 } else {
                     this.data = data;
                 }

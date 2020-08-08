@@ -7,8 +7,8 @@ export const environment = {
     clientId: '5etp2ee2aqe0utmsoqj3qaeg91',
 
     rekognitionBucket: 'rekognition-pics',
-    albumName: "usercontent",
-    bucketRegion: 'us-east-1',
+    albumName: 'usercontent',
+    bucketRegion: 'eu-west-1',
 
     ddbTableName: 'LoginTrail',
 

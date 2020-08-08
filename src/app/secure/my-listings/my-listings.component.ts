@@ -19,7 +19,7 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
     public count = 10;
 
     constructor(public router: Router, public userService: UserLoginService,
-                private cognitoUtil: CognitoUtil, private listingService: ListingService) {
+        private cognitoUtil: CognitoUtil, private listingService: ListingService) {
         this.userService.isAuthenticated(this);
         this.user = this.cognitoUtil.getCurrentUser();
         if (this.user) {
@@ -31,7 +31,7 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
     }
 
     refresh(loadMore: boolean): void {
-        this.listingService.get('', this.keyword, this.count, this.data.result.Count)
+        this.listingService.get('', this.keyword, this.count, this.data.result.LastEvaluatedKey)
             .subscribe(data => {
                 if (loadMore) {
                     this.data.result.ScannedCount += data.result.ScannedCount;
@@ -39,6 +39,7 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
                         ...this.data.result.Items,
                         ...data.result.Items
                     ];
+                    this.data.result.LastEvaluatedKey = data.result.LastEvaluatedKey;
                 } else {
                     this.data = data;
                 }

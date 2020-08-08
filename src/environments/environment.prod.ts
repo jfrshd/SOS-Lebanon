@@ -1,6 +1,5 @@
 export const environment = {
-    production: true,
-
+    production: false,
     url: 'https://dcijvdcvue.execute-api.eu-west-1.amazonaws.com/prod',
     region: 'eu-west-1',
     identityPoolId: 'eu-west-1:456210ab-432e-4a55-a86b-555a00d9e120',
@@ -8,8 +7,8 @@ export const environment = {
     clientId: '5etp2ee2aqe0utmsoqj3qaeg91',
 
     rekognitionBucket: 'rekognition-pics',
-    albumName: "usercontent",
-    bucketRegion: 'us-east-1',
+    albumName: 'usercontent',
+    bucketRegion: 'eu-west-1',
 
     ddbTableName: 'LoginTrail',
 

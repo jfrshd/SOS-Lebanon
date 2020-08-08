@@ -12,11 +12,17 @@ export class ApiResult<T> {
     public Count: number;
     public Items: T[];
     public ScannedCount: number;
+    public LastEvaluatedKey: ApiEvaluatedKey;
 
     constructor(obj: ApiResult<T> = {} as ApiResult<T>) {
         this.Count = obj.Count;
         this.Items = obj.Items || [];
         this.ScannedCount = obj.ScannedCount;
+        this.LastEvaluatedKey = obj.LastEvaluatedKey;
     }
 }
 
+export class ApiEvaluatedKey {
+    public id: string;
+    public pk: string;
+}
