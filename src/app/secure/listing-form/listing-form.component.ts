@@ -1,11 +1,11 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { Listing } from '../../public/models';
-import { ListingService } from '../../public/services/listing/listing.service';
-import { ActivatedRoute } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ListingTypeService } from '../../public/services/listing-type/listing-type.service';
-import { ListingLocationService } from '../../public/services/listing-location/listing-location.service';
-import { Subscription } from 'rxjs';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {Listing} from '../../public/models';
+import {ListingService} from '../../public/services/listing/listing.service';
+import {ActivatedRoute} from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ListingTypeService} from '../../public/services/listing-type/listing-type.service';
+import {ListingLocationService} from '../../public/services/listing-location/listing-location.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-listing-form',
@@ -23,12 +23,13 @@ export class ListingFormComponent implements OnInit, OnDestroy {
   locations = [];
 
   constructor(private listingService: ListingService,
-    private route: ActivatedRoute,
-    private listingTypeService: ListingTypeService,
-    private listingLocationService: ListingLocationService) {
+              private route: ActivatedRoute,
+              private listingTypeService: ListingTypeService,
+              private listingLocationService: ListingLocationService) {
   }
 
   ngOnInit(): void {
+
     this.listingLocationService.get().subscribe(
       res => {
         this.locations = res.result.Items;

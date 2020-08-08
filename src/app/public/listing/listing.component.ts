@@ -17,7 +17,7 @@ export class ListingComponent implements OnInit, OnDestroy {
     types: ListingType[] = [];
     sub: Subscription;
     data: ApiResponse<Listing> = new ApiResponse<Listing>();
-    private count = 2;
+    public count = 2;
 
     constructor(private route: ActivatedRoute, private listingService: ListingService, private listingTypeService: ListingTypeService) {
     }

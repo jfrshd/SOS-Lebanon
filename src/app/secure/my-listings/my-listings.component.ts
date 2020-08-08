@@ -16,7 +16,7 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
     username: string;
     keyword: string;
     data: ApiResponse<Listing> = new ApiResponse<Listing>();
-    private count = 10;
+    public count = 10;
 
     constructor(public router: Router, public userService: UserLoginService,
                 private cognitoUtil: CognitoUtil, private listingService: ListingService) {
