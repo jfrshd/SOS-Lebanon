@@ -17,13 +17,13 @@ export class ListingComponent implements OnInit, OnDestroy {
     types: ListingType[] = [];
     sub: Subscription;
     data: ApiResponse<Listing> = new ApiResponse<Listing>();
-    private count = 10;
+    private count = 6;
 
     constructor(private route: ActivatedRoute, private listingService: ListingService, private listingTypeService: ListingTypeService) {
     }
 
     refresh(loadMore: boolean): void {
-        this.listingService.get(this.type, this.keyword, this.count, this.data.result.Count)
+        this.listingService.get(this.type, this.keyword, this.count, this.data.result.LastEvaluatedKey)
             .subscribe(data => {
                 if (loadMore) {
                     this.data.result.ScannedCount += data.result.ScannedCount;
@@ -31,6 +31,7 @@ export class ListingComponent implements OnInit, OnDestroy {
                         ...this.data.result.Items,
                         ...data.result.Items
                     ];
+                    this.data.result.LastEvaluatedKey = data.result.LastEvaluatedKey;
                 } else {
                     this.data = data;
                 }

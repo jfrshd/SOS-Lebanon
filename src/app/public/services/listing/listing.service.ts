@@ -1,8 +1,7 @@
 
 import { Injectable } from '@angular/core';
-import { Listing, ApiResponse } from '../../models';
+import { Listing, ApiResponse, ApiEvaluatedKey } from '../../models';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
@@ -39,14 +38,15 @@ export class ListingService {
     constructor(private httpClient: HttpClient) {
     }
 
-    public get(typeId: string, keyword: string, limit: number = 10, skip: number = 0): Observable<ApiResponse<Listing>> {
-        return this.httpClient.get<ApiResponse<Listing>>(environment.url + '/type-post', {
-            params: {
-                typeId,
-                limit: limit.toString(),
-                skip: skip.toString(),
-                keyword
-            }
+    public get(typeId: string, keyword: string, limit: number = 10, evaluateKey: ApiEvaluatedKey = null): Observable<ApiResponse<Listing>> {
+        const params: any = {
+            typeId,
+            LastEvaluatedKey: encodeURI(JSON.stringify(evaluateKey)),
+            limit: limit.toString(),
+            keyword
+        };
+        return this.httpClient.get<ApiResponse<Listing>>(environment.url + '/latest-post', {
+            params
         });
     }
 
