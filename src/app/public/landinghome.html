@@ -24,7 +24,8 @@
                         <span class="btn btn-light">
                             <a class="link-unstyled" [routerLink]="['/home/listings']"
                                 [queryParams]="{ type: type.name }">
-                                <img [src]="type.image" width="auto" height="40" />
+                                <img [src]="type.image" width="auto" height="40"
+                                    onerror="this.onerror=null;this.src='./assets/landing page/pictures/not found.png'" />
                                 <br>
                                 <b class="text-overflow" [title]="type.name">{{type.name}}</b>
                                 <br>
