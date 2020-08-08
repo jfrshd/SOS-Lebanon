@@ -4,23 +4,22 @@ import { ListingService } from '../services/listing/listing.service';
 declare var $: any;
 
 @Component({
-    selector: 'sos-listing-entry',
+    selector: 'app-listing-entry',
     templateUrl: './listing-entry.component.html',
     styleUrls: ['./listing-entry.component.css'],
-    providers: [ListingService]
 })
 export class ListingEntryComponent implements OnInit {
     @Input() data: Listing;
     @Input() showUser: boolean;
     @Input() showActions: boolean;
-    @Output() onDelete = new EventEmitter<number>();
+    @Output() onDelete = new EventEmitter<string>();
     deleteModal: any;
     fulfillModal: any;
 
     constructor(private listingService: ListingService, private elementRef: ElementRef) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.deleteModal = $(this.elementRef.nativeElement).find('.modal-delete');
         this.deleteModal.modal({
             keyboard: false,
@@ -33,23 +32,23 @@ export class ListingEntryComponent implements OnInit {
         });
     }
 
-    delete() {
+    delete(): void {
         this.deleteModal.modal('show');
     }
 
-    fulfill() {
+    fulfill(): void {
         this.fulfillModal.modal('show');
     }
 
-    deleteListing() {
+    deleteListing(): void {
         this.listingService.delete(this.data.id)
             .subscribe(_ => {
                 this.onDelete.emit(this.data.id);
             });
     }
 
-    fulfillListing() {
-        this.listingService.fulfill(this.data.id, this.data.fulfilled)
+    fulfillListing(): void {
+        this.listingService.update(this.data)
             .subscribe(_ => {
             });
     }

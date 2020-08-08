@@ -8,16 +8,15 @@ import {ListingLocationService} from '../../public/services/listing-location/lis
 import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'sos-listing-form',
+  selector: 'app-listing-form',
   templateUrl: './listing-form.component.html',
   styleUrls: ['./listing-form.css'],
-  providers: [ListingService, ListingTypeService, ListingLocationService],
   encapsulation: ViewEncapsulation.None
 })
 export class ListingFormComponent implements OnInit, OnDestroy {
-  id: number;
+  id: string;
   sub: Subscription;
-  data: Listing = {};
+  data: Listing = new Listing();
   form: FormGroup;
   errorMessage;
   listingTypes = [];
@@ -29,15 +28,16 @@ export class ListingFormComponent implements OnInit, OnDestroy {
               private listingLocationService: ListingLocationService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+
     this.listingLocationService.get().subscribe(
       res => {
-        this.locations = res;
+        this.locations = res.result.Items;
       }
     );
     this.listingTypeService.get().subscribe(
       res => {
-        this.listingTypes = res;
+        this.listingTypes = res.result.Items;
       }
     );
     this.sub = this.route
@@ -45,15 +45,15 @@ export class ListingFormComponent implements OnInit, OnDestroy {
       .subscribe(params => {
         this.id = params.id;
 
-        if (this.id && this.id > 0) {
+        if (!!this.id) {
           this.listingService.getById(this.id)
-            .subscribe(data => this.data = data);
+            .subscribe(data => this.data = data.result.Items[0]);
         }
 
         this.form = new FormGroup({
           title: new FormControl(this.data.title, [Validators.required]),
           phone: new FormControl(this.data.phoneNumber, [Validators.required]),
-          type: new FormControl(this.data.type),
+          type: new FormControl(this.data.typeId),
           location: new FormControl(this.data.location),
           description: new FormControl(this.data.description),
           keywords: new FormControl(this.data.keywords),
@@ -63,14 +63,14 @@ export class ListingFormComponent implements OnInit, OnDestroy {
   }
 
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
 
-  onSaveListing() {
-    this.listingService.post(this.form.value).subscribe(
+  onSaveListing(): void {
+    const promise = this.id ? this.listingService.update(this.form.value) : this.listingService.create(this.form.value);
+    promise.subscribe(
       res => {
-
       },
       error => {
         this.errorMessage = 'Couldn\'t add listing';

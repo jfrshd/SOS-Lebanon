@@ -1,7 +1,7 @@
 export class Listing {
-    public id?: number;
+    public id?: string;
     public image?: string;
-    public type?: string;
+    public typeId?: string;
     public title?: string;
     public description?: string;
     public user?: string;
@@ -13,7 +13,7 @@ export class Listing {
     constructor(obj: Listing = {} as Listing) {
         this.id = obj.id;
         this.image = obj.image;
-        this.type = obj.type;
+        this.typeId = obj.typeId;
         this.title = obj.title;
         this.description = obj.description;
         this.user = obj.user;

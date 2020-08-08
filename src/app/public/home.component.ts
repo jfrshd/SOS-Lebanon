@@ -6,7 +6,7 @@ declare let AWS: any;
 declare let AWSCognito: any;
 
 @Component({
-    selector: 'awscognito-angular2-app',
+    selector: 'app-about',
     template: '<p>Hello and welcome!\'< /p>'
 })
 export class AboutComponent {
@@ -14,10 +14,9 @@ export class AboutComponent {
 }
 
 @Component({
-    selector: 'awscognito-angular2-app',
+    selector: 'app-landinghome',
     templateUrl: './landinghome.html',
     styleUrls: ['./landinghome.css'],
-    providers: [ListingTypeService]
 })
 export class HomeLandingComponent implements OnInit {
     types: ListingType[];
@@ -25,14 +24,14 @@ export class HomeLandingComponent implements OnInit {
     constructor(private dataTypeService: ListingTypeService) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.dataTypeService.get()
-            .subscribe(data => this.types = data);
+            .subscribe(data => this.types = data.result.Items);
     }
 }
 
 @Component({
-    selector: 'awscognito-angular2-app',
+    selector: 'app-home',
     templateUrl: './home.html',
     styleUrls: ['./home.css']
 })
@@ -41,7 +40,7 @@ export class HomeComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 }
 
