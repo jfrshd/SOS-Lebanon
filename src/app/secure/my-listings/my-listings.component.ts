@@ -23,7 +23,10 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
         this.userService.isAuthenticated(this);
         this.user = this.cognitoUtil.getCurrentUser();
         if (this.user) {
-            this.username = this.user.getUsername();
+            this.user.getUserAttributes((err, attrs) => {
+              console.log(err);
+              attrs?.forEach(attr => this.username = attr.getName());
+            });
         }
     }
 

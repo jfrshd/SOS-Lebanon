@@ -40,7 +40,7 @@ export class RegistrationConfirmationComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
-            this.email = params['username'];
+            this.email = decodeURI(params['username']);
 
         });
 
