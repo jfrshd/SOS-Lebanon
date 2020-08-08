@@ -22,11 +22,11 @@ export class UserRegistrationService {
             Value: user.email
         };
         let dataFirstname = {
-            Name: 'firstname',
+            Name: 'given_name',
             Value: user.firstname
         };
         let dataLastname = {
-            Name: 'lastname',
+            Name: 'family_name',
             Value: user.lastname
         };
 
@@ -35,11 +35,17 @@ export class UserRegistrationService {
             Value: user.phone
         };
 
+        let dataNote = {
+          Name: 'address',
+          Value: user.help_note
+      };
+
         attributeList.push(new CognitoUserAttribute(dataEmail));
         attributeList.push(new CognitoUserAttribute(dataFirstname));
         attributeList.push(new CognitoUserAttribute(dataLastname));
         attributeList.push(new CognitoUserAttribute(dataPhone));
-        user.password = String(Math.floor(Math.random() * 1000000));
+        attributeList.push(new CognitoUserAttribute(dataNote));
+
         this.cognitoUtil.getUserPool().signUp(user.email, user.password, attributeList, null, function (err, result) {
             if (err) {
                 callback.cognitoCallback(err.message, null);

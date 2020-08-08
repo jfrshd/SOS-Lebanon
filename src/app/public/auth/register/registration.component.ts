@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {UserRegistrationService} from '../../../service/user-registration.service';
 import {CognitoCallback} from '../../../service/cognito.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ConfirmedValidator} from './password.confirm.validator';
 
 /**
  * This component is responsible for displaying and controlling
@@ -20,20 +21,29 @@ export class RegisterComponent implements CognitoCallback {
 
     constructor(public userRegistration: UserRegistrationService, router: Router) {
         this.router = router;
-        this.onInit();
+
+
+      this.onInit();
     }
 
     onInit() {
         this.errorMessage = null;
-        this.form = new FormGroup({
-                firstname: new FormControl(null, []),
-                lastname: new FormControl(null, []),
-                email: new FormControl(null, [Validators.required, Validators.email]),
-                phone: new FormControl(null, []),
-                help_note: new FormControl(null, []),
-            }
-        )
 
+        this.form = new FormGroup({
+          firstname: new FormControl('ihab', [Validators.required]),
+          lastname: new FormControl('arnous', [Validators.required]),
+          email: new FormControl('iarnous+5@gmail.com', [Validators.required, Validators.email]),
+          phone: new FormControl('+96171107549', [Validators.required]),
+          help_note: new FormControl('hello', [Validators.required]),
+          password: new FormControl('12345678', [Validators.required, Validators.minLength(8)]),
+          confirm_password: new FormControl('12345678', [Validators.required, Validators.minLength(8)])
+        });
+
+        this.form.get('confirm_password').setValidators([
+          Validators.required,
+          Validators.minLength(8),
+          ConfirmedValidator(this.form, 'password', 'confirm_password')
+        ]);
     }
 
     onRegister() {
@@ -53,7 +63,7 @@ export class RegisterComponent implements CognitoCallback {
         } else { // success
             // move to the next step
             console.log('redirecting');
-            this.router.navigate(['/home/confirmRegistration', result.user.username]);
+            this.router.navigate(['/home/confirmRegistration', encodeURI(result.user.username)]);
         }
     }
 }
