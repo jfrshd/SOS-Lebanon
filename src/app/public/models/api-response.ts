@@ -4,7 +4,7 @@ export class ApiResponse<T> {
 
     constructor(obj: ApiResponse<T> = {} as ApiResponse<T>) {
         this.statusCode = obj.statusCode;
-        this.result = new ApiResult(obj.result);
+        this.result = obj.result ? new ApiResult(obj.result) : new ApiResult();
     }
 }
 
@@ -18,11 +18,16 @@ export class ApiResult<T> {
         this.Count = obj.Count;
         this.Items = obj.Items || [];
         this.ScannedCount = obj.ScannedCount;
-        this.LastEvaluatedKey = obj.LastEvaluatedKey;
+        this.LastEvaluatedKey = obj.LastEvaluatedKey || new ApiEvaluatedKey();
     }
 }
 
 export class ApiEvaluatedKey {
     public id: string;
     public pk: string;
+
+    constructor(obj: ApiEvaluatedKey = {} as ApiEvaluatedKey) {
+        this.id = obj.id;
+        this.pk = obj.pk;
+    }
 }

@@ -33,11 +33,11 @@ export class ListingComponent implements OnInit, OnDestroy {
                     ];
                     this.data.result.LastEvaluatedKey = data.result.LastEvaluatedKey;
                 } else {
-                    this.data = data;
+                    this.data = new ApiResponse<Listing>(data);
                 }
             });
         this.listingTypeService.get()
-            .subscribe(data => this.types = data.result.Items);
+            .subscribe(data => this.types = new ApiResponse<ListingType>(data).result.Items);
     }
 
     ngOnInit(): void {
