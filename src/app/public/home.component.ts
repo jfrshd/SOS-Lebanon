@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ListingType } from './models';
 import { ListingTypeService } from './services/listing-type/listing-type.service';
+import { UserLoginService } from '../service/user-login.service';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 declare let AWS: any;
 declare let AWSCognito: any;
@@ -35,12 +38,30 @@ export class HomeLandingComponent implements OnInit {
     templateUrl: './home.html',
     styleUrls: ['./home.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+    public isSecure: boolean = false;
+    private auth: UserLoginService;
+    private router: Router;
+    private subscription: Subscription;
 
-    constructor() {
+    constructor(auth: UserLoginService, router: Router) {
+      this.auth = auth;
+      this.router = router;
     }
 
     ngOnInit(): void {
+      this.subscription = this.auth.isLoggedIn$.subscribe((isLoggedIn:boolean) => this.isSecure = isLoggedIn);
+    }
+
+    logout() {
+      this.auth.logout();
+      this.router.navigate(['/home']);
+    }
+
+    ngOnDestroy() {
+      if (this.subscription) {
+        this.subscription.unsubscribe();
+      }
     }
 }
 

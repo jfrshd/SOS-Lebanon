@@ -21,12 +21,14 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
     constructor(public router: Router, public userService: UserLoginService,
         private cognitoUtil: CognitoUtil, private listingService: ListingService) {
         this.userService.isAuthenticated(this);
-        this.user = this.cognitoUtil.getCurrentUser();
-        if (this.user) {
-            this.user.getUserAttributes((err, attrs) => {
-              console.log(err);
-              attrs?.forEach(attr => this.username = attr.getName());
+        const cognitoUser = this.cognitoUtil.getCurrentUser();
+        if (cognitoUser != null) {
+          cognitoUser.getSession( (err, session) => {
+            cognitoUser.getUserData((err, data) => {
+               const user = data.UserAttributes.filter(entry => entry.Name == 'given_name').pop();
+               this.username = user.Value;
             });
+          });
         }
     }
 

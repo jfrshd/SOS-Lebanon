@@ -5,9 +5,12 @@ import {CognitoCallback, CognitoUtil, LoggedInCallback} from './cognito.service'
 import {AuthenticationDetails, CognitoUser, CognitoUserSession} from 'amazon-cognito-identity-js';
 import * as AWS from 'aws-sdk/global';
 import * as STS from 'aws-sdk/clients/sts';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class UserLoginService {
+
+  isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(public ddb: DynamoDBService, public cognitoUtil: CognitoUtil) {
   }
@@ -87,6 +90,7 @@ export class UserLoginService {
     console.log('UserLoginService: Logging out');
     this.ddb.writeLogEntry('logout');
     this.cognitoUtil.getCurrentUser().signOut();
+    this.isLoggedIn$.next(false);
 
   }
 
@@ -104,6 +108,7 @@ export class UserLoginService {
           callback.isLoggedIn(err, false);
         } else {
           console.log('UserLoginService: Session is ' + session.isValid());
+
           callback.isLoggedIn(err, session.isValid());
         }
       });
@@ -116,7 +121,7 @@ export class UserLoginService {
   private onLoginSuccess = (callback: CognitoCallback, session: CognitoUserSession) => {
 
     console.log('In authenticateUser onSuccess callback');
-
+    this.isLoggedIn$.next(true);
     AWS.config.credentials = this.cognitoUtil.buildCognitoCreds(session.getIdToken().getJwtToken());
 
     // So, when CognitoIdentity authenticates a user, it doesn't actually hand us the IdentityID,
@@ -135,6 +140,7 @@ export class UserLoginService {
       console.log('UserLoginService: Successfully set the AWS credentials');
       callback.cognitoCallback(null, session);
     });
+
   }
 
   private onLoginError = (callback: CognitoCallback, err) => {
