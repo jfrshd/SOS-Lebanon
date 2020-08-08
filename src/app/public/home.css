@@ -1,3 +1,9 @@
 .topnav .navbar-collapse {
-    padding-top: 7px;
+  padding-top: 7px;
+}
+
+.header a {
+  font-family: 'Montserrat';
+  font-size: 20px;
+  font-weight: 600;
 }

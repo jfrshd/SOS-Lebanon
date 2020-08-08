@@ -1,12 +1,19 @@
 
-import { Listing } from '../../models';
-import { Observable, of } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Listing, ApiResponse } from '../../models';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
+@Injectable({
+    providedIn: 'root'
+})
 export class ListingService {
     private MOCK_DATA = [
         new Listing({
-            id: 1,
-            type: 'Shelters',
+            id: '1',
+            typeId: 'Shelters',
             user: 'John Smith',
             title: '2 Bedroom apartment hazmieh',
             description: 'Description does here, everything that should be known will be written in this box',
@@ -14,8 +21,8 @@ export class ListingService {
             location: 'Hazmieh'
         }),
         new Listing({
-            id: 2,
-            type: 'Shelters',
+            id: '2',
+            typeId: 'Shelters',
             user: 'Anas Khattar',
             title: '2 Bedroom apartment Dbayeh',
             description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. \
@@ -29,57 +36,41 @@ export class ListingService {
         })
     ];
 
-    public get(type: string, keyword: string): Observable<Listing[]> {
-        let data = this.MOCK_DATA;
-
-        if (keyword) {
-            keyword = keyword.toLocaleLowerCase();
-            data = data.filter(f =>
-                (
-                    f.title.toLocaleLowerCase().indexOf(keyword) !== -1 ||
-                    f.description.toLocaleLowerCase().indexOf(keyword) !== -1 ||
-                    f.user.toLocaleLowerCase().indexOf(keyword) !== -1 ||
-                    f.location.toLocaleLowerCase().indexOf(keyword) !== -1 ||
-                    f.phoneNumber.toLocaleLowerCase().indexOf(keyword) !== -1
-                )
-            );
-        }
-        if (type) {
-            type = type.toLocaleLowerCase();
-            data = data.filter(f => f.type.toLocaleLowerCase() === type);
-        }
-
-        return of(data);
+    constructor(private httpClient: HttpClient) {
     }
 
-    public getById(id: number): Observable<Listing> {
-        const index = this.MOCK_DATA.findIndex(f => f.id === id);
-        if (index > -1) {
-            return of(this.MOCK_DATA[index]);
-        }
-
-        return of(null);
+    public get(typeId: string, keyword: string, limit: number = 10, skip: number = 0): Observable<ApiResponse<Listing>> {
+        return this.httpClient.get<ApiResponse<Listing>>(environment.url + '/type-post', {
+            params: {
+                typeId,
+                limit: limit.toString(),
+                skip: skip.toString(),
+                keyword
+            }
+        });
     }
 
-    public delete(id: number): Observable<Listing> {
-        const index = this.MOCK_DATA.findIndex(f => f.id === id);
-        if (index > -1) {
-            this.MOCK_DATA.splice(index, 1);
-        }
-
-        return of(this.MOCK_DATA[index]);
+    public getById(id: string): Observable<ApiResponse<Listing>> {
+        return this.httpClient.get<ApiResponse<Listing>>(environment.url + '/post', {
+            params: {
+                id
+            }
+        });
     }
 
-    public fulfill(id: number, flag: boolean): Observable<Listing> {
-        const index = this.MOCK_DATA.findIndex(f => f.id === id);
-        if (index > -1) {
-            this.MOCK_DATA[index].fulfilled = flag;
-        }
-
-        return of(this.MOCK_DATA[index]);
+    public delete(id: string): Observable<ApiResponse<Listing>> {
+        return this.httpClient.get<ApiResponse<Listing>>(environment.url + '/help', {
+            params: {
+                id
+            }
+        });
     }
 
-    public post(listing: Listing): Observable<Listing> {
-        return of(this.MOCK_DATA[0]);
+    public create(listing: Listing): Observable<Listing> {
+        return this.httpClient.post<Listing>(environment.url + '/admin', listing);
+    }
+
+    public update(listing: Listing): Observable<Listing> {
+        return this.httpClient.post<Listing>(environment.url + '/admin', listing);
     }
 }

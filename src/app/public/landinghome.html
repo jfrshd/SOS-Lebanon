@@ -2,7 +2,7 @@
     <div class="container">
         <br>
         <div class="row">
-            <div class="intro-text col-lg-3 col-sm-12">
+            <div class="intro-text col-lg-3 col-xs-12">
                 <h2>We see the opportunity to make a difference.</h2>
                 <p>
                     Hand in hand, towards a better Lebanon. We're here to help everyone in need and open an opportunity
@@ -12,22 +12,25 @@
                     Volunteer
                 </a>
             </div>
-            <div class="col-lg-9 col-sm-12" style="margin-bottom: 20px">
-                <img width="auto" height="600" src="./../../assets/landing page/pictures/landing page.png" />
+            <div class="col-lg-9 col-xs-12" style="margin-bottom: 20px">
+                <img class="col-xs-12 col-lg-10 col-lg-offset-1" height="auto"
+                    src="./../../assets/landing page/pictures/landing page.png" />
             </div>
 
-            <div class="col-sm-12">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10 buttons-list">
-                    <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let type of types">
-                        <a [routerLink]="['/home/listings']" [queryParams]="{ type: type.name }"
-                            class="btn btn-light col-sm-10 col-sm-offset-1">
-                            <img [src]="type.image" width="auto" height="40" />
-                            <br>
-                            <b>{{type.name}}</b>
-                            <br>
-                            <em>{{type.description}}</em>
-                        </a>
+            <div class="col-xs-12">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-10 buttons-list">
+                    <div class="listing-type col-xs-12 col-sm-6 col-lg-3" *ngFor="let type of types">
+                        <span class="btn btn-light">
+                            <a class="link-unstyled" [routerLink]="['/home/listings']"
+                                [queryParams]="{ type: type.name }">
+                                <img [src]="type.image" width="auto" height="40" />
+                                <br>
+                                <b class="text-overflow" [title]="type.name">{{type.name}}</b>
+                                <br>
+                                <em class="text-wrap" [title]="type.description">{{type.description}}</em>
+                            </a>
+                        </span>
                     </div>
                 </div>
             </div>

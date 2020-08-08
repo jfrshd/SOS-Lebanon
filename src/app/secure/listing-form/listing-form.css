@@ -1,3 +1,9 @@
+img.listing-form-image {
+  padding-top: 90px;
+  margin: auto;
+  width: 80%;
+}
+
 .form-listing {
     max-width: 800px;
     margin: auto;
