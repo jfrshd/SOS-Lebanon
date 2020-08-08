@@ -41,7 +41,7 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
                     ];
                     this.data.result.LastEvaluatedKey = data.result.LastEvaluatedKey;
                 } else {
-                    this.data = data;
+                    this.data = new ApiResponse<Listing>(data);
                 }
             });
     }
