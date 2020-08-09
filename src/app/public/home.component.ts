@@ -21,15 +21,23 @@ export class AboutComponent {
     templateUrl: './landinghome.html',
     styleUrls: ['./landinghome.css'],
 })
-export class HomeLandingComponent implements OnInit {
+export class HomeLandingComponent implements OnInit, OnDestroy {
     types: ListingType[];
+    isSecure: boolean;
+    private subscription: Subscription;
 
-    constructor(private dataTypeService: ListingTypeService) {
-    }
+    constructor(private dataTypeService: ListingTypeService, private auth: UserLoginService) {}
 
     ngOnInit(): void {
         this.dataTypeService.get()
             .subscribe(data => this.types = data.result.Items);
+            this.subscription = this.auth.isLoggedIn$.subscribe((isLoggedIn:boolean) => this.isSecure = isLoggedIn);
+    }
+
+    ngOnDestroy() {
+      if (this.subscription) {
+        this.subscription.unsubscribe();
+      }
     }
 }
 
