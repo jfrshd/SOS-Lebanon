@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { Listing, ApiResponse, ApiEvaluatedKey } from '../../models';
+import { Listing, ArrayResponse, ApiEvaluatedKey, ApiResponse } from '../../models';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -38,7 +38,9 @@ export class ListingService {
     constructor(private httpClient: HttpClient) {
     }
 
-    public get(typeId: string, keyword: string, limit: number = 10, evaluateKey: ApiEvaluatedKey = null): Observable<ApiResponse<Listing>> {
+    public get(
+        typeId: string, keyword: string, limit: number = 10,
+        evaluateKey: ApiEvaluatedKey = null): Observable<ArrayResponse<Listing>> {
         const evaluateKeyStr = JSON.stringify(evaluateKey);
         const params: any = {
             LastEvaluatedKey: evaluateKeyStr === '{}' ? '' : encodeURI(evaluateKeyStr),
@@ -50,7 +52,7 @@ export class ListingService {
         if (keyword) {
             params.keyword = keyword;
         }
-        return this.httpClient.get<ApiResponse<Listing>>(environment.url + '/latest-post', {
+        return this.httpClient.get<ArrayResponse<Listing>>(environment.url + '/latest-post', {
             params
         });
     }
@@ -63,8 +65,8 @@ export class ListingService {
         });
     }
 
-    public delete(id: string): Observable<ApiResponse<Listing>> {
-        return this.httpClient.get<ApiResponse<Listing>>(environment.url + '/help', {
+    public delete(id: string): Observable<ArrayResponse<Listing>> {
+        return this.httpClient.get<ArrayResponse<Listing>>(environment.url + '/help', {
             params: {
                 id
             }
@@ -72,10 +74,16 @@ export class ListingService {
     }
 
     public create(listing: Listing): Observable<Listing> {
-        return this.httpClient.post<Listing>(environment.url + '/admin', listing);
+        const data: any = Object.assign({}, listing);
+        data.type = data.typeId;
+        delete data.typeId;
+        return this.httpClient.post<Listing>(environment.url + '/admin', data);
     }
 
     public update(listing: Listing): Observable<Listing> {
-        return this.httpClient.post<Listing>(environment.url + '/admin', listing);
+        const data: any = Object.assign({}, listing);
+        data.type = data.typeId;
+        delete data.typeId;
+        return this.httpClient.post<Listing>(environment.url + '/admin', data);
     }
 }

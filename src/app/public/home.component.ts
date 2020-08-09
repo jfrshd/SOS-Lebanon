@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ListingType, ApiResponse } from './models';
+import { ListingType, ArrayResponse } from './models';
 import { ListingTypeService } from './services/listing-type/listing-type.service';
 import { UserLoginService } from '../service/user-login.service';
 import { Router } from '@angular/router';
@@ -30,7 +30,7 @@ export class HomeLandingComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.dataTypeService.get()
-      .subscribe(data => this.types = new ApiResponse<ListingType>(data).result.Items);
+      .subscribe(data => this.types = new ArrayResponse<ListingType>(data).result.Items);
     this.subscription = this.auth.isLoggedIn$
       .subscribe((isLoggedIn: boolean) => this.isSecure = isLoggedIn);
   }
@@ -48,7 +48,7 @@ export class HomeLandingComponent implements OnInit, OnDestroy {
   styleUrls: ['./home.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  public isSecure: boolean = false;
+  public isSecure = false;
   private auth: UserLoginService;
   private router: Router;
   private subscription: Subscription;

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="col-xs-12 row">
   <div class="col-lg-3 col-md-3"></div>
   <div class=" col-lg-6  col-md-6  col-sm-12">
     <form class="form-listing container" method="POST" action="#" role="form" [formGroup]="form"
@@ -11,38 +11,38 @@
         {{ errorMessage }}
       </div>
       <ul *ngIf="form.invalid && submitted" class="list-unstyled alert alert-danger">
-        <li *ngIf="form.controls.title.errors.required">
+        <li *ngIf="form.controls.title.errors && form.controls.title.errors.required">
           Title is required.
         </li>
-        <li *ngIf="form.controls.type.errors.required">
+        <li *ngIf="form.controls.type.errors && form.controls.type.errors.required">
           Category is required.
         </li>
-        <li *ngIf="form.controls.phone.errors.required">
-          Phone is required.
+        <li *ngIf="form.controls.phoneNumber.errors && form.controls.phoneNumber.errors.required">
+          {{data.phoneNumber? 'Phone is invalid' : 'Phone is required'}}.
         </li>
       </ul>
       <div>
         <div class="row">
           <div class="form-group col-lg-6 col-md-6 col-sm-12">
             <label class="control-label">Title</label>
-            <input type="text" maxlength="50" class="form-control" formControlName="title">
+            <input type="text" maxlength="50" class="form-control" formControlName="title" [(ngModel)]="data.title">
           </div>
           <div class="form-group col-lg-6 col-md-6 col-sm-12 input-group mb-3">
             <label class="control-label">Contact number</label>
-            <international-phone-number [defaultCountry]="'lb'" formControlName="phone">
+            <international-phone-number [defaultCountry]="'lb'" formControlName="phoneNumber" [(ngModel)]="data.phoneNumber">
             </international-phone-number>
           </div>
         </div>
         <div class="row">
           <div class="form-group col-lg-6 col-md-6 col-sm-12">
             <label class="control-label">Category</label>
-            <select formControlName="type" class="form-control">
+            <select formControlName="type" class="form-control" [(ngModel)]="data.typeId">
               <option *ngFor="let type of listingTypes">{{type.name}}</option>
             </select>
           </div>
           <div class="form-group col-lg-6 col-md-6 col-sm-12">
             <label class="control-label">Location</label>
-            <select formControlName="location" class="form-control">
+            <select formControlName="location" class="form-control" [(ngModel)]="data.location">
               <option *ngFor="let location of locations" [value]="location.id">{{location.id}}</option>
             </select>
           </div>
@@ -50,13 +50,13 @@
         <div class="row">
           <div class="form-group col-lg-12 col-md-12 col-sm-12">
             <label class="control-label">Description</label>
-            <textarea class="form-control" formControlName="description"></textarea>
+            <textarea class="form-control" formControlName="description" [(ngModel)]="data.description"></textarea>
           </div>
         </div>
         <div class="row">
           <div class="form-group col-lg-6 col-md-6 col-sm-12">
             <label class="control-label">Keywords</label>
-            <tag-input class="form-control" formControlName="keywords"></tag-input>
+            <tag-input class="form-control" formControlName="keywords" [(ngModel)]="data.keywords"></tag-input>
           </div>
           <div class="form-group col-lg-6 col-md-6 col-sm-12">
             <label class="control-label">Image</label>

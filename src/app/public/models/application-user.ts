@@ -1,8 +1,11 @@
 export class ApplicationUser {
     public address: string;
     public email: string;
+    // tslint:disable-next-line: variable-name
     public family_name: string;
+    // tslint:disable-next-line: variable-name
     public given_name: string;
+    // tslint:disable-next-line: variable-name
     public phone_number: string;
 
     constructor(obj: ApplicationUser = {} as ApplicationUser) {
