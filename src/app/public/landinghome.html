@@ -8,10 +8,12 @@
                     Hand in hand, towards a better Lebanon. We're here to help everyone in need and open an opportunity
                     for being a helping hand in these tough times.
                 </p>
-                <a [routerLink]="['/home/register']" class="btn btn-dark btn-lg">
+
+                <a *ngIf="!isSecure" [routerLink]="['/home/register']" class="btn btn-dark btn-lg">
                     Volunteer
                 </a>
             </div>
+
             <div class="col-lg-9 col-xs-12" style="margin-bottom: 20px">
                 <img class="col-xs-12 col-lg-10 col-lg-offset-1" height="auto"
                     src="./../../assets/landing page/pictures/landing page.png" />

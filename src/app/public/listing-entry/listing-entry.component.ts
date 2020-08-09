@@ -16,8 +16,10 @@ export class ListingEntryComponent implements OnInit {
     deleteModal: any;
     fulfillModal: any;
 
-    constructor(private listingService: ListingService, private elementRef: ElementRef) {
-    }
+    constructor(
+      private listingService: ListingService,
+      private elementRef: ElementRef
+    ) {}
 
     ngOnInit(): void {
         this.deleteModal = $(this.elementRef.nativeElement).find('.modal-delete');
@@ -30,6 +32,7 @@ export class ListingEntryComponent implements OnInit {
             keyboard: false,
             show: false
         });
+        console.log(this.data);
     }
 
     delete(): void {

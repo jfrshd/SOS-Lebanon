@@ -5,6 +5,7 @@ import { ListingService } from '../services/listing/listing.service';
 import { ListingType } from '../models';
 import { ListingTypeService } from '../services/listing-type/listing-type.service';
 import { Subscription } from 'rxjs';
+import { UserLoginService } from 'src/app/service/user-login.service';
 
 @Component({
     selector: 'app-listing',
@@ -18,9 +19,14 @@ export class ListingComponent implements OnInit, OnDestroy {
     sub: Subscription;
     data: ApiResponse<Listing> = new ApiResponse<Listing>();
     public count = 10;
+    isSecure = false;
 
-    constructor(private route: ActivatedRoute, private listingService: ListingService, private listingTypeService: ListingTypeService) {
-    }
+    constructor(
+      private route: ActivatedRoute,
+      private listingService: ListingService,
+      private listingTypeService: ListingTypeService,
+      private auth: UserLoginService
+    ) {}
 
     refresh(loadMore: boolean): void {
         this.listingService.get(this.type, this.keyword, this.count, this.data.result.LastEvaluatedKey)
@@ -38,6 +44,8 @@ export class ListingComponent implements OnInit, OnDestroy {
             });
         this.listingTypeService.get()
             .subscribe(data => this.types = new ApiResponse<ListingType>(data).result.Items);
+
+        this.auth.isLoggedIn$.subscribe((isLoggedIn:boolean) => this.isSecure = isLoggedIn);
     }
 
     ngOnInit(): void {

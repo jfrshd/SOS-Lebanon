@@ -15,6 +15,9 @@ import { MyListingsComponent } from './secure/my-listings/my-listings.component'
 import { ListingComponent } from './public/listing/listing.component';
 import { RouterModule, Routes } from '@angular/router';
 import {ListingFormComponent} from './secure/listing-form/listing-form.component';
+import { AuthGuard } from './app.auth.guard';
+import { PublicGuard } from './app.public.guard';
+
 
 const homeRoutes: Routes = [
   {
@@ -27,36 +30,19 @@ const homeRoutes: Routes = [
       component: HomeComponent,
       children: [
           { path: 'about', component: AboutComponent },
-          { path: 'login', component: LoginComponent },
-          { path: 'register', component: RegisterComponent },
-          { path: 'confirmRegistration/:username', component: RegistrationConfirmationComponent },
-          { path: 'resendCode', component: ResendCodeComponent },
-          { path: 'forgotPassword/:email', component: ForgotPassword2Component },
-          { path: 'forgotPassword', component: ForgotPasswordStep1Component },
-          { path: 'newPassword', component: NewPasswordComponent },
+          { path: 'login', component: LoginComponent, canActivate: [PublicGuard]  },
+          { path: 'register', component: RegisterComponent, canActivate: [PublicGuard] },
+          { path: 'confirmRegistration/:username', component: RegistrationConfirmationComponent, canActivate: [PublicGuard]  },
+          { path: 'resendCode', component: ResendCodeComponent, canActivate: [PublicGuard]  },
+          { path: 'forgotPassword/:email', component: ForgotPassword2Component, canActivate: [PublicGuard] },
+          { path: 'forgotPassword', component: ForgotPasswordStep1Component, canActivate: [PublicGuard]  },
+          { path: 'newPassword', component: NewPasswordComponent, canActivate: [PublicGuard]},
           { path: 'listings', component: ListingComponent },
-          { path: 'listings/:id', component: ListingFormComponent },
-          { path: 'my-listings', component: MyListingsComponent },
+          { path: 'listings/:id', component: ListingFormComponent, canActivate: [AuthGuard]  },
+          { path: 'my-listings', component: MyListingsComponent, canActivate: [AuthGuard] },
           { path: '', component: HomeLandingComponent }
       ]
   },
-];
-
-const secureHomeRoutes: Routes = [
-  {
-
-      path: '',
-      redirectTo: '/securehome',
-      pathMatch: 'full'
-  },
-  {
-      path: 'securehome', component: SecureHomeComponent, children: [
-          { path: 'logout', component: LogoutComponent },
-          { path: 'jwttokens', component: JwtComponent },
-          { path: 'myprofile', component: MyProfileComponent },
-          { path: 'useractivity', component: UseractivityComponent },
-          { path: '', component: MyProfileComponent }]
-  }
 ];
 
 const routes: Routes = [
@@ -64,7 +50,6 @@ const routes: Routes = [
       path: '',
       children: [
           ...homeRoutes,
-          ...secureHomeRoutes,
           {
               path: '',
               component: HomeComponent

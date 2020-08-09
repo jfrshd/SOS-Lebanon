@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Callback, CognitoUtil} from './cognito.service';
 import * as AWS from 'aws-sdk/global';
+import { UserLoginService } from './user-login.service';
 
 /**
  * Created by Vladimir Budilov
@@ -26,7 +27,7 @@ export class AwsUtil {
         return params;
     }
 
-    constructor(public cognitoUtil: CognitoUtil) {
+    constructor(public cognitoUtil: CognitoUtil, private auth: UserLoginService) {
         AWS.config.region = CognitoUtil._REGION;
     }
 
@@ -69,6 +70,7 @@ export class AwsUtil {
         console.log('AwsUtil: in setupAWS()');
         if (isLoggedIn) {
             console.log('AwsUtil: User is logged in');
+            this.auth.isLoggedIn$.next(true);
             // Setup mobile analytics
             const options = {
                 appId: '32673c035a0b40e99d6e1f327be0cb60',
@@ -84,6 +86,7 @@ export class AwsUtil {
             console.log('AwsUtil: Retrieving the id token');
         } else {
             console.log('AwsUtil: User is not logged in');
+            this.auth.isLoggedIn$.next(false);
         }
 
         if (callback != null) {

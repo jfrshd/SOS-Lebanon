@@ -14,28 +14,27 @@
             </a>
         </div>
         <div class="collapse navbar-collapse row" id="header">
-            <a [routerLink]="['/home/login']" class="col-sm-1 pull-right btn btn-default btn-lg">
+            <a *ngIf="!isSecure" [routerLink]="['/home/login']" class="col-sm-1 pull-right btn btn-default btn-lg">
                 Login
             </a>
-            <div class="col-sm-9 pull-right">
+
+            <a *ngIf="isSecure" (click)="logout()" class="col-sm-1 pull-right btn btn-default btn-lg">
+              Logout
+            </a>
+            <div  class="col-sm-9 pull-right">
                 <ul class="header nav navbar-nav col-sm-12">
-                    <li class="col-sm-3">
+                    <li *ngIf="!isSecure" class="col-sm-3">
                         <a [routerLink]="['/home/register']">
                             Volunteer
                         </a>
                     </li>
-                    <!--
-                        <li class="col-sm-3">
-                        <a [routerLink]="['/home/login']">
-                            Who We Are
-                        </a>
-                    </li>
-                    <li class="col-sm-3">
-                        <a [routerLink]="['/home/login']">
-                            Q&A
-                        </a>
-                    </li>
-                -->
+
+                    <li *ngIf="isSecure" class="col-sm-3">
+                      <a [routerLink]="['/home/my-listings']">
+                          My Listings
+                      </a>
+                  </li>
+
                 </ul>
             </div>
         </div>
