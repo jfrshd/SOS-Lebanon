@@ -21,7 +21,7 @@
             </div>
             <br>
         </div>
-        <div class="col-xs-6 col-sm-2">
+        <div *ngIf="isSecure" class="col-xs-6 col-sm-2">
             <button class="btn btn-dark btn-rounded" [routerLink]="'/home/listings/0'"><i class="fa fa-plus"></i>&nbsp;
                 &nbsp;Add new&nbsp;
             </button>
