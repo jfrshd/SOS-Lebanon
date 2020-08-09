@@ -16,7 +16,7 @@ export class ListingService {
             user: 'John Smith',
             title: '2 Bedroom apartment hazmieh',
             description: 'Description does here, everything that should be known will be written in this box',
-            phoneNumber: '71555555',
+            phone: '71555555',
             location: 'Hazmieh'
         }),
         new Listing({
@@ -30,7 +30,7 @@ export class ListingService {
             not only five centuries, but also the leap into electronic typesetting, remaining essentially \
             unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem \
             Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
-            phoneNumber: '71222222',
+            phone: '71222222',
             location: 'Dbayeh'
         })
     ];
@@ -74,16 +74,10 @@ export class ListingService {
     }
 
     public create(listing: Listing): Observable<Listing> {
-        const data: any = Object.assign({}, listing);
-        data.type = data.typeId;
-        delete data.typeId;
-        return this.httpClient.post<Listing>(environment.url + '/admin', data);
+        return this.httpClient.post<Listing>(environment.url + '/admin', listing);
     }
 
     public update(listing: Listing): Observable<Listing> {
-        const data: any = Object.assign({}, listing);
-        data.type = data.typeId;
-        delete data.typeId;
-        return this.httpClient.post<Listing>(environment.url + '/admin', data);
+        return this.httpClient.post<Listing>(environment.url + '/admin', listing);
     }
 }

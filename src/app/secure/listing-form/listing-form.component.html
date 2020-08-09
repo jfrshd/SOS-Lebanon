@@ -17,8 +17,8 @@
         <li *ngIf="form.controls.type.errors && form.controls.type.errors.required">
           Category is required.
         </li>
-        <li *ngIf="form.controls.phoneNumber.errors && form.controls.phoneNumber.errors.required">
-          {{data.phoneNumber? 'Phone is invalid' : 'Phone is required'}}.
+        <li *ngIf="form.controls.phone.errors && form.controls.phone.errors.required">
+          {{data.phone? 'Phone is invalid' : 'Phone is required'}}.
         </li>
       </ul>
       <div>
@@ -29,7 +29,7 @@
           </div>
           <div class="form-group col-lg-6 col-md-6 col-sm-12 input-group mb-3">
             <label class="control-label">Contact number</label>
-            <international-phone-number [defaultCountry]="'lb'" formControlName="phoneNumber" [(ngModel)]="data.phoneNumber">
+            <international-phone-number formControlName="phone" [(ngModel)]="data.phone">
             </international-phone-number>
           </div>
         </div>
