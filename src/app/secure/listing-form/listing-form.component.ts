@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Listing, ArrayResponse, ListingType } from '../../public/models';
 import { ListingService } from '../../public/services/listing/listing.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ListingTypeService } from '../../public/services/listing-type/listing-type.service';
 import { ListingLocationService } from '../../public/services/listing-location/listing-location.service';
@@ -25,7 +25,7 @@ export class ListingFormComponent implements OnInit, OnDestroy {
   submitted = false;
 
   constructor(
-    private listingService: ListingService, private route: ActivatedRoute,
+    private router: Router, private listingService: ListingService, private route: ActivatedRoute,
     private listingTypeService: ListingTypeService, private listingLocationService: ListingLocationService) {
   }
 
@@ -75,6 +75,7 @@ export class ListingFormComponent implements OnInit, OnDestroy {
       const promise = this.id ? this.listingService.update(this.form.value) : this.listingService.create(this.form.value);
       promise.subscribe(
         res => {
+          this.router.navigateByUrl('/home/my-listings');
         },
         error => {
           this.errorMessage = 'Couldn\'t add listing';
