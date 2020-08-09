@@ -51,7 +51,7 @@
             <span class="text-overflow-2 data-title">{{data.title}}</span>
             <p class="text-overflow-2">{{data.description}}</p>
             <span *ngIf="showUser">
-                <i class="fa fa-user"></i>&nbsp;&nbsp;{{data.user}}
+                <i class="fa fa-user"></i>&nbsp;&nbsp;{{data.userInfo.given_name}} {{data.userInfo.family_name}}
             </span>
             <span class="color-red" *ngIf="!showUser">
                 Listed in &nbsp;
@@ -80,7 +80,7 @@
                     <i class="fa fa-map-marker"></i>&nbsp;&nbsp;{{data.location}}
                 </a>
                 <a href="tel:{{data.phoneNumber}}" class="no-padding link-unstyled col-xs-6 col-md-12" target="_blank">
-                    <i class="fa fa-phone"></i>&nbsp;&nbsp;{{data.phoneNumber}}
+                    <i class="fa fa-phone"></i>&nbsp;&nbsp;{{data.userInfo.phone_number}}
                 </a>
             </span>
         </div>
