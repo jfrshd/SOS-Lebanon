@@ -36,6 +36,5 @@ export class AppJwtInterceptor implements HttpInterceptor {
                 return next.handle(request);
             })
         );
-
-}
+  }
 }
