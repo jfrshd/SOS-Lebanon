@@ -1,7 +1,7 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { from, Observable } from 'rxjs';
-import { catchError, switchMap, filter } from 'rxjs/operators';
+import { from, Observable, of } from 'rxjs';
+import { catchError, switchMap, filter, take, finalize, map } from 'rxjs/operators';
 import { UserLoginService } from './service/user-login.service';
 
 @Injectable()
@@ -17,7 +17,11 @@ export class AppJwtInterceptor implements HttpInterceptor {
 
     return this.auth.isLoggedIn$
         .pipe(
-            filter((isLoggedIn) => isLoggedIn),
+            map((isLoggedIn) => {
+              if (!isLoggedIn) {
+                return next.handle(request);
+              }
+            }),
             switchMap(() => {
               const cognitoUser = this.auth.cognitoUtil.getCurrentUser();
               if (cognitoUser != null) {
@@ -34,7 +38,7 @@ export class AppJwtInterceptor implements HttpInterceptor {
             catchError((err) => {
                 console.log("Error ", err);
                 return next.handle(request);
-            })
+            }),
         );
   }
 }
