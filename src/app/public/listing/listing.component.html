@@ -3,7 +3,7 @@
     <br>
     <div class="row">
         <div class="col-xs-12 col-sm-4 col-md-3">
-            <select class="form-control" [(ngModel)]="type" (change)="refresh(false)">
+            <select class="form-control" [(ngModel)]="selectedType" (change)="refresh(false)">
                 <option *ngFor="let type of types" [value]="type.name">
                     {{type.name | titlecase}}
                 </option>
