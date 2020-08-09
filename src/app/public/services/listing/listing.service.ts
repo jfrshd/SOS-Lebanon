@@ -66,7 +66,7 @@ export class ListingService {
     }
 
     public delete(id: string): Observable<ArrayResponse<Listing>> {
-        return this.httpClient.get<ArrayResponse<Listing>>(environment.url + '/help', {
+        return this.httpClient.delete<ArrayResponse<Listing>>(environment.url + '/help', {
             params: {
                 id
             }
