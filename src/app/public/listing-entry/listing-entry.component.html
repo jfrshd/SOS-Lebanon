@@ -63,7 +63,7 @@
         </section>
         <div class="data-text col-xs-12 col-md-3 col-lg-2 color-black">
             <div class="color-red" *ngIf="showActions">
-                <a class="link-unstyled" [routerLink]="['/home/listings/' + data.id]">
+                <a class="link-unstyled" (click)="edit()">
                     <i class="fa fa-2x fa-pencil"></i>&nbsp;&nbsp;
                 </a>
                 <i class="fa fa-2x fa-trash" (click)="delete()"></i>
@@ -79,8 +79,8 @@
                     href="https://maps.google.com/?q={{data.location}}">
                     <i class="fa fa-map-marker"></i>&nbsp;&nbsp;{{data.location}}
                 </a>
-                <a href="tel:{{data.phoneNumber}}" class="no-padding link-unstyled col-xs-6 col-md-12" target="_blank">
-                    <i class="fa fa-phone"></i>&nbsp;&nbsp;{{data.userInfo.phone_number}}
+                <a href="tel:{{data.phone}}" class="no-padding link-unstyled col-xs-6 col-md-12" target="_blank">
+                    <i class="fa fa-phone"></i>&nbsp;&nbsp;{{data.phone}}
                 </a>
             </span>
         </div>
