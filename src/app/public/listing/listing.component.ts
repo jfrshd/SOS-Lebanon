@@ -14,7 +14,7 @@ import { UserLoginService } from 'src/app/service/user-login.service';
 })
 export class ListingComponent implements OnInit, OnDestroy {
     keyword: string;
-    type: string;
+    selectedType: string;
     types: ListingType[] = [];
     sub: Subscription;
     data: ApiResponse<Listing> = new ApiResponse<Listing>();
@@ -22,14 +22,14 @@ export class ListingComponent implements OnInit, OnDestroy {
     isSecure = false;
 
     constructor(
-      private route: ActivatedRoute,
-      private listingService: ListingService,
-      private listingTypeService: ListingTypeService,
-      private auth: UserLoginService
-    ) {}
+        private route: ActivatedRoute,
+        private listingService: ListingService,
+        private listingTypeService: ListingTypeService,
+        private auth: UserLoginService
+    ) { }
 
     refresh(loadMore: boolean): void {
-        this.listingService.get(this.type, this.keyword, this.count, this.data.result.LastEvaluatedKey)
+        this.listingService.get(this.selectedType, this.keyword, this.count, this.data.result.LastEvaluatedKey)
             .subscribe(data => {
                 if (loadMore) {
                     this.data.result.ScannedCount += data.result.ScannedCount;
@@ -42,16 +42,15 @@ export class ListingComponent implements OnInit, OnDestroy {
                     this.data = new ApiResponse<Listing>(data);
                 }
             });
-        this.listingTypeService.get()
-            .subscribe(data => this.types = new ApiResponse<ListingType>(data).result.Items);
-
-        this.auth.isLoggedIn$.subscribe((isLoggedIn:boolean) => this.isSecure = isLoggedIn);
     }
 
     ngOnInit(): void {
         this.sub = this.route
             .queryParams
-            .subscribe(params => this.type = params['type']);
+            .subscribe(params => this.selectedType = params.type);
+        this.listingTypeService.get()
+            .subscribe(data => this.types = new ApiResponse<ListingType>(data).result.Items);
+        this.auth.isLoggedIn$.subscribe((isLoggedIn: boolean) => this.isSecure = isLoggedIn);
         this.refresh(false);
     }
 
