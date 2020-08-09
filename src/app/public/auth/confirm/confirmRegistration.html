@@ -5,6 +5,9 @@
     <div *ngIf="errorMessage!=null" class="alert alert-danger">
         {{ errorMessage }}
     </div>
+    <p class="color-black">
+        You will shortly receive your confirmation code via SMS, please enter the code to proceed.
+    </p>
     <div class="color-black form-group" *ngIf="email===null">
         <label class="control-label" for="confirmationCode">Email</label>
         <input id="email" type="email" maxlength="50" class="form-control" [(ngModel)]="email"

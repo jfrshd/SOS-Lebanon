@@ -1,3 +1,5 @@
+import { ApplicationUser } from './application-user';
+
 export class Listing {
     public id?: string;
     public image?: string;
@@ -5,6 +7,7 @@ export class Listing {
     public title?: string;
     public description?: string;
     public user?: string;
+    public userInfo?: ApplicationUser;
     public location?: string;
     public phoneNumber?: string;
     public fulfilled?: boolean;
@@ -17,6 +20,7 @@ export class Listing {
         this.title = obj.title;
         this.description = obj.description;
         this.user = obj.user;
+        this.userInfo = new ApplicationUser(obj.userInfo);
         this.location = obj.location;
         this.phoneNumber = obj.phoneNumber;
         this.fulfilled = !!obj.fulfilled;
