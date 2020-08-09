@@ -32,6 +32,7 @@ import {TagInputModule} from 'ngx-chips';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AppRoutingModule} from './app-routing.module';
+import { AppInterceptorProviders } from './app-interceptor.provider';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import {AppRoutingModule} from './app-routing.module';
     UserRegistrationService,
     UserLoginService,
     UserParametersService,
+    AppInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })
