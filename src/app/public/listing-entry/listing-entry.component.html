@@ -44,20 +44,20 @@
     <span class="col-xs-2 col-md-1 data-image">
         <img alt="{{data.typeId}}" title="{{data.typeId}}"
             onerror="this.onerror=null;this.src='./assets/landing page/pictures/not found.png'" width="60"
-            src="./../../../assets/landing page/pictures/{{data.typeId.toLocaleLowerCase()}}.png" />
+            src="./../../../assets/landing page/pictures/{{data.typeId?.toLocaleLowerCase()}}.png" />
     </span>
     <div class="col-xs-10 col-md-11">
         <section class="data-text color-black col-xs-12 col-md-9 col-lg-10">
             <span class="text-overflow-2 data-title">{{data.title}}</span>
             <p class="text-overflow-2">{{data.description}}</p>
             <span *ngIf="showUser">
-                <i class="fa fa-user"></i>&nbsp;&nbsp;{{data.user}}
+                <i class="fa fa-user"></i>&nbsp;&nbsp;{{data.userInfo.given_name}} {{data.userInfo.family_name}}
             </span>
             <span class="color-red" *ngIf="!showUser">
                 Listed in &nbsp;
                 <img width="20" height="auto" alt="{{data.typeId}}" title="{{data.typeId}}"
                     onerror="this.onerror=null;this.src='./assets/landing page/pictures/not found.png'"
-                    src="./../../../assets/landing page/pictures/{{data.typeId.toLocaleLowerCase()}}.png" />
+                    src="./../../../assets/landing page/pictures/{{data.typeId?.toLocaleLowerCase()}}.png" />
                 &nbsp;<em>{{data.typeId}}</em>
             </span>
         </section>
@@ -80,7 +80,7 @@
                     <i class="fa fa-map-marker"></i>&nbsp;&nbsp;{{data.location}}
                 </a>
                 <a href="tel:{{data.phoneNumber}}" class="no-padding link-unstyled col-xs-6 col-md-12" target="_blank">
-                    <i class="fa fa-phone"></i>&nbsp;&nbsp;{{data.phoneNumber}}
+                    <i class="fa fa-phone"></i>&nbsp;&nbsp;{{data.userInfo.phone_number}}
                 </a>
             </span>
         </div>
