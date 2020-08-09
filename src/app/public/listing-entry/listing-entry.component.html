@@ -44,7 +44,7 @@
     <span class="col-xs-2 col-md-1 data-image">
         <img alt="{{data.typeId}}" title="{{data.typeId}}"
             onerror="this.onerror=null;this.src='./assets/landing page/pictures/not found.png'" width="60"
-            src="./../../../assets/landing page/pictures/{{data.typeId.toLocaleLowerCase()}}.png" />
+            src="./../../../assets/landing page/pictures/{{data.typeId?.toLocaleLowerCase()}}.png" />
     </span>
     <div class="col-xs-10 col-md-11">
         <section class="data-text color-black col-xs-12 col-md-9 col-lg-10">
@@ -57,7 +57,7 @@
                 Listed in &nbsp;
                 <img width="20" height="auto" alt="{{data.typeId}}" title="{{data.typeId}}"
                     onerror="this.onerror=null;this.src='./assets/landing page/pictures/not found.png'"
-                    src="./../../../assets/landing page/pictures/{{data.typeId.toLocaleLowerCase()}}.png" />
+                    src="./../../../assets/landing page/pictures/{{data.typeId?.toLocaleLowerCase()}}.png" />
                 &nbsp;<em>{{data.typeId}}</em>
             </span>
         </section>
