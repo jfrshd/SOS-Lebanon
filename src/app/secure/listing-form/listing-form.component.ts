@@ -54,7 +54,7 @@ export class ListingFormComponent implements OnInit, OnDestroy {
         this.form = new FormGroup({
           title: new FormControl(this.data.title, [Validators.required]),
           phone: new FormControl(this.data.phone, [Validators.required]),
-          type: new FormControl(this.data.typeId, [Validators.required]),
+          typeId: new FormControl(this.data.typeId, [Validators.required]),
           location: new FormControl(this.data.location),
           description: new FormControl(this.data.description),
           keywords: new FormControl(this.data.keywords),
