@@ -1,5 +1,5 @@
 
-import { ListingType, ApiResponse } from '../../models';
+import { ListingType, ArrayResponse } from '../../models';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -35,7 +35,7 @@ export class ListingTypeService {
     constructor(private httpClient: HttpClient) {
     }
 
-    public get(): Observable<ApiResponse<ListingType>> {
-        return this.httpClient.get<ApiResponse<ListingType>>(environment.url + '/type');
+    public get(): Observable<ArrayResponse<ListingType>> {
+        return this.httpClient.get<ArrayResponse<ListingType>>(environment.url + '/type');
     }
 }
