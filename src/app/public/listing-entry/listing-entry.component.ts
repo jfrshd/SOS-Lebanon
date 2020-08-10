@@ -32,7 +32,6 @@ export class ListingEntryComponent implements OnInit {
             keyboard: false,
             show: false
         });
-        console.log(this.data);
     }
 
     delete(): void {

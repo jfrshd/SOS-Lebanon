@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { UserLoginService } from '../../service/user-login.service';
 import { CognitoUser } from 'amazon-cognito-identity-js';
 import { ListingService } from '../../public/services/listing/listing.service';
-import { Listing, ApiResponse } from '../../public/models';
+import { Listing, ArrayResponse } from '../../public/models';
 
 @Component({
     selector: 'app-my-listings',
@@ -15,7 +15,7 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
     user: CognitoUser;
     username: string;
     keyword: string;
-    data: ApiResponse<Listing> = new ApiResponse<Listing>();
+    data: ArrayResponse<Listing> = new ArrayResponse<Listing>();
     public count = 10;
 
     constructor(public router: Router, public userService: UserLoginService,
@@ -33,7 +33,7 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
     }
 
     refresh(loadMore: boolean): void {
-        this.listingService.get('', this.keyword, this.count, this.data.result.LastEvaluatedKey)
+        this.listingService.getMyListings(this.keyword, this.count, this.data.result.LastEvaluatedKey)
             .subscribe(data => {
                 if (loadMore) {
                     this.data.result.ScannedCount += data.result.ScannedCount;
@@ -43,7 +43,7 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
                     ];
                     this.data.result.LastEvaluatedKey = data.result.LastEvaluatedKey;
                 } else {
-                    this.data = new ApiResponse<Listing>(data);
+                    this.data = new ArrayResponse<Listing>(data);
                 }
             });
     }

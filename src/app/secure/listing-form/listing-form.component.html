@@ -1,6 +1,6 @@
-<div class="row">
+<div class="col-xs-12 row">
   <div class="col-lg-3 col-md-3"></div>
-  <div class=" col-lg-6  col-md-6  col-sm-12">
+  <div class=" col-lg-6 col-md-6 col-sm-12">
     <form class="form-listing container" method="POST" action="#" role="form" [formGroup]="form"
       (ngSubmit)="onSaveListing()">
       <div class="form-heading">
@@ -10,6 +10,17 @@
       <div *ngIf="errorMessage!=null" class="alert alert-error">
         {{ errorMessage }}
       </div>
+      <ul *ngIf="form.invalid && submitted" class="list-unstyled alert alert-danger">
+        <li *ngIf="form.controls.title.errors && form.controls.title.errors.required">
+          Title is required.
+        </li>
+        <li *ngIf="form.controls.typeId.errors && form.controls.typeId.errors.required">
+          Category is required.
+        </li>
+        <li *ngIf="form.controls.phone.errors && form.controls.phone.errors.required">
+          {{data.phone? 'Phone is invalid' : 'Phone is required'}}.
+        </li>
+      </ul>
       <div>
         <div class="row">
           <div class="form-group col-lg-6 col-md-6 col-sm-12">

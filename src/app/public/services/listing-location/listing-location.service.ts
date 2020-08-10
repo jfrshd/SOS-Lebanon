@@ -2,7 +2,7 @@ import { ListingLocation } from '../../models/listing-location';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiResponse } from '../../models';
+import { ArrayResponse } from '../../models';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class ListingLocationService {
     constructor(private httpClient: HttpClient) {
     }
 
-    public get(): Observable<ApiResponse<ListingLocation>> {
-        return this.httpClient.get<ApiResponse<ListingLocation>>(environment.url + '/location');
+    public get(): Observable<ArrayResponse<ListingLocation>> {
+        return this.httpClient.get<ArrayResponse<ListingLocation>>(environment.url + '/location');
     }
 }

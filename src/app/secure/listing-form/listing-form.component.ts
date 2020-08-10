@@ -1,11 +1,12 @@
-import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
-import {Listing} from '../../public/models';
-import {ListingService} from '../../public/services/listing/listing.service';
-import {ActivatedRoute} from '@angular/router';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ListingTypeService} from '../../public/services/listing-type/listing-type.service';
-import {ListingLocationService} from '../../public/services/listing-location/listing-location.service';
-import {Subscription} from 'rxjs';
+import { Component, OnDestroy, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Listing, ListingType, ArrayResponse } from '../../public/models';
+import { ListingService } from '../../public/services/listing/listing.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ListingTypeService } from '../../public/services/listing-type/listing-type.service';
+import { ListingLocationService } from '../../public/services/listing-location/listing-location.service';
+import { Subscription } from 'rxjs';
+import { ListingLocation } from 'src/app/public/models/listing-location';
 
 @Component({
   selector: 'app-listing-form',
@@ -18,41 +19,51 @@ export class ListingFormComponent implements OnInit, OnDestroy {
   sub: Subscription;
   data: Listing = new Listing();
   form: FormGroup;
+  @ViewChild('fileBtn') fileBtn: HTMLElement;
+  submitted = false;
   errorMessage;
   listingTypes = [];
   locations = [];
 
-  constructor(private listingService: ListingService,
-              private route: ActivatedRoute,
-              private listingTypeService: ListingTypeService,
-              private listingLocationService: ListingLocationService) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private listingService: ListingService,
+    private listingTypeService: ListingTypeService,
+    private listingLocationService: ListingLocationService) {
   }
 
   ngOnInit(): void {
 
     this.listingLocationService.get().subscribe(
       res => {
-        this.locations = res.result.Items;
+        this.locations = new ArrayResponse<ListingLocation>(res).result.Items;
       }
     );
     this.listingTypeService.get().subscribe(
       res => {
-        this.listingTypes = res.result.Items;
+        this.listingTypes = new ArrayResponse<ListingType>(res).result.Items;
       }
     );
-    this.sub = this.route
-      .queryParams
+    this.sub = this.route.params
       .subscribe(params => {
         this.id = params.id;
 
         if (!!this.id) {
           this.listingService.getById(this.id)
-            .subscribe(data => this.data = data.result.Items[0]);
+            .subscribe(data => {
+              this.data = new Listing(data.result);
+              for (const key in this.form.controls) {
+                if (key in this.form.controls && key in this.data && key !== 'image') {
+                  this.form.controls[key].setValue(this.data[key]);
+                }
+              }
+            });
         }
 
         this.form = new FormGroup({
           title: new FormControl(this.data.title, [Validators.required]),
-          phone: new FormControl(this.data.phoneNumber, [Validators.required]),
+          phone: new FormControl(this.data.phone, [Validators.required]),
           typeId: new FormControl(this.data.typeId),
           location: new FormControl(this.data.location),
           description: new FormControl(this.data.description),
@@ -68,13 +79,18 @@ export class ListingFormComponent implements OnInit, OnDestroy {
   }
 
   onSaveListing(): void {
-    const promise = this.id ? this.listingService.update(this.form.value) : this.listingService.create(this.form.value);
-    promise.subscribe(
-      res => {
-      },
-      error => {
-        this.errorMessage = 'Couldn\'t add listing';
-      }
-    );
+    this.submitted = true;
+    if (this.form.valid) {
+      console.log(this.data);
+      // const promise = this.id ? this.listingService.update(this.form.value) : this.listingService.create(this.form.value);
+      // promise.subscribe(
+      //   res => {
+      //     this.router.navigateByUrl('/home/my-listings');
+      //   },
+      //   error => {
+      //     this.errorMessage = 'Couldn\'t add listing';
+      //   }
+      // );
+    }
   }
 }
