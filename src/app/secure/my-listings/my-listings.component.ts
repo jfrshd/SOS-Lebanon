@@ -33,7 +33,7 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
     }
 
     refresh(loadMore: boolean): void {
-        this.listingService.get('', this.keyword, this.count, this.data.result.LastEvaluatedKey)
+        this.listingService.getMyListings(this.keyword, this.count, this.data.result.LastEvaluatedKey)
             .subscribe(data => {
                 if (loadMore) {
                     this.data.result.ScannedCount += data.result.ScannedCount;

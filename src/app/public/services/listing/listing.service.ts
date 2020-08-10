@@ -56,6 +56,21 @@ export class ListingService {
             params
         });
     }
+    public getMyListings(
+        keyword: string, limit: number = 10,
+        evaluateKey: ApiEvaluatedKey = null): Observable<ArrayResponse<Listing>> {
+        const evaluateKeyStr = JSON.stringify(evaluateKey);
+        const params: any = {
+            LastEvaluatedKey: evaluateKeyStr === '{}' ? '' : encodeURI(evaluateKeyStr),
+            limit: limit.toString()
+        };
+        if (keyword) {
+            params.keyword = keyword;
+        }
+        return this.httpClient.get<ArrayResponse<Listing>>(environment.url + '/admin', {
+            params
+        });
+    }
 
     public getById(id: string): Observable<ApiResponse<Listing>> {
         return this.httpClient.get<ApiResponse<Listing>>(environment.url + '/post', {
