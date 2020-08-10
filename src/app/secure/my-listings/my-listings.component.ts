@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { UserLoginService } from '../../service/user-login.service';
 import { CognitoUser } from 'amazon-cognito-identity-js';
 import { ListingService } from '../../public/services/listing/listing.service';
-import { Listing, ArrayResponse } from '../../public/models';
+import { Listing, ApiResponse } from '../../public/models';
 
 @Component({
     selector: 'app-my-listings',
@@ -15,26 +15,25 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
     user: CognitoUser;
     username: string;
     keyword: string;
-    data: ArrayResponse<Listing> = new ArrayResponse<Listing>();
+    data: ApiResponse<Listing> = new ApiResponse<Listing>();
     public count = 10;
 
-    constructor(
-        public router: Router, public userService: UserLoginService,
+    constructor(public router: Router, public userService: UserLoginService,
         private cognitoUtil: CognitoUtil, private listingService: ListingService) {
         this.userService.isAuthenticated(this);
         const cognitoUser = this.cognitoUtil.getCurrentUser();
         if (cognitoUser != null) {
-            cognitoUser.getSession((err, session) => {
-                cognitoUser.getUserData((error, data) => {
-                    const user = data.UserAttributes.filter(entry => entry.Name === 'given_name').pop();
-                    this.username = user.Value;
-                });
+          cognitoUser.getSession( (err, session) => {
+            cognitoUser.getUserData((err, data) => {
+               const user = data.UserAttributes.filter(entry => entry.Name == 'given_name').pop();
+               this.username = user.Value;
             });
+          });
         }
     }
 
     refresh(loadMore: boolean): void {
-        this.listingService.getMyListings(this.keyword, this.count, this.data.result.LastEvaluatedKey)
+        this.listingService.get('', this.keyword, this.count, this.data.result.LastEvaluatedKey)
             .subscribe(data => {
                 if (loadMore) {
                     this.data.result.ScannedCount += data.result.ScannedCount;
@@ -44,7 +43,7 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
                     ];
                     this.data.result.LastEvaluatedKey = data.result.LastEvaluatedKey;
                 } else {
-                    this.data = new ArrayResponse<Listing>(data);
+                    this.data = new ApiResponse<Listing>(data);
                 }
             });
     }
