@@ -17,12 +17,7 @@ export class AppJwtInterceptor implements HttpInterceptor {
 
     return this.auth.isLoggedIn$
         .pipe(
-            map((isLoggedIn) => {
-              if (!isLoggedIn) {
-                return next.handle(request);
-              }
-            }),
-            switchMap(() => {
+            switchMap((_) => {
               const cognitoUser = this.auth.cognitoUtil.getCurrentUser();
               if (cognitoUser != null) {
                 cognitoUser.getSession( (err, session) => this.jwt = session.getIdToken().getJwtToken());
@@ -34,9 +29,9 @@ export class AppJwtInterceptor implements HttpInterceptor {
                 });
                 return next.handle(with_auth_request);
               }
+              return next.handle(request);
             }),
             catchError((err) => {
-                console.log("Error ", err);
                 return next.handle(request);
             }),
         );
