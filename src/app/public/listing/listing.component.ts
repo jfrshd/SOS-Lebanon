@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Listing, ArrayResponse } from '../models';
+import { Listing, ApiResponse } from '../models';
 import { ListingService } from '../services/listing/listing.service';
 import { ListingType } from '../models';
 import { ListingTypeService } from '../services/listing-type/listing-type.service';
@@ -17,7 +17,7 @@ export class ListingComponent implements OnInit, OnDestroy {
     selectedType: string;
     types: ListingType[] = [];
     sub: Subscription;
-    data: ArrayResponse<Listing> = new ArrayResponse<Listing>();
+    data: ApiResponse<Listing> = new ApiResponse<Listing>();
     public count = 10;
     isSecure = false;
 
@@ -39,7 +39,7 @@ export class ListingComponent implements OnInit, OnDestroy {
                     ];
                     this.data.result.LastEvaluatedKey = data.result.LastEvaluatedKey;
                 } else {
-                    this.data = new ArrayResponse<Listing>(data);
+                    this.data = new ApiResponse<Listing>(data);
                 }
             });
     }
@@ -49,7 +49,7 @@ export class ListingComponent implements OnInit, OnDestroy {
             .queryParams
             .subscribe(params => this.selectedType = params.type);
         this.listingTypeService.get()
-            .subscribe(data => this.types = new ArrayResponse<ListingType>(data).result.Items);
+            .subscribe(data => this.types = new ApiResponse<ListingType>(data).result.Items);
         this.auth.isLoggedIn$.subscribe((isLoggedIn: boolean) => this.isSecure = isLoggedIn);
         this.refresh(false);
     }

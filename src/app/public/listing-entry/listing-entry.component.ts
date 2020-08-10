@@ -1,7 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit, ElementRef } from '@angular/core';
 import { Listing } from '../models';
 import { ListingService } from '../services/listing/listing.service';
-import { Router } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -13,16 +12,14 @@ export class ListingEntryComponent implements OnInit {
     @Input() data: Listing;
     @Input() showUser: boolean;
     @Input() showActions: boolean;
-    // tslint:disable-next-line: no-output-on-prefix
     @Output() onDelete = new EventEmitter<string>();
     deleteModal: any;
     fulfillModal: any;
 
     constructor(
-        private listingService: ListingService,
-        private elementRef: ElementRef,
-        private router: Router
-    ) { }
+      private listingService: ListingService,
+      private elementRef: ElementRef
+    ) {}
 
     ngOnInit(): void {
         this.deleteModal = $(this.elementRef.nativeElement).find('.modal-delete');
@@ -51,11 +48,6 @@ export class ListingEntryComponent implements OnInit {
             .subscribe(_ => {
                 this.onDelete.emit(this.data.id);
             });
-    }
-
-    edit(): void {
-        const id = encodeURIComponent(this.data.id);
-        this.router.navigateByUrl('/home/listings/' + id);
     }
 
     fulfillListing(): void {

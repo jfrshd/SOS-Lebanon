@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { Listing, ArrayResponse, ApiEvaluatedKey, ApiResponse } from '../../models';
+import { Listing, ApiResponse, ApiEvaluatedKey } from '../../models';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -16,7 +16,7 @@ export class ListingService {
             user: 'John Smith',
             title: '2 Bedroom apartment hazmieh',
             description: 'Description does here, everything that should be known will be written in this box',
-            phone: '71555555',
+            phoneNumber: '71555555',
             location: 'Hazmieh'
         }),
         new Listing({
@@ -30,7 +30,7 @@ export class ListingService {
             not only five centuries, but also the leap into electronic typesetting, remaining essentially \
             unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem \
             Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
-            phone: '71222222',
+            phoneNumber: '71222222',
             location: 'Dbayeh'
         })
     ];
@@ -38,9 +38,7 @@ export class ListingService {
     constructor(private httpClient: HttpClient) {
     }
 
-    public get(
-        typeId: string, keyword: string, limit: number = 10,
-        evaluateKey: ApiEvaluatedKey = null): Observable<ArrayResponse<Listing>> {
+    public get(typeId: string, keyword: string, limit: number = 10, evaluateKey: ApiEvaluatedKey = null): Observable<ApiResponse<Listing>> {
         const evaluateKeyStr = JSON.stringify(evaluateKey);
         const params: any = {
             LastEvaluatedKey: evaluateKeyStr === '{}' ? '' : encodeURI(evaluateKeyStr),
@@ -52,24 +50,7 @@ export class ListingService {
         if (keyword) {
             params.keyword = keyword;
         }
-        return this.httpClient.get<ArrayResponse<Listing>>(environment.url + '/latest-post', {
-            params
-        });
-    }
-
-
-    public getMyListings(
-        keyword: string, limit: number = 10,
-        evaluateKey: ApiEvaluatedKey = null): Observable<ArrayResponse<Listing>> {
-        const evaluateKeyStr = JSON.stringify(evaluateKey);
-        const params: any = {
-            LastEvaluatedKey: evaluateKeyStr === '{}' ? '' : encodeURI(evaluateKeyStr),
-            limit: limit.toString()
-        };
-        if (keyword) {
-            params.keyword = keyword;
-        }
-        return this.httpClient.get<ArrayResponse<Listing>>(environment.url + '/admin', {
+        return this.httpClient.get<ApiResponse<Listing>>(environment.url + '/latest-post', {
             params
         });
     }
@@ -82,8 +63,8 @@ export class ListingService {
         });
     }
 
-    public delete(id: string): Observable<ArrayResponse<Listing>> {
-        return this.httpClient.delete<ArrayResponse<Listing>>(environment.url + '/help', {
+    public delete(id: string): Observable<ApiResponse<Listing>> {
+        return this.httpClient.get<ApiResponse<Listing>>(environment.url + '/help', {
             params: {
                 id
             }

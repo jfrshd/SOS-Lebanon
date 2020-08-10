@@ -9,7 +9,7 @@ export class Listing {
     public user?: string;
     public userInfo?: ApplicationUser;
     public location?: string;
-    public phone?: string;
+    public phoneNumber?: string;
     public fulfilled?: boolean;
     public keywords?: [string];
 
@@ -22,7 +22,7 @@ export class Listing {
         this.user = obj.user;
         this.userInfo = new ApplicationUser(obj.userInfo);
         this.location = obj.location;
-        this.phone = obj.phone;
+        this.phoneNumber = obj.phoneNumber;
         this.fulfilled = !!obj.fulfilled;
         this.keywords = obj.keywords;
     }

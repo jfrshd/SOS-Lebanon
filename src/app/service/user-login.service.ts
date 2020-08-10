@@ -90,7 +90,6 @@ export class UserLoginService {
     this.ddb.writeLogEntry('logout');
     this.cognitoUtil.getCurrentUser().signOut();
     this.isLoggedIn$.next(false);
-
   }
 
   isAuthenticated(callback: LoggedInCallback): void {
