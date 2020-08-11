@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Listing, ArrayResponse, ApiEvaluatedKey, ApiResponse } from '../../models';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment } from './node_modules/src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -81,7 +81,7 @@ export class ListingService {
     }
 
     public delete(id: string): Observable<ArrayResponse<Listing>> {
-        return this.httpClient.delete<ArrayResponse<Listing>>(environment.url + '/help', {
+        return this.httpClient.get<ArrayResponse<Listing>>(environment.url + '/help', {
             params: {
                 id
             }

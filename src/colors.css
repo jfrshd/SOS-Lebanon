@@ -1,18 +1,18 @@
 .color-red {
-  color: #BC2C3D
+  color: var(--color-red);
 }
 
 .color-black {
-  color: #2C2627;
+  color: var(--color-black);
 }
 
 .color-grey {
-  color: #F2F2F2;
+  color: var(--color-grey);
 }
 
 
 .btn[class*='btn-'] {
-  color: #F2F2F2;
+  color: var(--color-grey);
   text-shadow: none;
   border: none;
   font-size: 20px;
@@ -37,6 +37,6 @@
 .btn-light,
 .btn-light:hover,
 .btn-light:active {
-  background: #f2f2f2;
-  color: #2C2627 !important;
+  background: var(--color-grey);
+  color: var(--color-black) !important;
 }

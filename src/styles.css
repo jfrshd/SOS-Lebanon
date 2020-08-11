@@ -3,6 +3,9 @@
   --primary-color: #BC2C3D;
   --default-text-color: #222222;
   --error-color: #BC2C3D;
+  --color-red: #BC2C3D;
+  --color-black: #2C2627;
+  --color-grey: #f2f2f2;
 }
 
 body {
@@ -59,4 +62,12 @@ body {
   background-image: none;
   border-color: var(--error-color);
   color: var(--error-color);
+}
+
+.input-group-addon.input-transparent {
+  background: transparent;
+}
+
+.input-group-addon.input-transparent+input {
+  border-left: 0;
 }

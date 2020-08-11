@@ -6,7 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ListingTypeService } from '../../public/services/listing-type/listing-type.service';
 import { ListingLocationService } from '../../public/services/listing-location/listing-location.service';
 import { Subscription } from 'rxjs';
-import { ListingLocation } from 'src/app/public/models/listing-location';
+import { ListingLocation } from './node_modules/src/app/public/models/listing-location';
 
 @Component({
   selector: 'app-listing-form',
@@ -81,15 +81,16 @@ export class ListingFormComponent implements OnInit, OnDestroy {
   onSaveListing(): void {
     this.submitted = true;
     if (this.form.valid) {
-      const promise = this.id ? this.listingService.update(this.form.value) : this.listingService.create(this.form.value);
-      promise.subscribe(
-        res => {
-          this.router.navigateByUrl('/home/my-listings');
-        },
-        error => {
-          this.errorMessage = 'Couldn\'t add listing';
-        }
-      );
+      console.log(this.data);
+      // const promise = this.id ? this.listingService.update(this.form.value) : this.listingService.create(this.form.value);
+      // promise.subscribe(
+      //   res => {
+      //     this.router.navigateByUrl('/home/my-listings');
+      //   },
+      //   error => {
+      //     this.errorMessage = 'Couldn\'t add listing';
+      //   }
+      // );
     }
   }
 }
