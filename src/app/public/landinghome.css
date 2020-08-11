@@ -1,6 +1,6 @@
 .slide-pointer {
   margin-right: 5px;
-  color: #BC2C3D;
+  color: var(--default-text-color);
 }
 
 .slide-pointer.active {

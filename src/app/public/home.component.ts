@@ -48,7 +48,7 @@ export class HomeLandingComponent implements OnInit, OnDestroy {
   styleUrls: ['./home.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  public isSecure: boolean = false;
+  public isSecure = false;
   private auth: UserLoginService;
   private router: Router;
   private subscription: Subscription;

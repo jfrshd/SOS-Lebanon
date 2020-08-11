@@ -33,6 +33,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AppRoutingModule} from './app-routing.module';
 import { AppInterceptorProviders } from './app-interceptor.provider';
+import { InitiativeFormComponent } from './secure/initiative-form/initiative-form.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { AppInterceptorProviders } from './app-interceptor.provider';
     SecureHomeComponent,
     MyListingsComponent,
     ListingFormComponent,
+    InitiativeFormComponent,
     JwtComponent,
     AppComponent
   ],
