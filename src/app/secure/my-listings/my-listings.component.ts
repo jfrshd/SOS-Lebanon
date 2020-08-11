@@ -18,17 +18,18 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
     data: ArrayResponse<Listing> = new ArrayResponse<Listing>();
     public count = 10;
 
-    constructor(public router: Router, public userService: UserLoginService,
+    constructor(
+        public router: Router, public userService: UserLoginService,
         private cognitoUtil: CognitoUtil, private listingService: ListingService) {
         this.userService.isAuthenticated(this);
         const cognitoUser = this.cognitoUtil.getCurrentUser();
         if (cognitoUser != null) {
-          cognitoUser.getSession( (err, session) => {
-            cognitoUser.getUserData((err, data) => {
-               const user = data.UserAttributes.filter(entry => entry.Name == 'given_name').pop();
-               this.username = user.Value;
+            cognitoUser.getSession((err, session) => {
+                cognitoUser.getUserData((error, data) => {
+                    const user = data.UserAttributes.filter(entry => entry.Name === 'given_name').pop();
+                    this.username = user.Value;
+                });
             });
-          });
         }
     }
 

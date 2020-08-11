@@ -12,6 +12,7 @@ export class ListingEntryComponent implements OnInit {
     @Input() data: Listing;
     @Input() showUser: boolean;
     @Input() showActions: boolean;
+    // tslint:disable-next-line: no-output-on-prefix
     @Output() onDelete = new EventEmitter<string>();
     deleteModal: any;
     fulfillModal: any;
