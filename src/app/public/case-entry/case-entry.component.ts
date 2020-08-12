@@ -10,7 +10,6 @@ declare var $: any;
 })
 export class CaseEntryComponent implements OnInit {
     @Input() data: Case;
-    @Input() showUser: boolean;
     @Input() showActions: boolean;
     // tslint:disable-next-line: no-output-on-prefix
     @Output() onDelete = new EventEmitter<string>();
@@ -18,9 +17,9 @@ export class CaseEntryComponent implements OnInit {
     fulfillModal: any;
 
     constructor(
-      private caseService: CaseService,
-      private elementRef: ElementRef
-    ) {}
+        private caseService: CaseService,
+        private elementRef: ElementRef
+    ) { }
 
     ngOnInit(): void {
         this.deleteModal = $(this.elementRef.nativeElement).find('.modal-delete');

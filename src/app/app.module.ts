@@ -28,7 +28,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ProfileComponent } from './secure/profile/profile.component';
 import { TagInputModule } from 'ngx-chips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppInterceptorProviders } from './app-interceptor.provider';
 import { InitiativeFormComponent } from './secure/initiative-form/initiative-form.component';
@@ -65,6 +65,7 @@ import { CaseFormComponent } from './secure/case-form/case-form.component';
     TagInputModule,
     ReactiveFormsModule,
     InternationalPhoneNumberModule,
+    NgbModule,
     BrowserAnimationsModule,
     ModalModule.forRoot(),
     AppRoutingModule

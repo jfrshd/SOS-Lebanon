@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body color-black">
-                Are you sure you wish to delete case <span class="color-red">{{data.name}}</span>?
+                Are you sure you wish to delete case?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" (click)="deleteCase()">Yes</button>
@@ -29,7 +29,7 @@
                 </button>
             </div>
             <div class="modal-body color-black">
-                Are you sure you wish to fulfill case <span class="color-red">{{data.title}}</span>?
+                Are you sure you wish to fulfill case?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" (click)="fulfillCase()">Yes</button>
@@ -42,9 +42,13 @@
 
 <div class="case-data col-xs-12 row">
     <span class="col-xs-2 col-lg-1 data-image">
-        <img alt="{{data.category}}" title="{{data.category}}"
-            onerror="this.onerror=null;this.src='./assets/landing page/pictures/not found.png'" width="60"
-            src="./../../../assets/landing page/pictures/{{data.category?.toLocaleLowerCase()}}.png" />
+        <ngb-carousel *ngIf="data.images" [showNavigationArrows]="true" [showNavigationIndicators]="true">
+            <ng-template ngbSlide *ngFor="let image of data.images; let index=index">
+                <img [src]="image" alt="Image {{index + 1}}">
+            </ng-template>
+        </ngb-carousel>
+        <img *ngIf="!data.images || data.images === []" alt="{{data.category}}" title="{{data.category}}" width="60"
+            src="./../../../assets/landing page/pictures/not found.png" />
     </span>
     <div class="col-xs-10 col-lg-11">
         <section class="data-text color-black col-xs-12 col-md-9 col-lg-10">
@@ -56,13 +60,15 @@
                 <span class="text-overflow-2 data-title">How can we help?</span>
                 <p class="text-overflow-2">{{data.helpDescription}}</p>
             </div>
-            <!-- <div class="row color-red" *ngIf="!showUser">
+            <!--
+                <div class="row color-red" *ngIf="!showUser">
                 Listed in &nbsp;
                 <img width="20" height="auto" alt="{{data.category}}" title="{{data.category}}"
                     onerror="this.onerror=null;this.src='./assets/landing page/pictures/not found.png'"
                     src="./../../../assets/landing page/pictures/{{data.category?.toLocaleLowerCase()}}.png" />
                 &nbsp;<em>{{data.category}}</em>
-            </div> -->
+            </div>
+        -->
         </section>
         <div class="data-text col-xs-12 col-md-3 col-lg-2 color-red">
             <div *ngIf="showActions && !data.isFulfilled" class="case-actions row">
