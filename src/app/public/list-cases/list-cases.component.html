@@ -3,9 +3,9 @@
     <br>
     <div class="row">
         <div class="col-xs-12 col-sm-4 col-md-3">
-            <select class="form-control" [(ngModel)]="selectedType" (change)="refresh(false)">
-                <option *ngFor="let type of types" [value]="type.name">
-                    {{type.name | titlecase}}
+            <select class="form-control" [(ngModel)]="selectedCategory" (change)="refresh(false)">
+                <option *ngFor="let category of categories" [value]="category.id">
+                    {{category.name | titlecase}}
                 </option>
             </select>
             <br>
@@ -22,7 +22,7 @@
             <br>
         </div>
         <div *ngIf="isSecure" class="col-xs-6 col-sm-2">
-            <button class="btn btn-dark btn-rounded" [routerLink]="'/home/listings/0'"><i class="fa fa-plus"></i>&nbsp;
+            <button class="btn btn-dark btn-rounded" [routerLink]="'/home/cases/new'"><i class="fa fa-plus"></i>&nbsp;
                 &nbsp;Add new&nbsp;
             </button>
             <br>
@@ -30,9 +30,8 @@
         <br>
         <br>
         <div class="row">
-            <app-listing-entry class="col-xs-12" *ngFor="let element of data.result.Items" [data]="element"
-                [showUser]="true">
-            </app-listing-entry>
+            <app-case-entry class="col-xs-12" *ngFor="let element of data.result.Items" [data]="element">
+            </app-case-entry>
 
             <button class="btn btn-default" *ngIf="data.result.LastEvaluatedKey && data.result.LastEvaluatedKey.id"
                 (click)="loadMore()">

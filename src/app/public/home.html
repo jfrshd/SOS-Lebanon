@@ -19,9 +19,9 @@
             </a>
 
             <a *ngIf="isSecure" (click)="logout()" class="col-sm-1 pull-right btn btn-default btn-lg">
-              Logout
+                Logout
             </a>
-            <div  class="col-sm-9 pull-right">
+            <div class="col-sm-9 pull-right">
                 <ul class="header nav navbar-nav col-sm-12">
                     <li *ngIf="!isSecure" class="col-sm-3">
                         <a [routerLink]="['/home/register']">
@@ -30,10 +30,10 @@
                     </li>
 
                     <li *ngIf="isSecure" class="col-sm-3">
-                      <a [routerLink]="['/home/my-listings']">
-                          My Listings
-                      </a>
-                  </li>
+                        <a [routerLink]="['/home/profile']">
+                            Profile
+                        </a>
+                    </li>
 
                 </ul>
             </div>

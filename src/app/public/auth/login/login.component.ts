@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { UserLoginService } from '../../../service/user-login.service';
 import { ChallengeParameters, CognitoCallback, LoggedInCallback } from '../../../service/cognito.service';
 import { DynamoDBService } from '../../../service/ddb.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'awscognito-angular2-app',
@@ -12,14 +12,15 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit {
     errorMessage: string;
-    form: FormGroup
+    form: FormGroup;
     mfaStep = false;
     mfaData = {
         destination: '',
         callback: null
     };
 
-    constructor(public router: Router,
+    constructor(
+        public router: Router,
         public ddb: DynamoDBService,
         public userService: UserLoginService) {
         console.log('LoginComponent constructor');
@@ -31,13 +32,13 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
         this.userService.isAuthenticated(this);
 
         this.form = new FormGroup({
-            email : new FormControl(null, [Validators.required, Validators.email]),
+            email: new FormControl(null, [Validators.required, Validators.email]),
             password: new FormControl(null, [Validators.required])
         })
     }
 
     onLogin() {
-        if (!this.form.controls['email'].value  || !this.form.controls['password'].value) {
+        if (!this.form.controls['email'].value || !this.form.controls['password'].value) {
             this.errorMessage = 'All fields are required';
             return;
         }
@@ -58,7 +59,7 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
             }
         } else { // success
             this.ddb.writeLogEntry('login');
-            this.router.navigate(['/home/my-listings']);
+            this.router.navigate(['/home/profile']);
         }
     }
 
@@ -75,9 +76,9 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
         };
     }
 
-    isLoggedIn(message: string, isLoggedIn: boolean) {
+    isLoggedIn(message: string, isLoggedIn: boolean): void {
         if (isLoggedIn) {
-            this.router.navigate(['/home/my-listings']);
+            this.router.navigate(['/home/profile']);
         }
     }
 

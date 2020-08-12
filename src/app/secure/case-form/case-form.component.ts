@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
-import { ArrayResponse, ListingLocation, InitiativeCategory, Case } from '../../public/models';
+import { ArrayResponse, Location, Category, Case } from '../../public/models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ListingLocationService } from '../../public/services/listing-location/listing-location.service';
+import { LocationService } from '../../public/services/location/location.service';
 import { Subscription } from 'rxjs';
-import { InitiativeCategoryService } from '../../public/services/initiative-category/initiative-category.service';
+import { CategoryService } from '../../public/services/category/category.service';
 import { CaseService } from '../../public/services/case/case.service';
 
 @Component({
@@ -21,26 +21,26 @@ export class CaseFormComponent implements OnInit, OnDestroy {
   @ViewChild('fileBtn') fileBtn: HTMLElement;
   submitted = false;
   errorMessage: string;
-  categories: InitiativeCategory[] = [];
-  locations: ListingLocation[] = [];
+  categories: Category[] = [];
+  locations: Location[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private caseService: CaseService,
-    private initiativeCategoryService: InitiativeCategoryService,
-    private listingLocationService: ListingLocationService) {
+    private categoryService: CategoryService,
+    private locationService: LocationService) {
   }
 
   ngOnInit(): void {
-    this.listingLocationService.get().subscribe(
+    this.locationService.get().subscribe(
       res => {
-        this.locations = new ArrayResponse<ListingLocation>(res).result.Items;
+        this.locations = new ArrayResponse<Location>(res).result.Items;
       }
     );
-    this.initiativeCategoryService.get().subscribe(
+    this.categoryService.get().subscribe(
       res => {
-        this.categories = new ArrayResponse<InitiativeCategory>(res).result.Items;
+        this.categories = new ArrayResponse<Category>(res).result.Items;
       }
     );
     this.sub = this.route.params
@@ -50,6 +50,9 @@ export class CaseFormComponent implements OnInit, OnDestroy {
         if (!!this.id) {
           this.caseService.getById(this.id)
             .subscribe(data => {
+              if (!data.result) {
+                this.router.navigateByUrl('/home/cases/new');
+              }
               this.data = new Case(data.result);
               for (const key in this.form.controls) {
                 if (key in this.form.controls && key in this.data && key !== 'profilePicture') {
@@ -58,12 +61,15 @@ export class CaseFormComponent implements OnInit, OnDestroy {
               }
             });
         }
+        else {
+          this.router.navigateByUrl('/home/cases/new');
+        }
 
         this.form = new FormGroup({
           contactName: new FormControl(this.data.contactName, [Validators.required]),
           description: new FormControl(this.data.description, [Validators.required]),
-          category: new FormControl(this.data.category),
-          location: new FormControl(this.data.location),
+          category: new FormControl(this.data.category, [Validators.required]),
+          location: new FormControl(this.data.location, [Validators.required]),
           helpDescription: new FormControl(this.data.helpDescription, [Validators.required]),
           contactPhone: new FormControl(this.data.contactPhone, [Validators.required]),
           contactEmail: new FormControl(this.data.contactEmail, [Validators.required, Validators.email]),
@@ -71,7 +77,7 @@ export class CaseFormComponent implements OnInit, OnDestroy {
           instagramAccount: new FormControl(this.data.instagramAccount),
           twitterAccount: new FormControl(this.data.twitterAccount),
           linkedInAccount: new FormControl(this.data.linkedInAccount),
-          image: new FormControl(this.data.image)
+          images: new FormControl(this.data.images)
         });
       });
   }

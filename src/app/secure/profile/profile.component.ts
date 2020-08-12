@@ -3,24 +3,24 @@ import { LoggedInCallback, CognitoUtil } from '../../service/cognito.service';
 import { Router } from '@angular/router';
 import { UserLoginService } from '../../service/user-login.service';
 import { CognitoUser } from 'amazon-cognito-identity-js';
-import { ListingService } from '../../public/services/listing/listing.service';
-import { Listing, ArrayResponse } from '../../public/models';
+import { ArrayResponse, Case } from '../../public/models';
+import { CaseService } from 'src/app/public/services/case/case.service';
 
 @Component({
-    selector: 'app-my-listings',
-    templateUrl: './my-listings.component.html',
-    styleUrls: ['./my-listings.component.css'],
+    selector: 'app-profile',
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.css'],
 })
-export class MyListingsComponent implements OnInit, LoggedInCallback {
+export class ProfileComponent implements OnInit, LoggedInCallback {
     user: CognitoUser;
     username: string;
     keyword: string;
-    data: ArrayResponse<Listing> = new ArrayResponse<Listing>();
+    data: ArrayResponse<Case> = new ArrayResponse<Case>();
     public count = 10;
 
     constructor(
         public router: Router, public userService: UserLoginService,
-        private cognitoUtil: CognitoUtil, private listingService: ListingService) {
+        private cognitoUtil: CognitoUtil, private caseService: CaseService) {
         this.userService.isAuthenticated(this);
         const cognitoUser = this.cognitoUtil.getCurrentUser();
         if (cognitoUser != null) {
@@ -34,7 +34,7 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
     }
 
     refresh(loadMore: boolean): void {
-        this.listingService.getMyListings(this.keyword, this.count, this.data.result.LastEvaluatedKey)
+        this.caseService.getMyCases(this.keyword, this.count, this.data.result.LastEvaluatedKey)
             .subscribe(data => {
                 if (loadMore) {
                     this.data.result.ScannedCount += data.result.ScannedCount;
@@ -44,7 +44,7 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
                     ];
                     this.data.result.LastEvaluatedKey = data.result.LastEvaluatedKey;
                 } else {
-                    this.data = new ArrayResponse<Listing>(data);
+                    this.data = new ArrayResponse<Case>(data);
                 }
             });
     }
@@ -60,6 +60,6 @@ export class MyListingsComponent implements OnInit, LoggedInCallback {
     }
 
     onDelete(id: string): void {
-        this.data.result.Items = this.data.result.Items.filter(f => f.id !== id);
+        // this.data.result.Items = this.data.result.Items.filter(f => f.id !== id);
     }
 }

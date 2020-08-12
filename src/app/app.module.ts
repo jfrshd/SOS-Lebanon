@@ -11,7 +11,6 @@ import { CognitoUtil } from './service/cognito.service';
 import { AboutComponent, HomeComponent, HomeLandingComponent } from './public/home.component';
 import { AwsUtil } from './service/aws.service';
 import { UseractivityComponent } from './secure/useractivity/useractivity.component';
-import { MyProfileComponent } from './secure/profile/myprofile.component';
 import { SecureHomeComponent } from './secure/landing/securehome.component';
 import { JwtComponent } from './secure/jwttokens/jwt.component';
 import { DynamoDBService } from './service/ddb.service';
@@ -22,15 +21,14 @@ import { LogoutComponent, RegistrationConfirmationComponent } from './public/aut
 import { ResendCodeComponent } from './public/auth/resend/resendCode.component';
 import { NewPasswordComponent } from './public/auth/newpassword/newpassword.component';
 import { MFAComponent } from './public/auth/mfa/mfa.component';
-import { ListingEntryComponent } from './public/listing-entry/listing-entry.component';
+import { CaseEntryComponent } from './public/case-entry/case-entry.component';
 import { InternationalPhoneNumberModule } from 'ngx-international-phone-number';
-import { ListingComponent } from './public/listing/listing.component';
+import { ListCasesComponent } from './public/list-cases/list-cases.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { MyListingsComponent } from './secure/my-listings/my-listings.component';
-import { ListingFormComponent } from './secure/listing-form/listing-form.component';
+import { ProfileComponent } from './secure/profile/profile.component';
 import { TagInputModule } from 'ngx-chips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppInterceptorProviders } from './app-interceptor.provider';
 import { InitiativeFormComponent } from './secure/initiative-form/initiative-form.component';
@@ -51,12 +49,10 @@ import { CaseFormComponent } from './secure/case-form/case-form.component';
     HomeLandingComponent,
     HomeComponent,
     UseractivityComponent,
-    MyProfileComponent,
-    ListingComponent,
-    ListingEntryComponent,
+    ListCasesComponent,
+    CaseEntryComponent,
     SecureHomeComponent,
-    MyListingsComponent,
-    ListingFormComponent,
+    ProfileComponent,
     InitiativeFormComponent,
     CaseFormComponent,
     JwtComponent,
@@ -69,6 +65,7 @@ import { CaseFormComponent } from './secure/case-form/case-form.component';
     TagInputModule,
     ReactiveFormsModule,
     InternationalPhoneNumberModule,
+    NgbModule,
     BrowserAnimationsModule,
     ModalModule.forRoot(),
     AppRoutingModule

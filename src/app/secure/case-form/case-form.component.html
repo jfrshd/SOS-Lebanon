@@ -52,48 +52,49 @@
       <div class="row">
         <div class="form-group col-xs-12">
           <label class="control-label">Add your social media accounts</label>
-          <br>
-          <div class="row col-xs-12 col-sm-6 col-md-3">
-            <div class="input-group">
-              <span class="input-group-addon input-transparent">
-                <img height="15" src="./../../../assets/pictures/facebook colored.png">
-              </span>
-              <input type="text" maxlength="100" class="form-control" formControlName="facebookAccount"
-                placeholder="Facebook">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+              <div class="input-group">
+                <span class="input-group-addon input-transparent">
+                  <img height="15" src="./../../../assets/pictures/facebook colored.png">
+                </span>
+                <input type="text" maxlength="100" class="form-control" formControlName="facebookAccount"
+                  placeholder="Facebook">
+              </div>
             </div>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="input-group">
-              <span class="input-group-addon input-transparent">
-                <img height="15" src="./../../../assets/pictures/instagram colored.png">
-              </span>
-              <input type="text" maxlength="100" class="form-control" formControlName="instagramAccount"
-                placeholder="Instagram">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+              <div class="input-group">
+                <span class="input-group-addon input-transparent">
+                  <img height="15" src="./../../../assets/pictures/instagram colored.png">
+                </span>
+                <input type="text" maxlength="100" class="form-control" formControlName="instagramAccount"
+                  placeholder="Instagram">
+              </div>
             </div>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="input-group">
-              <span class="input-group-addon input-transparent">
-                <img height="15" src="./../../../assets/pictures/twitter colored.png">
-              </span>
-              <input type="text" maxlength="100" class="form-control" formControlName="twitterAccount"
-                placeholder="Twitter">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+              <div class="input-group">
+                <span class="input-group-addon input-transparent">
+                  <img height="15" src="./../../../assets/pictures/twitter colored.png">
+                </span>
+                <input type="text" maxlength="100" class="form-control" formControlName="twitterAccount"
+                  placeholder="Twitter">
+              </div>
             </div>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="input-group">
-              <span class="input-group-addon input-transparent">
-                <img height="15" src="./../../../assets/pictures/linkedin colored.png">
-              </span>
-              <input type="text" maxlength="100" class="form-control" formControlName="linkedInAccount"
-                placeholder="LinkedIn">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+              <div class="input-group">
+                <span class="input-group-addon input-transparent">
+                  <img height="15" src="./../../../assets/pictures/linkedin colored.png">
+                </span>
+                <input type="text" maxlength="100" class="form-control" formControlName="linkedInAccount"
+                  placeholder="LinkedIn">
+              </div>
             </div>
           </div>
         </div>
         <div class="form-group col-lg-6 col-md-6 col-sm-12">
-          <label class="control-label">Image</label>
+          <label class="control-label">Image(s)</label>
           <br>
-          <input #fileBtn type="file" class="hidden custom-file-input" formControlName="image" />
+          <input #fileBtn multiple type="file" class="hidden custom-file-input" formControlName="images" />
           <img height="80" src="./../../../assets/pictures/add picture.png" (click)="fileBtn.click()">
           <span *ngIf="fileBtn.value && fileBtn.value.indexOf('\\') !== -1">
             {{fileBtn.value.split('\\')[fileBtn.value.split('\\').length - 1]}}
