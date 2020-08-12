@@ -12,6 +12,7 @@ import { ListingComponent } from './public/listing/listing.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ListingFormComponent } from './secure/listing-form/listing-form.component';
 import { InitiativeFormComponent } from './secure/initiative-form/initiative-form.component';
+import { CaseFormComponent } from './secure/case-form/case-form.component';
 import { AuthGuard } from './app.auth.guard';
 import { PublicGuard } from './app.public.guard';
 
@@ -36,6 +37,7 @@ const homeRoutes: Routes = [
       { path: 'listings', component: ListingComponent },
       { path: 'listings/:id', component: ListingFormComponent, canActivate: [AuthGuard] },
       { path: 'initiatives/:id', component: InitiativeFormComponent, canActivate: [AuthGuard] },
+      { path: 'cases/:id', component: CaseFormComponent, canActivate: [AuthGuard] },
       { path: 'my-listings', component: MyListingsComponent, canActivate: [AuthGuard] },
       { path: '', component: HomeLandingComponent }
     ]
