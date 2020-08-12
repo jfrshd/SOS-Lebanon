@@ -39,16 +39,16 @@ export class CaseService {
         category?: string,
         keyword?: string, limit: number = 10,
         evaluateKey: ApiEvaluatedKey = null): Observable<ArrayResponse<Case>> {
-        return of(new ArrayResponse({
-            statusCode: 200,
-            result: {
-                Count: this.MOCK_DATA.length,
-                ScannedCount: this.MOCK_DATA.length,
-                Items: this.MOCK_DATA,
-                LastEvaluatedKey: null
-            }
-        })
-        );
+        // return of(new ArrayResponse({
+        //     statusCode: 200,
+        //     result: {
+        //         Count: this.MOCK_DATA.length,
+        //         ScannedCount: this.MOCK_DATA.length,
+        //         Items: this.MOCK_DATA,
+        //         LastEvaluatedKey: null
+        //     }
+        // })
+        // );
         const evaluateKeyStr = JSON.stringify(evaluateKey);
         const params: any = {
             LastEvaluatedKey: evaluateKeyStr === '{}' ? '' : encodeURI(evaluateKeyStr),
