@@ -1,4 +1,4 @@
-.listing-data {
+.case-data {
   padding: 0 25px;
   margin-bottom: 15px;
   padding-bottom: 15px;
@@ -7,24 +7,32 @@
   font-size: 20px;
 }
 
-.listing-data i {
+.case-data i {
   font-size: 24px;
 }
 
-.listing-data .data-image {
-  max-width: 85px;
+.case-data .data-image img {
+  width: 100%;
 }
 
-.listing-data .data-title {
+.case-data .data-title {
   font-size: 25px;
   font-weight: 600;
 }
 
-.listing-data p {
+.case-data p {
   font-weight: normal;
 }
 
-.listing-data .data-fulfill {
+.case-data .data-fulfill {
   width: 20px;
   height: 20px;
+}
+
+.case-data .case-links {
+  line-height: 45px;
+}
+
+.case-data .case-actions a + a {
+  margin-left: 30px;
 }

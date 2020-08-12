@@ -1,15 +1,15 @@
 import { Component, Input, Output, EventEmitter, OnInit, ElementRef } from '@angular/core';
-import { Listing } from '../models';
-import { ListingService } from '../services/listing/listing.service';
+import { Case } from '../models';
+import { CaseService } from '../services/case/case.service';
 declare var $: any;
 
 @Component({
-    selector: 'app-listing-entry',
-    templateUrl: './listing-entry.component.html',
-    styleUrls: ['./listing-entry.component.css'],
+    selector: 'app-case-entry',
+    templateUrl: './case-entry.component.html',
+    styleUrls: ['./case-entry.component.css'],
 })
-export class ListingEntryComponent implements OnInit {
-    @Input() data: Listing;
+export class CaseEntryComponent implements OnInit {
+    @Input() data: Case;
     @Input() showUser: boolean;
     @Input() showActions: boolean;
     // tslint:disable-next-line: no-output-on-prefix
@@ -18,7 +18,7 @@ export class ListingEntryComponent implements OnInit {
     fulfillModal: any;
 
     constructor(
-      private listingService: ListingService,
+      private caseService: CaseService,
       private elementRef: ElementRef
     ) {}
 
@@ -43,15 +43,15 @@ export class ListingEntryComponent implements OnInit {
         this.fulfillModal.modal('show');
     }
 
-    deleteListing(): void {
-        this.listingService.delete(this.data.id)
+    deleteCase(): void {
+        this.caseService.delete(this.data.id)
             .subscribe(_ => {
                 this.onDelete.emit(this.data.id);
             });
     }
 
-    fulfillListing(): void {
-        this.listingService.update(this.data)
+    fulfillCase(): void {
+        this.caseService.update(this.data)
             .subscribe(_ => {
             });
     }

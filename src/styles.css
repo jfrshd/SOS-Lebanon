@@ -22,6 +22,7 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   display: block;
+  white-space: nowrap;
 }
 
 .text-overflow-2 {

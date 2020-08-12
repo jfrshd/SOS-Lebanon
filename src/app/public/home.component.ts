@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ListingType, ArrayResponse } from './models';
-import { ListingTypeService } from './services/listing-type/listing-type.service';
+import { Category, ArrayResponse } from './models';
+import { CategoryService } from './services/category/category.service';
 import { UserLoginService } from '../service/user-login.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -22,15 +22,15 @@ export class AboutComponent {
   styleUrls: ['./landinghome.css'],
 })
 export class HomeLandingComponent implements OnInit, OnDestroy {
-  types: ListingType[];
+  categories: Category[];
   isSecure: boolean;
   private subscription: Subscription;
 
-  constructor(private dataTypeService: ListingTypeService, private auth: UserLoginService) { }
+  constructor(private categoryService: CategoryService, private auth: UserLoginService) { }
 
   ngOnInit(): void {
-    this.dataTypeService.get()
-      .subscribe(data => this.types = new ArrayResponse<ListingType>(data).result.Items);
+    this.categoryService.get()
+      .subscribe(data => this.categories = new ArrayResponse<Category>(data).result.Items);
     this.subscription = this.auth.isLoggedIn$
       .subscribe((isLoggedIn: boolean) => this.isSecure = isLoggedIn);
   }

@@ -1,0 +1,101 @@
+<div class="modal modal-delete fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left color-red">Delete Case</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="deleteModal.modal('hide')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body color-black">
+                Are you sure you wish to delete case <span class="color-red">{{data.name}}</span>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="deleteCase()">Yes</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-fulfill fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left color-red">Fulfill Case</h4>
+                <button type="button" class="close pull-right" aria-label="Close"
+                    (click)="data.isFulfilled = !data.isFulfilled; fulfillModal.modal('hide')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body color-black">
+                Are you sure you wish to fulfill case <span class="color-red">{{data.title}}</span>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="fulfillCase()">Yes</button>
+                <button type="button" class="btn btn-light"
+                    (click)="data.isFulfilled = !data.isFulfilled; fulfillModal.modal('hide')">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="case-data col-xs-12 row">
+    <span class="col-xs-2 col-lg-1 data-image">
+        <img alt="{{data.category}}" title="{{data.category}}"
+            onerror="this.onerror=null;this.src='./assets/landing page/pictures/not found.png'" width="60"
+            src="./../../../assets/landing page/pictures/{{data.category?.toLocaleLowerCase()}}.png" />
+    </span>
+    <div class="col-xs-10 col-lg-11">
+        <section class="data-text color-black col-xs-12 col-md-9 col-lg-10">
+            <div class="row">
+                <span class="text-overflow-2 data-title">Who we are helping?</span>
+                <p class="text-overflow-2">{{data.description}}</p>
+            </div>
+            <div class="row">
+                <span class="text-overflow-2 data-title">How can we help?</span>
+                <p class="text-overflow-2">{{data.helpDescription}}</p>
+            </div>
+            <!-- <div class="row color-red" *ngIf="!showUser">
+                Listed in &nbsp;
+                <img width="20" height="auto" alt="{{data.category}}" title="{{data.category}}"
+                    onerror="this.onerror=null;this.src='./assets/landing page/pictures/not found.png'"
+                    src="./../../../assets/landing page/pictures/{{data.category?.toLocaleLowerCase()}}.png" />
+                &nbsp;<em>{{data.category}}</em>
+            </div> -->
+        </section>
+        <div class="data-text col-xs-12 col-md-3 col-lg-2 color-red">
+            <div *ngIf="showActions && !data.isFulfilled" class="case-actions row">
+                <a class="link-unstyled" [routerLink]="['/home/cases/' + data.id]">
+                    <i class="fa fa-2x fa-pencil"></i>&nbsp;&nbsp;
+                </a>
+                <a class="link-unstyled" (click)="delete()">
+                    <i class="fa fa-2x fa-trash"></i>
+                </a>
+                <div class="hidden-xs" style="height: 50px"></div>
+                <div class="form-check">
+                    <label class="form-check-label" for="fulfilled">Mark as fulfilled</label>&nbsp;
+                    <input type="checkbox" class="data-fulfill form-check-input" name="fulfilled"
+                        [(ngModel)]="data.isFulfilled" (change)="fulfill()">
+                </div>
+            </div>
+            <span class="case-links" *ngIf="!showActions">
+                <a class="no-padding link-unstyled col-xs-6 col-md-12 text-overflow">
+                    <i class="fa fa-user"></i>&nbsp;&nbsp;{{data.contactName}}
+                </a>
+                <a href="tel:{{data.phone}}" class="no-padding link-unstyled col-xs-6 col-md-12 text-overflow"
+                    target="_blank">
+                    <i class="fa fa-phone"></i>&nbsp;&nbsp;{{data.contactPhone}}
+                </a>
+                <a class="no-padding link-unstyled col-xs-6 col-md-12 text-overflow" target="_blank"
+                    href="mail:{{data.contactEmail}}">
+                    <i class="fa fa-map-marker"></i>&nbsp;&nbsp;{{data.contactEmail}}
+                </a>
+                <a class="no-padding link-unstyled col-xs-6 col-md-12 text-overflow" target="_blank"
+                    href="https://maps.google.com/?q={{data.location}}">
+                    <i class="fa fa-map-marker"></i>&nbsp;&nbsp;{{data.location}}
+                </a>
+            </span>
+        </div>
+    </div>
+</div>
