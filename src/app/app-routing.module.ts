@@ -14,6 +14,7 @@ import { InitiativeFormComponent } from './secure/initiative-form/initiative-for
 import { CaseFormComponent } from './secure/case-form/case-form.component';
 import { AuthGuard } from './app.auth.guard';
 import { PublicGuard } from './app.public.guard';
+import {ListInitiativesComponent} from './public/list-initiatives/list-initiatives.component';
 
 const homeRoutes: Routes = [
   {
@@ -34,6 +35,8 @@ const homeRoutes: Routes = [
       { path: 'forgotPassword', component: ForgotPasswordStep1Component, canActivate: [PublicGuard] },
       { path: 'newPassword', component: NewPasswordComponent, canActivate: [PublicGuard] },
       { path: 'cases-list', component: ListCasesComponent },
+      { path: 'initiatives-list', component: ListInitiativesComponent },
+      // { path: 'initiatives/:id', component: InitiativeComponent, canActivate: [AuthGuard] },
       { path: 'cases/new', component: CaseFormComponent, canActivate: [AuthGuard] },
       { path: 'cases/:id', component: CaseFormComponent, canActivate: [AuthGuard] },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },

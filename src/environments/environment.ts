@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    url: 'https://gpxhagrrzc.execute-api.eu-west-1.amazonaws.com/prod',
+    url: 'https://085nt3hwj3.execute-api.eu-west-1.amazonaws.com/prod',
     region: 'eu-west-1',
     identityPoolId: 'eu-west-1:5e757281-50b1-441b-bcf3-099c30dfad19',
     userPoolId: 'eu-west-1_ohlZn9Sze',

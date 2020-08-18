@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { Initiative, ArrayResponse, ApiEvaluatedKey, ApiResponse } from '../../models';
-import { Observable } from 'rxjs';
+import {Observable, of} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 
@@ -37,17 +37,29 @@ export class InitiativeService {
     public get(
         keyword?: string, limit: number = 10,
         evaluateKey: ApiEvaluatedKey = null): Observable<ArrayResponse<Initiative>> {
-        const evaluateKeyStr = JSON.stringify(evaluateKey);
-        const params: any = {
-            LastEvaluatedKey: evaluateKeyStr === '{}' ? '' : encodeURI(evaluateKeyStr),
-            limit: limit.toString()
-        };
-        if (keyword) {
-            params.keyword = keyword;
-        }
-        return this.httpClient.get<ArrayResponse<Initiative>>(environment.url + '/initiative', {
-            params
-        });
+
+      return of(new ArrayResponse({
+          statusCode: 200,
+          result: {
+            Count: this.MOCK_DATA.length,
+            ScannedCount: this.MOCK_DATA.length,
+            Items: this.MOCK_DATA,
+            LastEvaluatedKey: null
+          }
+        })
+      );
+
+        // const evaluateKeyStr = JSON.stringify(evaluateKey);
+        // const params: any = {
+        //     LastEvaluatedKey: evaluateKeyStr === '{}' ? '' : encodeURI(evaluateKeyStr),
+        //     limit: limit.toString()
+        // };
+        // if (keyword) {
+        //     params.keyword = keyword;
+        // }
+        // return this.httpClient.get<ArrayResponse<Initiative>>(environment.url + '/initiative', {
+        //     params
+        // });
     }
 
     public getById(id: string): Observable<ApiResponse<Initiative>> {

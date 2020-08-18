@@ -1,0 +1,42 @@
+<div class="container">
+    <br>
+    <br>
+    <div class="row">
+<!--        <div class="col-xs-12 col-sm-4 col-md-3">-->
+<!--            <select class="form-control" [(ngModel)]="selectedCategory" (change)="refresh(false)">-->
+<!--                <option *ngFor="let category of categories" [value]="category.id">-->
+<!--                    {{category.name | titlecase}}-->
+<!--                </option>-->
+<!--            </select>-->
+<!--            <br>-->
+<!--        </div>-->
+<!--        <div class="hidden-xs col-sm-1 col-md-3"></div>-->
+        <div class="col-xs-12 col-sm-12">
+            <div class="input-group">
+                <span class="input-group-addon" (click)="refresh(false)">
+                    <i class="fa fa-search"></i>
+                </span>
+                <input type="text" class="form-control" [(ngModel)]="keyword" (change)="refresh(false)"
+                    placeholder="Search for specific initiative">
+            </div>
+            <br>
+        </div>
+<!--        <div *ngIf="isSecure" class="col-xs-6 col-sm-2">-->
+<!--            <button class="btn btn-dark btn-rounded" [routerLink]="'/home/cases/new'"><i class="fa fa-plus"></i>&nbsp;-->
+<!--                &nbsp;Add new&nbsp;-->
+<!--            </button>-->
+<!--            <br>-->
+<!--        </div>-->
+        <br>
+        <br>
+        <div class="row">
+            <app-initiative-entry class="col-xs-12" *ngFor="let element of data.result.Items" [data]="element">
+            </app-initiative-entry>
+
+            <button class="btn btn-default" *ngIf="data.result.LastEvaluatedKey && data.result.LastEvaluatedKey.id"
+                (click)="loadMore()">
+                Load More
+            </button>
+        </div>
+    </div>
+</div>

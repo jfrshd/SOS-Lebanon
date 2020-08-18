@@ -33,6 +33,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppInterceptorProviders } from './app-interceptor.provider';
 import { InitiativeFormComponent } from './secure/initiative-form/initiative-form.component';
 import { CaseFormComponent } from './secure/case-form/case-form.component';
+import {ListInitiativesComponent} from './public/list-initiatives/list-initiatives.component';
+import {InitiativeEntryComponent} from './public/initiative-entry/initiative-entry.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { CaseFormComponent } from './secure/case-form/case-form.component';
     SecureHomeComponent,
     ProfileComponent,
     InitiativeFormComponent,
+    InitiativeEntryComponent,
+    ListInitiativesComponent,
     CaseFormComponent,
     JwtComponent,
     AppComponent

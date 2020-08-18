@@ -1,3 +1,7 @@
+.data-image{
+  text-align: center;
+}
+
 .case-data {
   margin-bottom: 15px;
   padding: 30px 25px 15px;
@@ -16,6 +20,10 @@
   margin: auto;
 }
 
+.case-data .data-name {
+  font-size: 32px;
+  font-weight: bold;
+}
 .case-data .data-title {
   font-size: 25px;
   font-weight: 600;
@@ -46,7 +54,7 @@
 }
 
 .case-data .case-social-actions {
-  margin-left: 100px;
+  text-align: left;
 }
 
 .case-data .badge.badge-primary {
@@ -55,4 +63,15 @@
 
 .case-data .badge+.badge {
   margin-left: 20px;
+}
+
+
+@media (max-width: 768px) {
+  .case-data .data-name {
+    font-size: 28px;
+  }
+
+  .case-data .case-social-actions {
+    text-align: center;
+  }
 }
