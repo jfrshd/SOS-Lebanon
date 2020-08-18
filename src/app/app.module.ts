@@ -35,6 +35,8 @@ import { InitiativeFormComponent } from './secure/initiative-form/initiative-for
 import { CaseFormComponent } from './secure/case-form/case-form.component';
 import {ListInitiativesComponent} from './public/list-initiatives/list-initiatives.component';
 import {InitiativeEntryComponent} from './public/initiative-entry/initiative-entry.component';
+import {InitiativeViewComponent} from './public/initiative-view/initiative-view.component';
+import {InitiativePageComponent} from './public/initiative-page/initiative-page.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import {InitiativeEntryComponent} from './public/initiative-entry/initiative-ent
     InitiativeFormComponent,
     InitiativeEntryComponent,
     ListInitiativesComponent,
+    InitiativeViewComponent,
+    InitiativePageComponent,
     CaseFormComponent,
     JwtComponent,
     AppComponent

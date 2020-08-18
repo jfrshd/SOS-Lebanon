@@ -5,14 +5,13 @@ import {InitiativeService} from '../services/initiative/initiative.service';
 declare var $: any;
 
 @Component({
-  selector: 'app-initiative-entry',
-  templateUrl: './initiative-entry.component.html',
-  styleUrls: ['./initiative-entry.component.css'],
+  selector: 'app-initiative-view',
+  templateUrl: './initiative-view.component.html',
+  styleUrls: ['./initiative-view.component.css'],
 })
-export class InitiativeEntryComponent implements OnInit {
+export class InitiativeViewComponent implements OnInit {
   @Input() data: Initiative;
   @Input() showActions: boolean;
-  // tslint:disable-next-line: no-output-on-prefix
   categoriesDescription: string;
   locationsDescription: string;
 

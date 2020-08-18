@@ -1,5 +1,6 @@
-.data-image{
+.data-image {
   text-align: center;
+  border-radius: 100%;
 }
 
 .case-data {
@@ -23,7 +24,9 @@
 .case-data .data-name {
   font-size: 32px;
   font-weight: bold;
+  color: var(--primary-color);
 }
+
 .case-data .data-title {
   font-size: 25px;
   font-weight: 600;
@@ -42,28 +45,21 @@
   line-height: 45px;
 }
 
-.case-data .case-actions a+a {
+.case-data .case-actions a + a {
   margin-left: 30px;
 }
 
-.case-data .badge {
-  border-radius: 100%;
-  width: 38px;
-  height: 38px;
-  padding: 7px;
-}
 
 .case-data .case-social-actions {
   text-align: left;
+  color: var(--color-dark-grey);
 }
 
-.case-data .badge.badge-primary {
-  background-color: var(--color-red);
+.case-data .case-social-actions a {
+  margin-left: 40px;
+  color: var(--color-dark-grey);
 }
 
-.case-data .badge+.badge {
-  margin-left: 20px;
-}
 
 
 @media (max-width: 768px) {
@@ -74,4 +70,9 @@
   .case-data .case-social-actions {
     text-align: center;
   }
+
+  .case-data .case-social-actions a {
+    margin-left: 20px;
+  }
+
 }

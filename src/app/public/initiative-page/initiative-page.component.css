@@ -1,0 +1,28 @@
+.initiative-view-container {
+  max-width: 1200px;
+  text-align: center;
+  margin: auto;
+}
+
+.page-title {
+  color: var(--color-black);
+  text-align: center;
+  margin: auto;
+}
+
+
+.nav-tabs>li {
+  width: 50%;
+}
+
+.nav-tabs>li a{
+  text-transform: uppercase;
+  color:var(--color-dark-grey) ;
+  font-weight: bold;
+}
+
+.nav-tabs>li a.active{
+  color:var(--color-black) ;
+  border-bottom-color: var(--color-red);
+  border-bottom-width: 2px;
+}
