@@ -25,12 +25,9 @@
     <br>
     <br>
     <div class="row">
-        <p>
-            {{data | json}}
-        </p>
-        <app-listing-entry class="col-xs-12" *ngFor="let element of data.result.Items" [data]="element"
+        <app-case-entry class="col-xs-12" *ngFor="let element of data.result.Items" [data]="element"
             [showActions]="true" (onDelete)="onDelete($event)">
-        </app-listing-entry>
+        </app-case-entry>
 
         <button class="btn btn-default" *ngIf="data.result.LastEvaluatedKey && data.result.LastEvaluatedKey.id"
             (click)="loadMore()">
