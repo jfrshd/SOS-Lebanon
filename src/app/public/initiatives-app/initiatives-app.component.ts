@@ -14,10 +14,7 @@ export class InitiativesAppComponent implements OnInit {
 
   ngOnInit(): void {
     this.initiativeService.get()
-      .subscribe(data => {
-        debugger
-        this.initiatives = new ArrayResponse<Initiative>(data).result.Items;
-      });
+      .subscribe(data => this.initiatives = new ArrayResponse<Initiative>(data).result.Items);
   }
 
   imageError(element, initiative: Initiative): void {

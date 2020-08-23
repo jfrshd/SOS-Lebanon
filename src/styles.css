@@ -383,8 +383,9 @@ app-footer {
 }
 
 .body {
-  margin-bottom: 100px;
+  margin-bottom: 200px;
   height: 100vh;
+  overflow-y:scroll;
 }
 
 .marginTopFooter {
