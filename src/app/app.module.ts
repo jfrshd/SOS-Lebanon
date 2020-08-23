@@ -8,7 +8,7 @@ import { UserRegistrationService } from './service/user-registration.service';
 import { UserParametersService } from './service/user-parameters.service';
 import { UserLoginService } from './service/user-login.service';
 import { CognitoUtil } from './service/cognito.service';
-import { AboutComponent, HomeComponent, HomeLandingComponent } from './public/home.component';
+import { HomeComponent, HomeLandingComponent } from './public/home.component';
 import { AwsUtil } from './service/aws.service';
 import { UseractivityComponent } from './secure/useractivity/useractivity.component';
 import { SecureHomeComponent } from './secure/landing/securehome.component';
@@ -33,6 +33,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppInterceptorProviders } from './app-interceptor.provider';
 import { InitiativeFormComponent } from './secure/initiative-form/initiative-form.component';
 import { CaseFormComponent } from './secure/case-form/case-form.component';
+import {SharedModule} from './shared/shared.module';
+import { RouterModule } from '@angular/router';
+import { CarouselAppComponent } from './public/carousel-app/carousel-app.component';
+import { ServicesAppComponent } from './public/services-app/services-app.component';
+import { InitiativesAppComponent } from './public/initiatives-app/initiatives-app.component';
+import { AboutComponent } from './public/about/about.component';
+import { AreWeComponent } from './public/about/are-we/are-we.component';
+import { PurposeComponent } from './public/about/purpose/purpose.component';
 import {ListInitiativesComponent} from './public/list-initiatives/list-initiatives.component';
 import {InitiativeEntryComponent} from './public/initiative-entry/initiative-entry.component';
 import {InitiativeViewComponent} from './public/initiative-view/initiative-view.component';
@@ -65,7 +73,12 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     InitiativePageComponent,
     CaseFormComponent,
     JwtComponent,
-    AppComponent
+    AppComponent,
+    CarouselAppComponent,
+    ServicesAppComponent,
+    InitiativesAppComponent,
+    AreWeComponent,
+    PurposeComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +91,9 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     BrowserAnimationsModule,
     NgMultiSelectDropDownModule.forRoot(),
     ModalModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+    RouterModule
   ],
   providers: [
     CognitoUtil,

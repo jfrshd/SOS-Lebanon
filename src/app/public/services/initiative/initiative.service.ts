@@ -48,11 +48,13 @@ export class InitiativeService {
       })
       );
     } else {
-      const evaluateKeyStr = JSON.stringify(evaluateKey);
       const params: any = {
-        LastEvaluatedKey: evaluateKeyStr === '{}' ? '' : encodeURI(evaluateKeyStr),
         limit: limit.toString()
       };
+      if (evaluateKey) {
+        const evaluateKeyStr = JSON.stringify(evaluateKey || {});
+        params.LastEvaluatedKey = evaluateKeyStr === '{}' ? '' : encodeURI(evaluateKeyStr);
+      }
       if (keyword) {
         params.keyword = keyword;
       }

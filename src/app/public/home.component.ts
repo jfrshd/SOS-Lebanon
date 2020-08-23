@@ -8,13 +8,7 @@ import { Subscription } from 'rxjs';
 declare let AWS: any;
 declare let AWSCognito: any;
 
-@Component({
-  selector: 'app-about',
-  template: '<p>Hello and welcome!\'< /p>'
-})
-export class AboutComponent {
 
-}
 
 @Component({
   selector: 'app-landinghome',
@@ -56,31 +50,31 @@ export class HomeLandingComponent implements OnInit, OnDestroy {
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })
-export class HomeComponent implements OnInit, OnDestroy {
-  public isSecure = false;
-  private auth: UserLoginService;
-  private router: Router;
-  private subscription: Subscription;
+export class HomeComponent  {
+  // public isSecure = false;
+  // private auth: UserLoginService;
+   private router: Router;
+  // private subscription: Subscription;
 
-  constructor(auth: UserLoginService, router: Router) {
-    this.auth = auth;
-    this.router = router;
-  }
+  // constructor(auth: UserLoginService, router: Router) {
+  //   this.auth = auth;
+  //   this.router = router;
+  // }
 
-  ngOnInit(): void {
-    this.subscription = this.auth.isLoggedIn$.subscribe((isLoggedIn: boolean) => this.isSecure = isLoggedIn);
-  }
+  // ngOnInit(): void {
+  //   this.subscription = this.auth.isLoggedIn$.subscribe((isLoggedIn: boolean) => this.isSecure = isLoggedIn);
+  // }
 
-  logout(): void {
-    this.auth.logout();
-    this.router.navigate(['/home']);
-  }
+  // logout(): void {
+  //   this.auth.logout();
+  //   this.router.navigate(['/home']);
+  // }
 
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-  }
+  // ngOnDestroy(): void {
+  //   if (this.subscription) {
+  //     this.subscription.unsubscribe();
+  //   }
+  // }
 }
 
 
