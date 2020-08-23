@@ -1,0 +1,25 @@
+.slide-pointer {
+    margin-right: 5px;
+    color: var(--default-text-color);
+  }
+  
+  .slide-pointer.active {
+    color: #2C2627;
+  }
+  
+  .intro-text {
+    margin-bottom: 50px;
+    color: rgb(45, 38, 38);
+  }
+  
+  
+  
+  
+  .buttons-list>* {
+    margin-bottom: 20px;
+  }
+  
+  .listing-type>.btn {
+    padding: 20px;
+    min-height: 220px;
+  }

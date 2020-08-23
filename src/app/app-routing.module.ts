@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AboutComponent, HomeComponent, HomeLandingComponent } from './public/home.component';
+import {  HomeComponent, HomeLandingComponent } from './public/home.component';
 import { LoginComponent } from './public/auth/login/login.component';
 import { RegisterComponent } from './public/auth/register/registration.component';
 import { ForgotPassword2Component, ForgotPasswordStep1Component } from './public/auth/forgot/forgotPassword.component';
@@ -14,6 +14,7 @@ import { InitiativeFormComponent } from './secure/initiative-form/initiative-for
 import { CaseFormComponent } from './secure/case-form/case-form.component';
 import { AuthGuard } from './app.auth.guard';
 import { PublicGuard } from './app.public.guard';
+import { AboutComponent } from './public/about/about.component';
 
 const homeRoutes: Routes = [
   {
@@ -60,7 +61,8 @@ const routes: Routes = [
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+  
   ],
   exports: [RouterModule]
 })

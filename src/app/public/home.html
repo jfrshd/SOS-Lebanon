@@ -1,47 +1,95 @@
-<!-- Navigation -->
-<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-    <div class="container topnav">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#header">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="#">
-                <img src="./../../assets/landing page/pictures/logo sos.png" width="auto" height="57" />
-            </a>
-        </div>
-        <div class="collapse navbar-collapse row" id="header">
-            <a *ngIf="!isSecure" [routerLink]="['/home/login']" class="col-sm-1 pull-right btn btn-default btn-lg">
+<!-- <div class="navbar ">
+    <div class="container " >
+  
+      <div class="navbar-header" style="margin-top:10px;">
+        <a class="navbar-brand" href="#">
+          <img src="./../../assets/landing page/pictures/logo sos.png" class="logo" />
+        </a>
+       
+        <a class="navbar-toggle" data-toggle="collapse"  data-target="#bs-example-navbar-collapse-1">
+          <span class="icon-bar">
+            <i class="fa fa-bars" style="color:black;"></i>
+          </span>
+       
+        </a>
+     
+      </div>
+      <div class="navbar-collapse collapse  " id="bs-example-navbar-collapse-1" style="margin-top:25px;">
+    
+         
+          <ul class="nav navbar-nav navbar-center   ">
+          
+            <li class="active space-item-men" >
+              <a href="#" class="font-size-item-menu">
+                Who Are We
+              </a>
+            </li>
+            <li class="space-item-men">
+              <a href="#" class="font-size-item-menu">
+                Volunteer
+              </a>
+            </li>
+            <li class="space-item-men">
+              <a href="#" class="font-size-item-menu">
+                Ask For Help
+              </a>
+            </li>
+            <li class="space-item-men">
+              <a href="#" class="font-size-item-menu">
+                Q&A
+              </a>
+            </li>
+            <li  *ngIf="isSecure"  class="space-item-men">
+              <a [routerLink]="['/home/profile']" class="font-size-item-menu" >
+                  Profile
+              </a>
+            </li>
+            <li class="visible-lg-none visible-xs-block ">
+              <a *ngIf="!isSecure" [routerLink]="['/home/login']" class="position-btn-login btn btn-default btn-lg btn-login">
                 Login
-            </a>
-
-            <a *ngIf="isSecure" (click)="logout()" class="col-sm-1 pull-right btn btn-default btn-lg">
+              </a>
+              <a *ngIf="isSecure" (click)="logout()" class=" pull-right btn btn-default btn-lg">
                 Logout
-            </a>
-            <div class="col-sm-9 pull-right">
-                <ul class="header nav navbar-nav col-sm-12">
-                    <li *ngIf="!isSecure" class="col-sm-3">
-                        <a [routerLink]="['/home/register']">
-                            Volunteer
-                        </a>
-                    </li>
-
-                    <li *ngIf="isSecure" class="col-sm-3">
-                        <a [routerLink]="['/home/profile']">
-                            Profile
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-        <!-- /.navbar-collapse -->
+              </a>
+  
+            </li>
+  
+       
+      
+      
+    
+   
+        </ul>
+        <ul class="nav navbar-nav navbar-right visible-sm visible-lg visible-md" style="margin-top:5px;">
+          <a *ngIf="!isSecure" [routerLink]="['/home/login']" class=" btn btn-default btn-lg btn-login font-size-label-btn">
+            Login
+          </a>
+          <a *ngIf="isSecure" (click)="logout()" class=" pull-right btn btn-default btn-lg font-size-label-btn">
+            Logout
+          </a>
+           
+        
+    
+  
+        </ul>
+  
+        
+      
+     
+      
+      
+   
+      
+     
+      </div>
+  
     </div>
-    <!-- /.container -->
-</nav>
-<div class="intro-header">
+  
+   </div>
+   -->
+  
+ <app-header></app-header> 
+<div >
     <router-outlet></router-outlet>
 </div>
+<app-footer></app-footer>

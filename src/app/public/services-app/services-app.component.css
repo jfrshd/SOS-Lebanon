@@ -1,0 +1,16 @@
+
+.grid-service{
+     position: absolute; 
+    left: 50%; 
+    transform: translatex(-50%);  
+ 
+ 
+}
+
+.hover:hover{
+  
+    background-color: #F2F2F2;
+    border-radius: 5px;
+    padding-top:2px;
+   
+}

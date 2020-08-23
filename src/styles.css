@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "./assets/css/font.css";
 :root {
   --primary-color: #BC2C3D;
   --default-text-color: #222222;
@@ -43,19 +45,271 @@ body {
 .no-padding {
   padding: 0;
 }
-
-.container {
-  margin-left: 20px;
-  margin-right: 20px;
+.margin-section-initia{
+  margin-top:230px;
+}
+/* .container {
+  margin-left: 50px;
+  margin-right: 50px;
   width: auto;
+} */
+.navbar-nav.navbar-center { 
+  position: absolute; 
+  left: 50%; 
+  transform: translatex(-50%); 
+}
+.space-item-men{
+   margin-left:35px;
+}
+.btn-login{
+ background-color: #BC2C3D!important;
 }
 
-@media (max-width: 768px) {
-  .container {
-    margin-left: 0;
-    margin-right: 0;
+.logo-initiatives{
+  width: 120px;
+}
+.backgroundFooter{
+  background-color: #2C2627;
+}
+.size-icon{
+  width: 50px;
+}
+.sizeLogoFooter{
+  width: 100px;
+}
+.color-text-white{
+ color: #FFFFFF;
+}
+.text-view-all{
+  margin-top:-30px;
+  color:#BC2C3D!important;
+}
+/* fonts  */
+
+.font-size-item-menu{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color:#2C2627;
+}
+.font-size-label-btn{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px!important;
+
+}
+.font-title-carousel{
+  font-family: 'FrankRuhlLibre';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 4.5rem;
+  letter-spacing: 0.5px;
+}
+.font-description-home{
+  font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.5rem!important;
+}
+.font-title-service{
+  font-family: 'FrankRuhlLibre';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.8rem;
+  color:#2C2627;
+}
+.font-description-service{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 200;
+  font-size: 1.54rem;
+  color: #2C2627;
+}
+.font-title-initiatives{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color:#2C2627;
+}
+.font-text-footer{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.3rem!important;
+}
+.font-view-all{
+  font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5rem!important;
+}
+.font-description-about{
+  font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5rem!important;
+}
+.position-btn-login{
+  float: right!important;
+}
+.padding-col{
+  padding-left:60px;
+}
+.marginTopFooter{
+  margin-top:150px;
+  padding-top: 20px;padding-bottom: 30px;
+}
+.backgrond-copy-right{
+  background-color:#D3D3D3;
+}
+.margin-view-all{
+  margin-top: -30px;
+
+
+}
+.marginTopTitle{
+  margin-top:100px;
+}
+.marginTopTitleProp{
+  margin-top:100px;
+}
+@media (max-width:1355px){
+  .space-item-men {
+    margin-left: 0px;
+  }
+  .padding-col{
+    padding-left:15px;
   }
 }
+@media (max-width: 1025px) {
+  .space-item-men{
+    margin-left: -13px;
+ }
+ .font-size-item-menu {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: #2C2627;
+}
+.padding-col{
+  padding-left:15px;
+}
+.marginTopTitle {
+  margin-top: 75px;
+}
+.marginTopTitleProp{
+  margin-top:48px;
+}
+}
+
+@media (max-width: 767px) {
+  .container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .space-item-men{
+    margin-left: -1px;
+ }
+ .font-size-item-menu{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.4rem;
+  color:#2C2627;
+}
+.font-title-carousel {
+  font-family: 'FrankRuhlLibre';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2.4rem;
+  letter-spacing: 0.5px;
+}
+.margin-section-initia {
+  margin-top: 282px;
+}
+.font-description-home {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 0.9rem!important;
+}
+.font-description-service {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 200;
+  font-size: 1.1rem;
+  color: #2C2627;
+}
+.logo{
+  width:100px!important;
+
+}
+.margin-view-all{
+  margin-top: 0px;
+  text-align: center;
+
+}
+.font-size-label-btn{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px!important;
+
+}
+.font-title-initiatives {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #2C2627;
+}
+.marginTopFooter{
+  margin-top:97px;
+  padding-top: 20px;padding-bottom: 30px;
+}
+.icon-bars-margin{
+  margin-top: -5px;
+}
+.position-btn-login{
+  float: left!important;
+}
+.navbar-nav.navbar-center { 
+  position: relative;
+  left: 0;
+  transform: none;
+  
+}
+.space-item-men{
+  margin-left: -13px!important;
+}
+.navbar-collapse.in{
+  width:100%;
+  background-color: white;
+  z-index: 2!important;
+
+  left:0;
+  height: 270px;
+  top:9%;
+}
+.size-icon{
+  width: 37px;
+}
+.logo-initiatives{
+  width: 100px;
+}
+.marginTopTitle {
+  margin-top: 15px;
+}
+.marginTopTitleProp{
+  margin-top:0px;
+}
+
+}
+
 
 
 .alert-error {
@@ -72,3 +326,35 @@ body {
 .input-group-addon.input-transparent+input {
   border-left: 0;
 }
+
+
+/* @media (max-width: 991px) {
+  .navbar-header {
+      float: none;
+  }
+  .navbar-toggle {
+      display: block;
+  }
+  .navbar-collapse {
+      border-top: 1px solid transparent;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .navbar-collapse.collapse {
+      display: none!important;
+  }
+  .navbar-collapse.collapse.in {
+      display: block!important;
+  }
+  .navbar-nav {
+      float: none!important;
+      margin: 7.5px -15px;
+  }
+  .navbar-nav>li {
+      float: none;
+  }
+  .navbar-nav>li>a {
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+} */
+
