@@ -60,30 +60,18 @@
                             href="{{data.facebookAccount? 'https://facebook.com/' + data.facebookAccount : 'javascript:void(0)'}}">
                             <i class="fa fa-facebook"></i>
                         </a>
-                        <span *ngIf="!data.facebookAccount" class="badge badge-grey">
-                            <i class="fa fa-facebook"></i>
-                        </span>
                         <a *ngIf="data.instagramAccount" class="badge badge-primary" target="_blank"
                             href="{{data.instagramAccount? 'https://instagram.com/' + data.instagramAccount : 'javascript:void(0)'}}">
                             <i class="fa fa-instagram"></i>
                         </a>
-                        <span *ngIf="!data.instagramAccount" class="badge badge-grey">
-                            <i class="fa fa-instagram"></i>
-                        </span>
                         <a *ngIf="data.twitterAccount" class="badge badge-primary" target="_blank"
                             href="{{data.twitterAccount? 'https://twitter.com/' + data.twitterAccount : 'javascript:void(0)'}}">
                             <i class="fa fa-twitter"></i>
                         </a>
-                        <span *ngIf="!data.twitterAccount" class="badge badge-grey">
-                            <i class="fa fa-twitter"></i>
-                        </span>
                         <a *ngIf="data.linkedInAccount" class="badge badge-primary" target="_blank"
                             href="{{data.linkedInAccount? 'https://linkedin.com/' + data.linkedInAccount : 'javascript:void(0)'}}">
                             <i class="fa fa-linkedin"></i>
                         </a>
-                        <span *ngIf="!data.linkedInAccount" class="badge badge-grey">
-                            <i class="fa fa-linkedin"></i>
-                        </span>
                     </span>
                 </span>
                 <p class="text-overflow-2">{{data.description}}</p>
