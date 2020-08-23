@@ -33,6 +33,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppInterceptorProviders } from './app-interceptor.provider';
 import { InitiativeFormComponent } from './secure/initiative-form/initiative-form.component';
 import { CaseFormComponent } from './secure/case-form/case-form.component';
+<<<<<<< HEAD
 import {SharedModule} from './shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { CarouselAppComponent } from './public/carousel-app/carousel-app.component';
@@ -41,6 +42,14 @@ import { InitiativesAppComponent } from './public/initiatives-app/initiatives-ap
 import { AboutComponent } from './public/about/about.component';
 import { AreWeComponent } from './public/about/are-we/are-we.component';
 import { PurposeComponent } from './public/about/purpose/purpose.component';
+=======
+import {ListInitiativesComponent} from './public/list-initiatives/list-initiatives.component';
+import {InitiativeEntryComponent} from './public/initiative-entry/initiative-entry.component';
+import {InitiativeViewComponent} from './public/initiative-view/initiative-view.component';
+import {InitiativePageComponent} from './public/initiative-page/initiative-page.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
+>>>>>>> aaa6df18acef7281c8908d153e8f85b820382724
 @NgModule({
   declarations: [
     NewPasswordComponent,
@@ -61,6 +70,10 @@ import { PurposeComponent } from './public/about/purpose/purpose.component';
     SecureHomeComponent,
     ProfileComponent,
     InitiativeFormComponent,
+    InitiativeEntryComponent,
+    ListInitiativesComponent,
+    InitiativeViewComponent,
+    InitiativePageComponent,
     CaseFormComponent,
     JwtComponent,
     AppComponent,
@@ -79,6 +92,7 @@ import { PurposeComponent } from './public/about/purpose/purpose.component';
     InternationalPhoneNumberModule,
     NgbModule,
     BrowserAnimationsModule,
+    NgMultiSelectDropDownModule.forRoot(),
     ModalModule.forRoot(),
     AppRoutingModule,
     SharedModule,

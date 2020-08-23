@@ -41,7 +41,7 @@
 </div>
 
 <div class="case-data col-xs-12 row">
-    <span class="col-xs-2 col-lg-1 data-image">
+    <span class="col-xs-12 col-sm-12 col-lg-2 data-image">
         <ngb-carousel *ngIf="data.images" [showNavigationArrows]="true" [showNavigationIndicators]="true">
             <ng-template ngbSlide *ngFor="let image of data.images; let index=index">
                 <img [src]="image" alt="Image {{index + 1}}">
@@ -50,24 +50,40 @@
         <img *ngIf="!data.images || data.images === []" alt="{{data.category}}" title="{{data.category}}" width="60"
             src="./../../../assets/landing page/pictures/not found.png" />
     </span>
-    <div class="col-xs-10 col-lg-11">
+    <div class=" col-xs-12 col-sm-12  col-lg-10">
         <section class="data-text color-black col-xs-12 col-md-9 col-lg-10">
             <div class="row">
                 <span class="text-overflow-2 data-title">
                     Who we are helping?
                     <span class="case-social-actions">
-                        <a class="badge badge-primary" href="" target="_blank">
+                        <a *ngIf="data.facebookAccount" class="badge badge-primary" target="_blank"
+                            href="{{data.facebookAccount? 'https://facebook.com/' + data.facebookAccount : 'javascript:void(0)'}}">
                             <i class="fa fa-facebook"></i>
                         </a>
-                        <a class="badge badge-primary" href="" target="_blank">
+                        <span *ngIf="!data.facebookAccount" class="badge badge-grey">
+                            <i class="fa fa-facebook"></i>
+                        </span>
+                        <a *ngIf="data.instagramAccount" class="badge badge-primary" target="_blank"
+                            href="{{data.instagramAccount? 'https://instagram.com/' + data.instagramAccount : 'javascript:void(0)'}}">
                             <i class="fa fa-instagram"></i>
                         </a>
-                        <a class="badge badge-primary" href="" target="_blank">
+                        <span *ngIf="!data.instagramAccount" class="badge badge-grey">
+                            <i class="fa fa-instagram"></i>
+                        </span>
+                        <a *ngIf="data.twitterAccount" class="badge badge-primary" target="_blank"
+                            href="{{data.twitterAccount? 'https://twitter.com/' + data.twitterAccount : 'javascript:void(0)'}}">
                             <i class="fa fa-twitter"></i>
                         </a>
-                        <a class="badge badge-primary" href="" target="_blank">
+                        <span *ngIf="!data.twitterAccount" class="badge badge-grey">
+                            <i class="fa fa-twitter"></i>
+                        </span>
+                        <a *ngIf="data.linkedInAccount" class="badge badge-primary" target="_blank"
+                            href="{{data.linkedInAccount? 'https://linkedin.com/' + data.linkedInAccount : 'javascript:void(0)'}}">
                             <i class="fa fa-linkedin"></i>
                         </a>
+                        <span *ngIf="!data.linkedInAccount" class="badge badge-grey">
+                            <i class="fa fa-linkedin"></i>
+                        </span>
                     </span>
                 </span>
                 <p class="text-overflow-2">{{data.description}}</p>
@@ -78,15 +94,16 @@
                 </span>
                 <p class="text-overflow-2">{{data.helpDescription}}</p>
             </div>
-            <!--
-                <div class="row color-red" *ngIf="!showUser">
-                Listed in &nbsp;
-                <img width="20" height="auto" alt="{{data.category}}" title="{{data.category}}"
-                    onerror="this.onerror=null;this.src='./assets/landing page/pictures/not found.png'"
-                    src="./../../../assets/landing page/pictures/{{data.category?.toLocaleLowerCase()}}.png" />
-                &nbsp;<em>{{data.category}}</em>
+
+            <div class="row color-red">
+                Posted by
+                <b *ngIf="data.initiative">
+                    <a class="link-unstyled" [routerLink]="['/home/initiatives/' + data.initiative.pk]">
+                        {{data.initiative.name}}
+                    </a>
+                </b>
+                <span *ngIf="!data.initiative">Unknown</span>
             </div>
-        -->
         </section>
         <div class="data-text col-xs-12 col-md-3 col-lg-2 color-red">
             <div *ngIf="showActions && !data.isFulfilled" class="case-actions row">
@@ -113,11 +130,14 @@
                 </a>
                 <a class="no-padding link-unstyled col-xs-6 col-md-12 text-overflow" target="_blank"
                     href="mail:{{data.contactEmail}}">
-                    <i class="fa fa-map-marker"></i>&nbsp;&nbsp;{{data.contactEmail}}
+                    <i class="fa fa-envelope"></i>&nbsp;&nbsp;{{data.contactEmail}}
                 </a>
                 <a class="no-padding link-unstyled col-xs-6 col-md-12 text-overflow" target="_blank"
-                    href="https://maps.google.com/?q={{data.location}}">
-                    <i class="fa fa-map-marker"></i>&nbsp;&nbsp;{{data.location}}
+                    href="https://maps.google.com/?q={{locations[data.location]}}">
+                    <i class="fa fa-map-marker"></i>&nbsp;&nbsp;
+                    <span *ngIf="locations">
+                        {{locations[data.location]}}
+                    </span>
                 </a>
             </span>
         </div>

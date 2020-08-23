@@ -1,5 +1,8 @@
+import { Initiative } from './initiative';
+
 export class Case {
     public id: string;
+    public initiative?: Initiative;
     public contactName: string;
     public contactEmail: string;
     public contactPhone: string;
@@ -17,6 +20,7 @@ export class Case {
 
     constructor(obj: Case = {} as Case) {
         this.id = obj.id;
+        this.initiative = new Initiative(obj.initiative);
         this.contactName = obj.contactName;
         this.contactEmail = obj.contactEmail;
         this.contactPhone = obj.contactPhone;

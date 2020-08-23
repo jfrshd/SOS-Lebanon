@@ -35,7 +35,7 @@
             </international-phone-number>
           </div>
         </div>
-        <div class="row hidden">
+        <!-- <div class="row">
           <div class="form-group col-lg-6 col-md-12 col-sm-12"
             [class.has-error]="submitted && form.controls['password'].invalid">
             <label class="control-label">Password</label>
@@ -47,21 +47,18 @@
             <input type="password" maxlength="50" class="form-control" formControlName="confirmPassword"
               password="Re-enter Password">
           </div>
-        </div>
+        </div> -->
         <div class="row" [class.has-error]="submitted && form.controls['categories'].invalid">
           <div class="form-group col-xs-12">
             <label class="control-label">Focus Category</label>
-            <div class="row">
-              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 radio" *ngFor="let category of categories">
-                <label><input type="radio" class="form-control" name="categories"
-                    [value]="category.id">{{category.name}}</label>
-              </div>
-              <div class="form-group col-xs-12 col-sm-6">
-                <label class="control-label">Other:</label>
-                <input type="text" maxlength="100" class="form-control" formControlName="categories"
-                  placeholder="Other Category">
-              </div>
-            </div>
+            <ng-multiselect-dropdown [data]="categories" [settings]="{ textField: 'name' }"
+              (onDeSelect)="changeDropdown('categories', $event, 'deselect')"
+              (onSelect)="changeDropdown('categories', $event, 'select')"
+              (onSelectAll)="changeDropdown('categories', categories, 'selectAll')">
+            </ng-multiselect-dropdown>
+            <select multiple formControlName="categories" class="form-control hidden">
+              <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+            </select>
           </div>
         </div>
         <div class="row" [class.has-error]="submitted && form.controls['description'].invalid">
@@ -74,17 +71,14 @@
         <div class="row">
           <div class="form-group col-xs-12" [class.has-error]="submitted && form.controls['locations'].invalid">
             <label class="control-label">Locations covered</label>
-            <div class="row">
-              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 radio" *ngFor="let location of locations">
-                <label><input type="radio" class="form-control" formControlName="locations"
-                    [value]="location.id">{{location.name}}</label>
-              </div>
-              <div class="form-group col-xs-12 col-sm-6">
-                <label class="control-label">Other:</label>
-                <input type="text" maxlength="100" class="form-control" formControlName="locations"
-                  placeholder="Other Location">
-              </div>
-            </div>
+            <ng-multiselect-dropdown [data]="locations" [settings]="{ textField: 'name' }"
+              (onDeSelect)="changeDropdown('locations', $event, 'deselect')"
+              (onSelect)="changeDropdown('locations', $event, 'select')"
+              (onSelectAll)="changeDropdown('locations', locations, 'selectAll')">
+            </ng-multiselect-dropdown>
+            <select multiple formControlName="locations" class="form-control hidden">
+              <option *ngFor="let location of locations" [value]="location.id">{{location.name}}</option>
+            </select>
           </div>
         </div>
         <div class="row">
@@ -139,7 +133,7 @@
           </div>
         </div>
         <div class="form-group pull-right">
-          <button id="signupSubmit" type="submit" class="btn btn-default" style="width: 200px;">
+          <button id="signupSubmit" type="submit" class="btn btn-default" [disabled]="loading" style="width: 200px;">
             <i class="fa fa-send"></i> &nbsp;Submit
           </button>
         </div>

@@ -50,6 +50,7 @@
               </a>
               <a *ngIf="isSecure" (click)="logout()" class=" pull-right btn btn-default btn-lg">
                 Logout
+<<<<<<< HEAD
               </a>
   
             </li>
@@ -83,6 +84,39 @@
      
       </div>
   
+=======
+            </a>
+            <div class="col-sm-9 pull-right">
+                <ul class="header nav navbar-nav col-sm-12">
+                    <li *ngIf="!isSecure" class="col-sm-3">
+                        <a [routerLink]="['/home/register']">
+                            Volunteer
+                        </a>
+                    </li>
+
+                    <li *ngIf="isSecure" class="col-sm-3">
+                        <a [routerLink]="['/home/initiatives']">
+                            Initiatives
+                        </a>
+                    </li>
+
+                    <li *ngIf="isSecure" class="col-sm-3">
+                        <a [routerLink]="['/home/cases-list']">
+                            Who can I help
+                        </a>
+                    </li>
+
+                    <li *ngIf="isSecure" class="col-sm-3">
+                        <a [routerLink]="['/home/profile']">
+                            Profile
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+>>>>>>> aaa6df18acef7281c8908d153e8f85b820382724
     </div>
   
    </div>

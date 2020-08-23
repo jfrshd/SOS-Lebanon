@@ -12,7 +12,7 @@ export class CategoryService {
     private MOCK_DATA = [
         new Category({
             id: '1',
-            name: 'Construction'
+            name: 'Construction',
         }),
         new Category({
             id: '2',
@@ -32,6 +32,19 @@ export class CategoryService {
     }
 
     public get(): Observable<ArrayResponse<Category>> {
-        return this.httpClient.get<ArrayResponse<Category>>(environment.url + '/category');
+        if (environment.mock) {
+            return of(new ArrayResponse({
+                statusCode: 200,
+                result: {
+                    Count: this.MOCK_DATA.length,
+                    ScannedCount: this.MOCK_DATA.length,
+                    Items: this.MOCK_DATA,
+                    LastEvaluatedKey: null
+                }
+            })
+            );
+        } else {
+            return this.httpClient.get<ArrayResponse<Category>>(environment.url + '/categories');
+        }
     }
 }

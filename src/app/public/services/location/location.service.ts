@@ -9,10 +9,33 @@ import { environment } from '../../../../environments/environment';
     providedIn: 'root'
 })
 export class LocationService {
+    private MOCK_DATA = [
+        new Location({
+            id: '1',
+            name: 'Downtown'
+        }),
+        new Location({
+            id: '2',
+            name: 'Hazmieh'
+        })
+    ];
     constructor(private httpClient: HttpClient) {
     }
 
     public get(): Observable<ArrayResponse<Location>> {
-        return this.httpClient.get<ArrayResponse<Location>>(environment.url + '/location');
+        if (environment.mock) {
+            return of(new ArrayResponse({
+                statusCode: 200,
+                result: {
+                    Count: this.MOCK_DATA.length,
+                    ScannedCount: this.MOCK_DATA.length,
+                    Items: this.MOCK_DATA,
+                    LastEvaluatedKey: null
+                }
+            })
+            );
+        } else {
+            return this.httpClient.get<ArrayResponse<Location>>(environment.url + '/locations');
+        }
     }
 }

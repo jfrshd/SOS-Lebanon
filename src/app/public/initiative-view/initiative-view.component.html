@@ -1,0 +1,85 @@
+<div class="case-data  row">
+  <span class="col-xs-12 col-sm-12 col-lg-2 data-image">
+    <img width="60" src="{{data.profilePicture || './../../../assets/landing page/pictures/not found.png'}}"
+      onerror="this.error = ''; this.src = './../../../assets/landing page/pictures/not found.png'" />
+  </span>
+  <div class=" col-xs-12 col-sm-12  col-lg-10">
+    <section class="data-text color-black col-xs-12 col-md-9 col-lg-10">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <span class="text-overflow-2 data-name">{{data.name}}</span>
+        </div>
+      </div>
+      <div class="data-text col-xs-12 col-md-12 col-lg-12 color-black row">
+        <span class="case-links" *ngIf="!showActions">
+          <a class="no-padding link-unstyled col-xs-12 col-sm-4 text-overflow">
+            <i class="fa fa-user"></i>&nbsp;&nbsp;{{data.leadName}}
+          </a>
+          <a href="tel:{{data.phone}}"
+            class="no-padding link-unstyled col-xs-12 col-sm-4 text-overflow" target="_blank">
+            <i class="fa fa-phone"></i>&nbsp;&nbsp;{{data.phone}}
+          </a>
+          <a class="no-padding link-unstyled col-xs-12 col-sm-4 text-overflow" target="_blank"
+            href="mail:{{data.email}}">
+            <i class="fa fa-envelope"></i>&nbsp;&nbsp;{{data.email}}
+          </a>
+          <!--                <a class="no-padding link-unstyled col-xs-6 col-md-12 text-overflow" target="_blank"-->
+          <!--                    href="https://maps.google.com/?q={{data.location}}">-->
+          <!--                    <i class="fa fa-map-marker"></i>&nbsp;&nbsp;{{data.location}}-->
+          <!--                </a>-->
+        </span>
+      </div>
+      <p>
+      <p>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 case-social-actions">
+          Connect:
+          <a class="" href="https://facebook.com/{{data.facebookAccount}}" target="_blank">
+            <i class="fa fa-facebook"></i>
+          </a>
+          <a class="" href="https://instagram.com/{{data.instagramAccount}}" target="_blank">
+            <i class="fa fa-instagram"></i>
+          </a>
+          <a class="" href="http://twitter.com/{{data.twitterAccount}}" target="_blank">
+            <i class="fa fa-twitter"></i>
+          </a>
+          <a class="" href="https://www.linkedin.com/in/{{data.linkedInAccount}}" target="_blank">
+            <i class="fa fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+      <p></p>
+      <div class="row">
+        <span class="text-overflow-2 data-title col-md-12 col-lg-12 col-sm-12 col-xs-12">
+          General info
+        </span>
+        <p class="text-overflow-2 col-md-12 col-lg-12 col-sm-12 col-xs-12">{{data.description}}</p>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+          <span class="text-overflow-2 data-title">
+            Focused Categories
+          </span>
+          <p class="text-overflow-2">{{categoriesDescription}}</p>
+        </div>
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+          <span class="text-overflow-2 data-title">
+            Locations Covered
+          </span>
+          <p class="text-overflow-2">{{locationsDescription}}</p>
+        </div>
+
+      </div>
+      <!--
+            <div class="row color-red" *ngIf="!showUser">
+            Listed in &nbsp;
+            <img width="20" height="auto" alt="{{data.category}}" title="{{data.category}}"
+                onerror="this.onerror=null;this.src='./assets/landing page/pictures/not found.png'"
+                src="./../../../assets/landing page/pictures/{{data.category?.toLocaleLowerCase()}}.png" />
+            &nbsp;<em>{{data.category}}</em>
+        </div>
+    -->
+    </section>
+
+  </div>
+</div>

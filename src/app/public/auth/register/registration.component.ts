@@ -10,7 +10,7 @@ import {ConfirmedValidator} from '../../validators/password.confirm.validator';
  * the registration of the user.
  */
 @Component({
-  selector: 'awscognito-angular2-app',
+  selector: 'app-registration',
   templateUrl: './registration.html',
   styleUrls: ['./registration.css']
 })

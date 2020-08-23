@@ -29,6 +29,15 @@ export class HomeLandingComponent implements OnInit, OnDestroy {
       .subscribe((isLoggedIn: boolean) => this.isSecure = isLoggedIn);
   }
 
+  imageError(element, category: Category): void {
+    const image = location.origin + '/assets/landing%20page/pictures/' + (category.image || '') + '.png';
+    if (element.src && element.src === image) {
+      element.src = './assets/landing page/pictures/not found.png';
+    } else {
+      element.src = image;
+    }
+  }
+
   ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();

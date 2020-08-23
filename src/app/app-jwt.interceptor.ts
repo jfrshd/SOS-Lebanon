@@ -11,29 +11,36 @@ export class AppJwtInterceptor implements HttpInterceptor {
 
   constructor(
     private auth: UserLoginService
-  ) {}
+  ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     return this.auth.isLoggedIn$
-        .pipe(
-            switchMap((_) => {
-              const cognitoUser = this.auth.cognitoUtil.getCurrentUser();
-              if (cognitoUser != null) {
-                cognitoUser.getSession( (err, session) => this.jwt = session.getIdToken().getJwtToken());
-
-                let with_auth_request = request.clone({
-                    setHeaders: {
-                        Authorization: `Bearer ${this.jwt}`
-                    }
-                });
-                return next.handle(with_auth_request);
+      .pipe(
+        switchMap((_) => {
+          const cognitoUser = this.auth.cognitoUtil.getCurrentUser();
+          if (cognitoUser != null) {
+            cognitoUser.getSession((err, session) => {
+              if (session) {
+                const idToken = session.getIdToken();
+                if (idToken) {
+                  this.jwt = idToken.getJwtToken();
+                }
               }
-              return next.handle(request);
-            }),
-            catchError((err) => {
-                return next.handle(request);
-            }),
-        );
+            });
+
+            const authenticatedRequest = request.clone({
+              setHeaders: {
+                Authorization: `Bearer ${this.jwt}`
+              }
+            });
+            return next.handle(authenticatedRequest);
+          }
+          return next.handle(request);
+        }),
+        catchError((err) => {
+          return next.handle(request);
+        }),
+      );
   }
 }

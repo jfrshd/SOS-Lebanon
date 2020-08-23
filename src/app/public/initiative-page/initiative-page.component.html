@@ -1,0 +1,26 @@
+<div class="">
+  <div class="initiative-view-container">
+    <app-initiative-view [data]="data" *ngIf="data"></app-initiative-view>
+  </div>
+  <br>
+  <h1 class="page-title">Cases from this initiative</h1>
+  <p>
+  <h4 class="page-title">Check all the open and fulfilled cases </h4>
+
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li ngbNavItem>
+      <a ngbNavLink>Open Cases</a>
+      <ng-template ngbNavContent>
+        <app-list-cases></app-list-cases>
+      </ng-template>
+    </li>
+    <li ngbNavItem>
+      <a ngbNavLink>Fulfilled cases</a>
+      <ng-template ngbNavContent>
+        <app-list-cases></app-list-cases>
+      </ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav"></div>
+
+</div>

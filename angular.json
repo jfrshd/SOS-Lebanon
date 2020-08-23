@@ -24,7 +24,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/carousel.css",
+            "src/carousel.css",
               "src/styles.css",
               "src/colors.css"
             ],

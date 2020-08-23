@@ -1,4 +1,4 @@
-.data-image {
+.data-image{
   text-align: center;
 }
 
@@ -24,7 +24,6 @@
   font-size: 32px;
   font-weight: bold;
 }
-
 .case-data .data-title {
   font-size: 25px;
   font-weight: 600;
@@ -60,10 +59,6 @@
 
 .case-data .badge.badge-primary {
   background-color: var(--color-red);
-}
-
-.case-data .badge.badge-grey {
-  background-color: var(--color-dark-grey);
 }
 
 .case-data .badge+.badge {
