@@ -18,7 +18,6 @@ export class InitiativesAppComponent implements OnInit {
   }
 
   imageError(element, initiative: Initiative): void {
-    debugger
     const image = location.origin + '/assets/landing%20page/pictures/' + (initiative.profilePicture || '') + '.png';
     if (element.src && element.src === image) {
       element.src = './assets/landing page/pictures/not found.png';

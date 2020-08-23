@@ -303,6 +303,13 @@ body {
     font-size: 1rem;
     color: #2C2627;
   }
+  app-footer {
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 350px!important;
+  }
 
   .marginTopFooter {
     margin-top: 97px;
@@ -384,8 +391,8 @@ app-footer {
 
 .body {
   margin-bottom: 200px;
-  height: 100vh;
-  overflow-y:scroll;
+  height: calc(100% - 300px);
+  overflow-y: auto;
 }
 
 .marginTopFooter {
