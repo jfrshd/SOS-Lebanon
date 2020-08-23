@@ -1,0 +1,27 @@
+.imgback{
+    position: absolute;
+    z-index: -1;
+    top: -29px;
+    right: -200px;
+    width: 650px;
+    height: 650px;
+}
+
+.left {
+    width: 450px;
+    height: 450px;
+
+background-color: #F2F2F2;
+
+border-top-left-radius: 35%;
+border-top-right-radius: 0%;
+border-bottom-right-radius: 45%;
+border-bottom-left-radius: 45%;
+    position: absolute;
+    top:0;
+    right: 0;
+    z-index: -1;
+  
+  
+  }
+
