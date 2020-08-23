@@ -39,54 +39,78 @@ export class CaseService {
         category?: string,
         keyword?: string, limit: number = 10,
         evaluateKey: ApiEvaluatedKey = null): Observable<ArrayResponse<Case>> {
-        return of(new ArrayResponse({
-            statusCode: 200,
-            result: {
-                Count: this.MOCK_DATA.length,
-                ScannedCount: this.MOCK_DATA.length,
-                Items: this.MOCK_DATA,
-                LastEvaluatedKey: null
+        if (environment.mock) {
+            return of(new ArrayResponse({
+                statusCode: 200,
+                result: {
+                    Count: this.MOCK_DATA.length,
+                    ScannedCount: this.MOCK_DATA.length,
+                    Items: this.MOCK_DATA,
+                    LastEvaluatedKey: null
+                }
+            })
+            );
+        } else {
+            const evaluateKeyStr = JSON.stringify(evaluateKey);
+            const params: any = {
+                LastEvaluatedKey: evaluateKeyStr === '{}' ? '' : encodeURI(evaluateKeyStr),
+                limit: limit.toString()
+            };
+            if (keyword) {
+                params.keyword = keyword;
             }
-        })
-        );
-        const evaluateKeyStr = JSON.stringify(evaluateKey);
-        const params: any = {
-            LastEvaluatedKey: evaluateKeyStr === '{}' ? '' : encodeURI(evaluateKeyStr),
-            limit: limit.toString()
-        };
-        if (keyword) {
-            params.keyword = keyword;
+            if (category) {
+                params.category = category;
+            }
+            return this.httpClient.get<ArrayResponse<Case>>(environment.url + '/cases', {
+                params
+            });
         }
-        if (category) {
-            params.category = category;
-        }
-        return this.httpClient.get<ArrayResponse<Case>>(environment.url + '/case', {
-            params
-        });
     }
 
     public getMyCases(
         keyword?: string, limit: number = 10,
         evaluateKey: ApiEvaluatedKey = null): Observable<ArrayResponse<Case>> {
-        const evaluateKeyStr = JSON.stringify(evaluateKey);
-        const params: any = {
-            LastEvaluatedKey: evaluateKeyStr === '{}' ? '' : encodeURI(evaluateKeyStr),
-            limit: limit.toString()
-        };
-        if (keyword) {
-            params.keyword = keyword;
+        if (environment.mock) {
+            return of(new ArrayResponse({
+                statusCode: 200,
+                result: {
+                    Count: this.MOCK_DATA.length,
+                    ScannedCount: this.MOCK_DATA.length,
+                    Items: this.MOCK_DATA,
+                    LastEvaluatedKey: null
+                }
+            })
+            );
+        } else {
+            const evaluateKeyStr = JSON.stringify(evaluateKey);
+            const params: any = {
+                LastEvaluatedKey: evaluateKeyStr === '{}' ? '' : encodeURI(evaluateKeyStr),
+                limit: limit.toString()
+            };
+            if (keyword) {
+                params.keyword = keyword;
+            }
+            return this.httpClient.get<ArrayResponse<Case>>(environment.url + '/usercases', {
+                params
+            });
         }
-        return this.httpClient.get<ArrayResponse<Case>>(environment.url + '/case/my', {
-            params
-        });
     }
 
     public getById(id: string): Observable<ApiResponse<Case>> {
-        return this.httpClient.get<ApiResponse<Case>>(environment.url + '/case', {
-            params: {
-                id
-            }
-        });
+        if (environment.mock) {
+            return of(new ApiResponse({
+                statusCode: 200,
+                result: this.MOCK_DATA.find(d => d.id === id)
+            })
+            );
+        } else {
+            return this.httpClient.get<ApiResponse<Case>>(environment.url + '/cases', {
+                params: {
+                    id
+                }
+            });
+        }
     }
 
     public delete(id: string): Observable<ArrayResponse<Case>> {
@@ -98,10 +122,12 @@ export class CaseService {
     }
 
     public create(model: Case): Observable<Case> {
-        return this.httpClient.post<Case>(environment.url + '/case', model);
+        const data = Object.assign({}, model);
+        delete data.id;
+        return this.httpClient.post<Case>(environment.url + '/case', data);
     }
 
     public update(model: Case): Observable<Case> {
-        return this.httpClient.put<Case>(environment.url + '/case', model);
+        return this.httpClient.post<Case>(environment.url + '/case', model);
     }
 }

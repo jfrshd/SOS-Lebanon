@@ -25,12 +25,12 @@
                     <div class="listing-type col-xs-12 col-sm-6 col-lg-3" *ngFor="let category of categories">
                         <a class="btn btn-light link-unstyled" [routerLink]="['/home/cases-list']"
                             [queryParams]="{ category: category.name }">
-                            <img [src]="type.image" width="auto" height="40"
-                                onerror="this.onerror=null;this.src='./assets/landing page/pictures/not found.png'" />
+                            <img #img src="{{category.image}}" width="auto" height="40"
+                                (error)="imageError(img, category)" />
                             <br>
-                            <b class="text-overflow" [title]="type.name">{{type.name}}</b>
+                            <b class="text-overflow" [title]="category.name">{{category.name}}</b>
                             <br>
-                            <em class="text-wrap" [title]="type.description">{{type.description}}</em>
+                            <em class="text-wrap" [title]="category.description">{{category.description}}</em>
                         </a>
                     </div>
                 </div>

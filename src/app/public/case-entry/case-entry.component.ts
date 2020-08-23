@@ -11,6 +11,8 @@ declare var $: any;
 export class CaseEntryComponent implements OnInit {
     @Input() data: Case;
     @Input() showActions: boolean;
+    // locations key(id)-value(name) pair
+    @Input() locations: any;
     // tslint:disable-next-line: no-output-on-prefix
     @Output() onDelete = new EventEmitter<string>();
     deleteModal: any;

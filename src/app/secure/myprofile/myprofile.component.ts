@@ -4,11 +4,11 @@ import { CognitoUtil, LoggedInCallback } from '../../service/cognito.service';
 import { UserParametersService } from '../../service/user-parameters.service';
 import { Router } from '@angular/router';
 import { GetParametersCallback } from './get-parameters-callback';
-import {Parameters} from './parameters';
+import { Parameters } from './parameters';
 
 
 @Component({
-    selector: 'awscognito-angular2-app',
+    selector: 'app-my-profile',
     templateUrl: './myprofile.html'
 })
 export class MyProfileComponent implements LoggedInCallback {

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'awscognito-mfa',
+    selector: 'app-mfa',
     templateUrl: './mfa.html'
 })
 export class MFAComponent {

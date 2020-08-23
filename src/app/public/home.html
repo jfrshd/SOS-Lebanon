@@ -30,6 +30,18 @@
                     </li>
 
                     <li *ngIf="isSecure" class="col-sm-3">
+                        <a [routerLink]="['/home/initiatives']">
+                            Initiatives
+                        </a>
+                    </li>
+
+                    <li *ngIf="isSecure" class="col-sm-3">
+                        <a [routerLink]="['/home/cases-list']">
+                            Who can I help
+                        </a>
+                    </li>
+
+                    <li *ngIf="isSecure" class="col-sm-3">
                         <a [routerLink]="['/home/profile']">
                             Profile
                         </a>

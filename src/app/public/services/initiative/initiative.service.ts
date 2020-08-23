@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {ApiEvaluatedKey, ApiResponse, ArrayResponse, Initiative} from '../../models';
-import {Observable, of} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
-import {environment} from '../../../../environments/environment';
+import { Injectable } from '@angular/core';
+import { ApiEvaluatedKey, ApiResponse, ArrayResponse, Initiative } from '../../models';
+import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import {environment} from '../../../../environments/environment';
 export class InitiativeService {
   private MOCK_DATA = [
     new Initiative({
-      id: 'id1',
+      pk: 'id1',
       name: 'After work Champs',
       leadName: 'John Smith',
       email: 'johnsmith@email.com',
@@ -36,8 +36,8 @@ export class InitiativeService {
   public get(
     keyword?: string, limit: number = 10,
     evaluateKey: ApiEvaluatedKey = null): Observable<ArrayResponse<Initiative>> {
-
-    return of(new ArrayResponse({
+    if (environment.mock) {
+      return of(new ArrayResponse({
         statusCode: 200,
         result: {
           Count: this.MOCK_DATA.length,
@@ -46,33 +46,36 @@ export class InitiativeService {
           LastEvaluatedKey: null
         }
       })
-    );
-
-    // const evaluateKeyStr = JSON.stringify(evaluateKey);
-    // const params: any = {
-    //     LastEvaluatedKey: evaluateKeyStr === '{}' ? '' : encodeURI(evaluateKeyStr),
-    //     limit: limit.toString()
-    // };
-    // if (keyword) {
-    //     params.keyword = keyword;
-    // }
-    // return this.httpClient.get<ArrayResponse<Initiative>>(environment.url + '/initiative', {
-    //     params
-    // });
+      );
+    } else {
+      const evaluateKeyStr = JSON.stringify(evaluateKey);
+      const params: any = {
+        LastEvaluatedKey: evaluateKeyStr === '{}' ? '' : encodeURI(evaluateKeyStr),
+        limit: limit.toString()
+      };
+      if (keyword) {
+        params.keyword = keyword;
+      }
+      return this.httpClient.get<ArrayResponse<Initiative>>(environment.url + '/initiatives', {
+        params
+      });
+    }
   }
 
   public getById(id: string): Observable<ApiResponse<Initiative>> {
-    return of(new ApiResponse({
+    if (environment.mock) {
+      return of(new ApiResponse({
         result: this.MOCK_DATA[0],
         statusCode: 200
       })
-    );
-
-    // return this.httpClient.get<ApiResponse<Initiative>>(environment.url + '/initiative', {
-    //     params: {
-    //         id
-    //     }
-    // });
+      );
+    } else {
+      return this.httpClient.get<ApiResponse<Initiative>>(environment.url + '/initiative', {
+        params: {
+          id
+        }
+      });
+    }
   }
 
   public delete(id: string): Observable<ArrayResponse<Initiative>> {

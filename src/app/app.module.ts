@@ -37,6 +37,7 @@ import {ListInitiativesComponent} from './public/list-initiatives/list-initiativ
 import {InitiativeEntryComponent} from './public/initiative-entry/initiative-entry.component';
 import {InitiativeViewComponent} from './public/initiative-view/initiative-view.component';
 import {InitiativePageComponent} from './public/initiative-page/initiative-page.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import {InitiativePageComponent} from './public/initiative-page/initiative-page.
     InternationalPhoneNumberModule,
     NgbModule,
     BrowserAnimationsModule,
+    NgMultiSelectDropDownModule.forRoot(),
     ModalModule.forRoot(),
     AppRoutingModule
   ],

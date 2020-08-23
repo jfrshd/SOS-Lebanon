@@ -40,3 +40,17 @@
   background: var(--color-grey);
   color: var(--color-black) !important;
 }
+
+.multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  background: var(--color-red) !important;
+}
+
+.multiselect-item-checkbox input[type=checkbox]+div:before {
+  color: var(--color-red) !important;
+  border-color: var(--color-red) !important;
+}
+
+.multiselect-dropdown .dropdown-btn .selected-item {
+  background: var(--color-red) !important;
+  border-color: var(--color-red) !important;
+}

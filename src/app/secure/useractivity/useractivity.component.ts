@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {UserLoginService} from '../../service/user-login.service';
-import {LoggedInCallback} from '../../service/cognito.service';
-import {Router} from '@angular/router';
-import {DynamoDBService} from '../../service/ddb.service';
+import { Component } from '@angular/core';
+import { UserLoginService } from '../../service/user-login.service';
+import { LoggedInCallback } from '../../service/cognito.service';
+import { Router } from '@angular/router';
+import { DynamoDBService } from '../../service/ddb.service';
 
 
 export class Stuff {
@@ -11,7 +11,7 @@ export class Stuff {
 }
 
 @Component({
-    selector: 'awscognito-angular2-app',
+    selector: 'app-user-activity',
     templateUrl: './useractivity.html'
 })
 export class UseractivityComponent implements LoggedInCallback {
@@ -23,7 +23,7 @@ export class UseractivityComponent implements LoggedInCallback {
         console.log('in UseractivityComponent');
     }
 
-    isLoggedIn(message: string, isLoggedIn: boolean) {
+    isLoggedIn(message: string, isLoggedIn: boolean): void {
         if (!isLoggedIn) {
             this.router.navigate(['/home/login']);
         } else {

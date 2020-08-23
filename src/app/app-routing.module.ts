@@ -36,7 +36,7 @@ const homeRoutes: Routes = [
       { path: 'forgotPassword', component: ForgotPasswordStep1Component, canActivate: [PublicGuard] },
       { path: 'newPassword', component: NewPasswordComponent, canActivate: [PublicGuard] },
       { path: 'cases-list', component: ListCasesComponent },
-      { path: 'initiatives-list', component: ListInitiativesComponent },
+      { path: 'initiatives', component: ListInitiativesComponent },
       { path: 'initiatives/:id', component: InitiativePageComponent },
       { path: 'cases/new', component: CaseFormComponent, canActivate: [AuthGuard] },
       { path: 'cases/:id', component: CaseFormComponent, canActivate: [AuthGuard] },
