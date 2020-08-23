@@ -14,12 +14,9 @@ import { InitiativeFormComponent } from './secure/initiative-form/initiative-for
 import { CaseFormComponent } from './secure/case-form/case-form.component';
 import { AuthGuard } from './app.auth.guard';
 import { PublicGuard } from './app.public.guard';
-<<<<<<< HEAD
 import { AboutComponent } from './public/about/about.component';
-=======
 import {ListInitiativesComponent} from './public/list-initiatives/list-initiatives.component';
 import {InitiativePageComponent} from './public/initiative-page/initiative-page.component';
->>>>>>> aaa6df18acef7281c8908d153e8f85b820382724
 
 const homeRoutes: Routes = [
   {
