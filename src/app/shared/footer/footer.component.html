@@ -10,12 +10,11 @@
             </div>
             <div class="col-lg-5">
                 <div class=" " style="margin-top: 23px;">
-                    <a (click)="addInitiative()" class="btn btn-lg font-description-home" style="background-color: #BC2C3D; padding-left: 40px;
+                    <a *ngIf="!isLoggedIn" (click)="addInitiative()" class="btn btn-lg font-description-home" style="background-color: #BC2C3D; padding-left: 40px;
                     padding-right: 40px;">
                         Add Initiative
                     </a>
-                    <a *ngIf="!isLoggedIn" (click)="login()" class="btn btn-lg font-description-home"
-                        style="background-color: #BC2C3D; margin-left:50px; padding-left: 50px;
+                    <a *ngIf="!isLoggedIn" (click)="login()" class="btn btn-lg font-description-home" style="background-color: #BC2C3D; margin-left:50px; padding-left: 50px;
                     padding-right: 50px;">
                         Login
                     </a>
