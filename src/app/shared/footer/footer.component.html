@@ -1,33 +1,35 @@
 <div class="backgroundFooter">
-     <div class="container marginTopFooter">
-         <div class="row text-center">
-             <div class=" col-lg-2">
-                 <img src="../../../assets/landing page/logoFooter.svg" class="sizeLogoFooter" style="margin-top: 20px;">
-             </div>
-             <div class=" col-lg-6">
-                 <h2 class="color-text-white font-text-footer text-left">If you would like to contribute with us, reach out to us by sending us an email to <b class="text-left">example@email.com</b> </h2>
-             </div>
-             <div class=" col-lg-4">
-                <div class=" " style="margin-top: 23px;"  >
-                    <a   class="btn  btn-lg font-description-home  " style="background-color: #BC2C3D;    padding-left: 40px;
+    <div class="container marginTopFooter">
+        <div class="row text-center">
+            <div class=" col-lg-2">
+                <img src="../../../assets/landing page/logoFooter.svg" class="sizeLogoFooter" style="margin-top: 20px;">
+            </div>
+            <div class="col-lg-5">
+                <h2 class="color-text-white font-text-footer text-left">If you would like to contribute with us, reach
+                    out to us by sending us an email to <b class="text-left">example@email.com</b> </h2>
+            </div>
+            <div class="col-lg-5">
+                <div class=" " style="margin-top: 23px;">
+                    <a (click)="addInitiative()" class="btn btn-lg font-description-home" style="background-color: #BC2C3D; padding-left: 40px;
                     padding-right: 40px;">
-                        Volunteer
+                        Add Initiative
                     </a>
-                    <a   class="btn  btn-lg font-description-home  " style="background-color: #BC2C3D;margin-left:50px;    padding-left: 50px;
+                    <a *ngIf="!isLoggedIn" (click)="login()" class="btn btn-lg font-description-home"
+                        style="background-color: #BC2C3D; margin-left:50px; padding-left: 50px;
                     padding-right: 50px;">
                         Login
                     </a>
 
                 </div>
-             </div>
+            </div>
 
-         </div>
+        </div>
 
-     </div>
+    </div>
 </div>
 <div class="backgrond-copy-right">
     <div class="container">
         <h1 class="text-center font-text-footer" style="    margin-top: 11px;">Copyright&copy;2020</h1>
     </div>
-    
+
 </div>

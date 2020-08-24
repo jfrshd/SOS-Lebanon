@@ -45,9 +45,9 @@ export class NewPasswordComponent implements OnInit, CognitoCallback {
         this.userRegistration.newPassword(this.registrationUser, this);
     }
 
-    cognitoCallback(message: string, result: any): void {
+    cognitoCallback(message: any, result: any): void {
         if (message != null) { // error
-            this.errorMessage = message;
+            this.errorMessage = message.message;
             console.log('result: ' + this.errorMessage);
         } else { // success
             // move to the next step
@@ -55,7 +55,7 @@ export class NewPasswordComponent implements OnInit, CognitoCallback {
         }
     }
 
-    isLoggedIn(message: string, isLoggedIn: boolean) {
+    isLoggedIn(message: string, isLoggedIn: boolean): void {
         if (isLoggedIn) {
             this.router.navigate(['/home/profile']);
         }

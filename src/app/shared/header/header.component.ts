@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit , OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   public isSecure = false;
   private auth: UserLoginService;
@@ -29,11 +29,20 @@ export class HeaderComponent implements OnInit , OnDestroy {
     this.router.navigate(['/home']);
   }
 
-  login():void{
+  login(): void {
     this.router.navigate(['/home/login']);
   }
-  about(){
+
+  about(): void {
     this.router.navigate(['/home/about']);
+  }
+
+  addInitiative(): void {
+    this.router.navigate(['/home/register']);
+  }
+
+  profile(): void {
+    this.router.navigate(['/home/profile']);
   }
 
   ngOnDestroy(): void {

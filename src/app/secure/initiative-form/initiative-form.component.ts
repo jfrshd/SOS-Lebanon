@@ -74,7 +74,7 @@ export class InitiativeFormComponent implements OnInit, OnDestroy {
           instagramAccount: new FormControl(this.data.instagramAccount),
           twitterAccount: new FormControl(this.data.twitterAccount),
           linkedInAccount: new FormControl(this.data.linkedInAccount),
-          profilePicture: new FormControl(this.data.profilePicture)
+          profilePicture: new FormControl()
         });
       });
   }
