@@ -25,12 +25,12 @@
           </a>
         </li>
         <li class="space-item-men">
-          <a (click)="addInitiative()" class="font-size-item-menu">
+          <a *ngIf="isSecure" (click)="addInitiative()" class="font-size-item-menu">
             Add Initiative
           </a>
         </li>
         <li class="space-item-men">
-          <a href="#" class="font-size-item-menu">
+          <a (click)="listInitiatives()" class="font-size-item-menu">
             Ask For Help
           </a>
         </li>

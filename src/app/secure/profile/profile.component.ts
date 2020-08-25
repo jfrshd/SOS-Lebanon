@@ -60,6 +60,10 @@ export class ProfileComponent implements OnInit, LoggedInCallback {
     }
 
     onDelete(id: string): void {
-        // this.data.result.Items = this.data.result.Items.filter(f => f.id !== id);
+        this.refresh(false);
+    }
+
+    onUpdate(id: string): void {
+        this.refresh(false);
     }
 }

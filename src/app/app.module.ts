@@ -88,8 +88,6 @@ import { PoweredComponent } from './public/about/powered/powered.component';
     PoweredComponent
   ],
   imports: [
-  
-  
     BrowserModule,
     FormsModule,
     HttpClientModule,

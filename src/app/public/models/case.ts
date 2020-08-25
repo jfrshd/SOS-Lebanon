@@ -16,7 +16,7 @@ export class Case {
     public twitterAccount?: string;
     public linkedInAccount?: string;
     public isActive?: boolean;
-    public isFulfilled?: boolean;
+    public fulfilled?: boolean;
 
     constructor(obj: Case = {} as Case) {
         this.id = obj.id;
@@ -34,6 +34,6 @@ export class Case {
         this.twitterAccount = obj.twitterAccount;
         this.linkedInAccount = obj.linkedInAccount;
         this.isActive = obj.isActive || false;
-        this.isFulfilled = obj.isFulfilled || false;
+        this.fulfilled = obj.fulfilled || false;
     }
 }

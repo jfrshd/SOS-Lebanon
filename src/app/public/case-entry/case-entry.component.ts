@@ -11,10 +11,13 @@ declare var $: any;
 export class CaseEntryComponent implements OnInit {
     @Input() data: Case;
     @Input() showActions: boolean;
+    @Input() showInitiative = true;
     // locations key(id)-value(name) pair
     @Input() locations: any;
     // tslint:disable-next-line: no-output-on-prefix
     @Output() onDelete = new EventEmitter<string>();
+    // tslint:disable-next-line: no-output-on-prefix
+    @Output() onUpdate = new EventEmitter<string>();
     deleteModal: any;
     fulfillModal: any;
 
@@ -54,6 +57,8 @@ export class CaseEntryComponent implements OnInit {
     fulfillCase(): void {
         this.caseService.update(this.data)
             .subscribe(_ => {
+                this.fulfillModal.modal('hide');
+                this.onUpdate.emit(this.data.id);
             });
     }
 }

@@ -105,7 +105,7 @@ export class CaseService {
             })
             );
         } else {
-            return this.httpClient.get<ApiResponse<Case>>(environment.url + '/cases', {
+            return this.httpClient.get<ApiResponse<Case>>(environment.url + '/case', {
                 params: {
                     id
                 }
