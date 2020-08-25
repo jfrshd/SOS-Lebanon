@@ -172,6 +172,13 @@ h6 {
     .marginTopTitleProp{
         margin-top:0px!important;
       }
+      .backgrond-img-join {
+        height: 26vh!important;
+        width: 100;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-top: 70px;
+    }
 }
 
 @media (max-width: 767px) {

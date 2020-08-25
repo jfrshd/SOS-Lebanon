@@ -8,7 +8,9 @@
     "test": "ng test",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
-    "build": "npm install && ng build --prod --aot=true"
+    "build": "npm install && ng build --prod --aot=true",
+    "merge-dev-master": "git checkout dev; git pull; git merge origin master; git push; git checkout master",
+    "merge-haa-master": "git checkout master; git pull; git merge origin haabdallah; git push"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +26,7 @@
     "@angular/platform-server": "^10.0.8",
     "@angular/router": "~10.0.6",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
+    "@types/jquery": "^3.5.1",
     "@types/selenium-webdriver": "^4.0.9",
     "amazon-cognito-identity-js": "^4.3.3",
     "aws-sdk": "^2.728.0",
@@ -42,8 +45,10 @@
     "ngx-bootstrap": "^5.6.1",
     "ngx-chips": "^2.1.0",
     "ngx-international-phone-number": "^1.0.6",
+    "ngx-slick-carousel": "^0.5.1",
     "rxjs": "^6.5.5",
     "serve-favicon": "^2.5.0",
+    "slick-carousel": "^1.8.1",
     "ts-helpers": "^1.1.2",
     "tslib": "^2.0.0",
     "webpack": "^4.44.1",

@@ -27,8 +27,12 @@
             "src/carousel.css",
               "src/styles.css",
               "src/colors.css"
+            
+            
             ],
-            "scripts": []
+            "scripts": [
+            
+            ]
           },
           "configurations": {
             "production": {

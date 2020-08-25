@@ -1,0 +1,27 @@
+
+.circleSocial{
+    width: 30px;
+    height: 30px;
+    background-color: #00acee  ;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.circleSocial-2{
+    width: 30px;
+    height: 30px;
+    background-color: #0e76a8  ;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+
+}
+
+.slick-slide img{
+    margin:0 auto;
+    text-align: center;
+}

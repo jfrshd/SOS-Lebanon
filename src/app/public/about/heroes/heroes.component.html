@@ -1,0 +1,57 @@
+<section class="margin-section-heroes" style="position: relative;">
+    <div class="container">
+        <div class="">
+            <h2 class="font-title-carousel text-center ">Our heroes</h2>
+            <h2 class="font-description-about  text-center" style="margin-top: -10px;">Not all heroes wear capes, contact us here to lend a hand</h2>
+
+        </div>
+        <div class="text-right margin-view-all">
+           
+        </div>
+    
+
+      
+        <div class="row" style="margin-top:70px;" >
+         
+           
+          
+           <div class="multiple-items slider"> 
+            <div class=" text-center "    *ngFor="let data of info "  >
+                <img src="{{data.path}}" class="logo-initiatives text-center">
+                <h2 class="font-title-initiatives " style="margin-top: 15px;">{{data.name}}</h2>
+                <h2 class="font-title-initiatives " style="margin-top:-8px;">{{data.lastName}}</h2>
+                <h3 class="font-description-home " style="margin-top:-4px;"> {{data.job}}</h3>
+                <div style="    display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top:-4px;">
+                    
+                        <span class="">
+                            <a href={{data.twitter}} target="_blank">
+                                <i class="fa fa-twitter text-white circleSocial"></i>
+                            </a>
+                           
+                        </span>
+                        <span class="">
+                            <a href={{data.linkedin}} target="_blank">
+                                <i class="fa fa-linkedin text-white circleSocial-2"></i>
+                            </a>
+                        
+                        </span>
+                
+                  
+    
+                  
+                </div>
+          </div>
+     
+        </div> 
+       
+        </div>
+       
+      
+    
+    </div>
+ 
+
+</section>

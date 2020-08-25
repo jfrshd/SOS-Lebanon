@@ -46,6 +46,10 @@ import {InitiativeEntryComponent} from './public/initiative-entry/initiative-ent
 import {InitiativeViewComponent} from './public/initiative-view/initiative-view.component';
 import {InitiativePageComponent} from './public/initiative-page/initiative-page.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { JoinComponent } from './public/about/join/join.component';
+import { HeroesComponent } from './public/about/heroes/heroes.component';
+import { PoweredComponent } from './public/about/powered/powered.component';
+
 
 @NgModule({
   declarations: [
@@ -78,9 +82,14 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     ServicesAppComponent,
     InitiativesAppComponent,
     AreWeComponent,
-    PurposeComponent
+    PurposeComponent,
+    JoinComponent,
+    HeroesComponent,
+    PoweredComponent
   ],
   imports: [
+  
+  
     BrowserModule,
     FormsModule,
     HttpClientModule,
@@ -105,6 +114,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     AppInterceptorProviders
   ],
   bootstrap: [AppComponent]
+
 })
 export class AppModule {
 }
