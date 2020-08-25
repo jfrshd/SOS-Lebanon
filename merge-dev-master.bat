@@ -1,0 +1,1 @@
+git checkout dev; git pull; git merge origin master; git push; git checkout master
