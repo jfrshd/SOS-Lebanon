@@ -8,7 +8,9 @@
     "test": "ng test",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
-    "build": "npm install && ng build --prod --aot=true"
+    "build": "npm install && ng build --prod --aot=true",
+    "merge_dev_master": "git checkout dev | git pull | git merge origin master | git push | git checkout master",
+    "merge_master_haa": "git checkout master | git pull | git merge origin haabdallah | git push"
   },
   "private": true,
   "dependencies": {
