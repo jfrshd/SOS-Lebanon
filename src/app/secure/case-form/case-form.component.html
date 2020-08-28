@@ -21,14 +21,12 @@
         </div>
         <div class="form-group col-xs-12" [class.has-error]="submitted && form.controls['contactPhone'].invalid">
           <label class="control-label">Contact Phone number</label>
-          <div class="col-xs-12 row">
-            <ngx-intl-tel-input [inputId]="'contact-phone-number'" [cssClass]="'custom form-control'"
-              [enableAutoCountrySelect]="false" [enablePlaceholder]="true" [searchCountryFlag]="true"
-              [searchCountryField]="['iso2', 'name']" [selectFirstCountry]="false" [selectedCountryISO]="'lb'"
-              [maxLength]="15" [tooltipField]="'name'" [separateDialCode]="true" [phoneValidation]="true"
-              name="contactPhone" formControlName="contactPhone">
-            </ngx-intl-tel-input>
-          </div>
+          <ngx-intl-tel-input [inputId]="'contact-phone-number'" [cssClass]="'custom form-control'"
+            [enableAutoCountrySelect]="false" [enablePlaceholder]="true" [searchCountryFlag]="true"
+            [searchCountryField]="['iso2', 'name']" [selectFirstCountry]="false" [selectedCountryISO]="'lb'"
+            [maxLength]="15" [tooltipField]="'name'" [separateDialCode]="true" [phoneValidation]="true"
+            name="contactPhone" formControlName="contactPhone">
+          </ngx-intl-tel-input>
         </div>
         <div class="form-group col-xs-12" [class.has-error]="submitted && form.controls['category'].invalid">
           <label class="control-label">Category</label>

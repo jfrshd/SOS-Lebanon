@@ -508,3 +508,7 @@ app-footer {
   height: calc(100% - 300px);
   overflow-y: auto;
 }
+
+.intl-tel-input {
+  width: 100%;
+}
