@@ -24,11 +24,11 @@
               "src/assets"
             ],
             "styles": [
-            "src/carousel.css",
+              "src/carousel.css",
               "src/styles.css",
-              "src/colors.css"
-            
-            
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "./node_modules/intl-tel-input/build/css/intlTelInput.css",
+              "src/colors.css"            
             ],
             "scripts": [
             

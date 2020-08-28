@@ -1,44 +1,42 @@
 <div class="navbar ">
   <div class="container ">
-
     <div class="navbar-header" style="margin-top:10px;">
       <a class="navbar-brand" href="#">
         <img src="./../../assets/landing page/pictures/logo sos.png" class="logo" />
       </a>
-
       <a class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="icon-bar">
           <i class="fa fa-bars" style="color:black;"></i>
         </span>
-
       </a>
-
     </div>
-    <div class="navbar-collapse collapse  " id="bs-example-navbar-collapse-1" style="margin-top:25px;">
-
-
-      <ul class="nav navbar-nav navbar-center   ">
-
+    <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" style="margin-top:25px;">
+      <ul class="nav navbar-nav navbar-center">
         <li class="active space-item-men">
           <a (click)="about()" class="font-size-item-menu">
             Who Are We
           </a>
         </li>
+        <li class="active space-item-men">
+          <a (click)="listCases()" class="font-size-item-menu">
+            Who You Can Help
+          </a>
+        </li>
         <li class="space-item-men">
-          <a *ngIf="isSecure" (click)="addInitiative()" class="font-size-item-menu">
+          <a *ngIf="!isSecure" (click)="addInitiative()" class="font-size-item-menu">
             Add Initiative
           </a>
         </li>
         <li class="space-item-men">
           <a (click)="listInitiatives()" class="font-size-item-menu">
-            Ask For Help
+            Initiatives
           </a>
         </li>
-        <li class="space-item-men">
+        <!-- <li class="space-item-men">
           <a href="#" class="font-size-item-menu">
             Q&A
           </a>
-        </li>
+        </li> -->
         <li *ngIf="isSecure" class="space-item-men">
           <a (click)="profile()" class="font-size-item-menu">
             Profile
@@ -52,14 +50,7 @@
           <a *ngIf="isSecure" (click)="logout()" class=" pull-right btn btn-default btn-lg">
             Logout
           </a>
-
         </li>
-
-
-
-
-
-
       </ul>
       <ul class="nav navbar-nav navbar-right visible-sm visible-lg visible-md" style="margin-top:5px;">
         <a *ngIf="!isSecure" (click)="login()" class=" btn  btn-lg btn-login font-description-home" style="    padding-left: 40px;
@@ -69,22 +60,7 @@
         <a *ngIf="isSecure" (click)="logout()" class=" pull-right btn btn-default btn-lg font-description-home">
           Logout
         </a>
-
-
-
-
       </ul>
-
-
-
-
-
-
-
-
-
     </div>
-
   </div>
-
 </div>

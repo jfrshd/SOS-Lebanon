@@ -87,6 +87,8 @@ body {
 
 .sizeLogoFooter {
   width: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .color-text-white {
@@ -97,42 +99,51 @@ body {
   margin-top: -30px;
   color: #BC2C3D !important;
 }
-.backgrond-img-join{
+
+.backgrond-img-join {
   height: 38vh;
   width: 100;
   background-position: center;
   background-repeat: no-repeat;
-  margin-top:70px;
+  margin-top: 70px;
 }
-.text-white{
-  color:white;
+
+.text-white {
+  color: white;
 }
-.marginTopTitleJoin{
-   margin-top: 30px;
+
+.marginTopTitleJoin {
+  margin-top: 30px;
 }
-.centerJoin{
+
+.centerJoin {
   position: absolute;
   left: 50%;
   transform: translatex(-50%);
 }
-.angle-left-slider{
+
+.angle-left-slider {
   position: absolute;
   top: -66px;
   right: 60px;
 }
-.angle-right-slider{
+
+.angle-right-slider {
   position: absolute;
   top: -66px;
   right: 95px;
 }
-.margin-section-powered{
+
+.margin-section-powered {
   margin-top: 50px;
 }
-.img-powered{
+
+.img-powered {
   width: 90px;
   height: 90px;
   border-radius: 50%;
 }
+
 /* fonts  */
 
 .font-size-item-menu {
@@ -236,7 +247,8 @@ body {
 .marginTopTitleProp {
   margin-top: 100px;
 }
-.margin-section-heroes{
+
+.margin-section-heroes {
   margin-top: 100px;
 }
 
@@ -254,13 +266,14 @@ body {
   .space-item-men {
     margin-left: -13px;
   }
+
   .backgrond-img-join {
     height: 20vh;
     width: 100;
     background-position: center;
     background-repeat: no-repeat;
     margin-top: 70px;
-}
+  }
 
   .font-size-item-menu {
     font-family: 'Montserrat';
@@ -288,22 +301,25 @@ body {
     margin-left: 20px;
     margin-right: 20px;
   }
+
   .backgrond-img-join {
     height: 29vh;
     width: 100;
     background-position: center;
     background-repeat: no-repeat;
     margin-top: 70px;
-}
-.img-powered{
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
+  }
+
+  .img-powered {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
 
   .space-item-men {
     margin-left: -1px;
   }
+
   .font-description-about {
     font-family: 'Montserrat';
     font-style: normal;
@@ -330,23 +346,26 @@ body {
   .margin-section-initia {
     margin-top: 282px;
   }
+
   .margin-section-heroes {
     margin-top: 30px;
-}
-.angle-right-slider {
-  position: absolute;
-  top: -57px;
- 
-  left: 20%;
-  transform: translateX(50%);
-}
-.angle-left-slider {
-  position: absolute;
-  top: -57px;
- 
-  left: 30%;
-  transform: translateX(50%);
-}
+  }
+
+  .angle-right-slider {
+    position: absolute;
+    top: -57px;
+
+    left: 20%;
+    transform: translateX(50%);
+  }
+
+  .angle-left-slider {
+    position: absolute;
+    top: -57px;
+
+    left: 30%;
+    transform: translateX(50%);
+  }
 
   .font-description-home {
     font-family: 'Montserrat';
@@ -391,17 +410,17 @@ body {
   }
 
   app-footer {
-    position: relative!important;
-  
-    height: auto!important;
+    position: relative !important;
+
+    height: auto !important;
   }
-  .center-div-section{
-    position: relative!important;
+
+  .center-div-section {
+    position: relative !important;
   }
+
   .marginTopFooter {
     margin-top: 97px;
-    padding-top: 20px;
-    padding-bottom: 30px;
   }
 
   .icon-bars-margin {
@@ -444,12 +463,13 @@ body {
   .marginTopTitleProp {
     margin-top: 0px;
   }
+
   .body {
- 
-     margin-bottom: 0!important; 
-    height: auto!important;
-    overflow-y: hidden!important;
-    
+
+    margin-bottom: 0 !important;
+    height: auto !important;
+    overflow-y: hidden !important;
+
   }
 
 }
@@ -480,16 +500,11 @@ app-footer {
   position: fixed;
   left: 0;
   right: 0;
-  height: 150px;
+  height: 90px;
 }
 
 .body {
   margin-bottom: 200px;
   height: calc(100% - 300px);
   overflow-y: auto;
-}
-
-.marginTopFooter {
-  padding-top: 20px;
-  padding-bottom: 30px;
 }

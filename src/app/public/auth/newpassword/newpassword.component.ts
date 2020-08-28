@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserRegistrationService } from '../../../service/user-registration.service';
 import { UserLoginService } from '../../../service/user-login.service';
@@ -21,9 +21,11 @@ export class NewPasswordComponent implements OnInit, CognitoCallback {
     registrationUser: NewPasswordUser;
     router: Router;
     errorMessage: string;
+    passwordModal: any;
 
     constructor(
-        public userRegistration: UserRegistrationService, public userService: UserLoginService, router: Router) {
+        public userRegistration: UserRegistrationService, public userService: UserLoginService, router: Router,
+        private elementRef: ElementRef) {
         this.router = router;
         this.onInit();
     }
@@ -31,6 +33,11 @@ export class NewPasswordComponent implements OnInit, CognitoCallback {
     onInit(): void {
         this.registrationUser = new NewPasswordUser();
         this.errorMessage = null;
+        this.passwordModal = $(this.elementRef.nativeElement).find('.modal-password');
+        this.passwordModal.modal({
+            keyboard: false,
+            show: false
+        });
     }
 
     ngOnInit(): void {

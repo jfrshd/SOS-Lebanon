@@ -64,7 +64,7 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
             }
         } else { // success
             this.ddb.writeLogEntry('login');
-            this.router.navigate(['/home/profile']);
+            this.router.navigate(['/home/initiatives/' + message]);
         }
     }
 

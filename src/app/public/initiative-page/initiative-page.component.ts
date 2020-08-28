@@ -1,7 +1,7 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Initiative} from '../models';
-import {InitiativeService} from '../services/initiative/initiative.service';
-import {ActivatedRoute} from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { Initiative } from '../models';
+import { InitiativeService } from '../services/initiative/initiative.service';
+import { ActivatedRoute } from '@angular/router';
 
 declare var $: any;
 
@@ -12,13 +12,12 @@ declare var $: any;
 })
 export class InitiativePageComponent implements OnInit {
   @Input() data: Initiative;
-  active;
-  id;
+  id: string;
+  selectedTab: string;
 
   constructor(
     private route: ActivatedRoute,
-    private initiativeService: InitiativeService,
-    private elementRef: ElementRef
+    private initiativeService: InitiativeService
   ) {
   }
 
@@ -26,12 +25,8 @@ export class InitiativePageComponent implements OnInit {
     this.route.params
       .subscribe(params => {
         this.id = params.id;
-        this.initiativeService.getById(this.id).subscribe(
-          res => {
-            this.data = res.result;
-          }
-        );
+        this.initiativeService.getById(this.id)
+          .subscribe(res => this.data = new Initiative(res.result));
       });
   }
-
 }

@@ -37,6 +37,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.navigate(['/home/about']);
   }
 
+  listCases(): void {
+    this.router.navigate(['/home/cases-list']);
+  }
+
   addInitiative(): void {
     this.router.navigate(['/home/register']);
   }

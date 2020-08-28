@@ -1,6 +1,8 @@
-import { Component, Input, Output, EventEmitter, OnInit, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, ElementRef, OnDestroy } from '@angular/core';
 import { Case } from '../models';
 import { CaseService } from '../services/case/case.service';
+import { Subscription } from 'rxjs';
+import { UserLoginService } from 'src/app/service/user-login.service';
 declare var $: any;
 
 @Component({
@@ -8,7 +10,7 @@ declare var $: any;
     templateUrl: './case-entry.component.html',
     styleUrls: ['./case-entry.component.css'],
 })
-export class CaseEntryComponent implements OnInit {
+export class CaseEntryComponent implements OnInit, OnDestroy {
     @Input() data: Case;
     @Input() showActions: boolean;
     @Input() showInitiative = true;
@@ -20,10 +22,13 @@ export class CaseEntryComponent implements OnInit {
     @Output() onUpdate = new EventEmitter<string>();
     deleteModal: any;
     fulfillModal: any;
+    subscription: Subscription;
+    isSecure: boolean;
 
     constructor(
         private caseService: CaseService,
-        private elementRef: ElementRef
+        private elementRef: ElementRef,
+        private auth: UserLoginService
     ) { }
 
     ngOnInit(): void {
@@ -37,6 +42,14 @@ export class CaseEntryComponent implements OnInit {
             keyboard: false,
             show: false
         });
+        this.subscription = this.auth.isLoggedIn$
+          .subscribe((isLoggedIn: boolean) => this.isSecure = isLoggedIn);
+    }
+
+    ngOnDestroy(): void {
+      if (this.subscription) {
+        this.subscription.unsubscribe();
+      }
     }
 
     delete(): void {

@@ -16,6 +16,7 @@ export class Initiative {
     public profilePicture?: string;
 
     constructor(obj: Initiative = {} as Initiative) {
+        obj = obj || new Initiative();
         this.pk = obj.pk;
         this.name = obj.name;
         this.leadName = obj.leadName;

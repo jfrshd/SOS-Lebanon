@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Case, ArrayResponse, Category, Location } from '../models';
 import { CaseService } from '../services/case/case.service';
@@ -13,6 +13,8 @@ import { LocationService } from '../services/location/location.service';
     styleUrls: ['./list-cases.component.css'],
 })
 export class ListCasesComponent implements OnInit, OnDestroy {
+    @Input() allowEdit: boolean;
+    @Input() fulfilled?: boolean;
     keyword: string;
     selectedCategory: string;
     categories: Category[] = [];
@@ -43,7 +45,7 @@ export class ListCasesComponent implements OnInit, OnDestroy {
     refresh(loadMore: boolean): void {
         this.loading = true;
         const selectedCategory = this.categories.find(c => c.name === this.selectedCategory) || new Category();
-        this.caseService.get(selectedCategory.id, this.keyword, this.count, this.data.result.LastEvaluatedKey)
+        this.caseService.get(selectedCategory.id, this.keyword, this.count, this.data.result.LastEvaluatedKey, this.fulfilled)
             .subscribe(data => {
                 this.loading = false;
                 if (loadMore) {

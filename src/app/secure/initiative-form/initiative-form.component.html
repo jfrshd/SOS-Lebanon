@@ -31,8 +31,14 @@
           <div class="form-group col-lg-6 col-md-6 col-sm-12"
             [class.has-error]="submitted && form.controls['phone'].invalid">
             <label class="control-label">Contact Phone number</label>
-            <international-phone-number [defaultCountry]="'lb'" formControlName="phone" placeholder="71555555">
-            </international-phone-number>
+            <div class="col-xs-12 row">
+              <ngx-intl-tel-input [inputId]="'phone-number'" [cssClass]="'custom form-control'"
+                [enableAutoCountrySelect]="false" [enablePlaceholder]="true" [searchCountryFlag]="true"
+                [searchCountryField]="['iso2', 'name']" [selectFirstCountry]="false" [selectedCountryISO]="'lb'"
+                [maxLength]="15" [tooltipField]="'name'" [separateDialCode]="true" [phoneValidation]="true" name="phone"
+                formControlName="phone">
+              </ngx-intl-tel-input>
+            </div>
           </div>
         </div>
         <!-- <div class="row">

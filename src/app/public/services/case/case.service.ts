@@ -38,7 +38,8 @@ export class CaseService {
     public get(
         category?: string,
         keyword?: string, limit: number = 10,
-        evaluateKey: ApiEvaluatedKey = null): Observable<ArrayResponse<Case>> {
+        evaluateKey: ApiEvaluatedKey = null,
+        fulfilled?: boolean): Observable<ArrayResponse<Case>> {
         if (environment.mock) {
             return of(new ArrayResponse({
                 statusCode: 200,
@@ -58,6 +59,9 @@ export class CaseService {
             };
             if (keyword) {
                 params.keyword = keyword;
+            }
+            if (typeof fulfilled === 'boolean') {
+                params.fulfilled = fulfilled;
             }
             if (category) {
                 params.category = category;

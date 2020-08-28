@@ -22,7 +22,8 @@
             <br>
         </div>
         <div *ngIf="isSecure" class="col-xs-6 col-sm-2">
-            <button class="btn btn-dark btn-rounded" [routerLink]="'/home/cases/new'"><i class="fa fa-plus"></i>&nbsp;
+            <button *ngIf="allowEdit" class="btn btn-dark btn-rounded" [routerLink]="'/home/cases/new'"><i
+                    class="fa fa-plus"></i>&nbsp;
                 &nbsp;Add new&nbsp;
             </button>
             <br>
@@ -35,7 +36,7 @@
         </span>
         <div class="row" *ngIf="!loading">
             <app-case-entry class="col-xs-12" *ngFor="let element of data.result.Items" [data]="element"
-                [locations]="locationsKvp">
+                [locations]="locationsKvp" [showActions]="allowEdit && isSecure">
             </app-case-entry>
             <h4 class="text-center" *ngIf="data.result.Count === 0">
                 No Cases Available

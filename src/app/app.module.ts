@@ -22,18 +22,18 @@ import { ResendCodeComponent } from './public/auth/resend/resendCode.component';
 import { NewPasswordComponent } from './public/auth/newpassword/newpassword.component';
 import { MFAComponent } from './public/auth/mfa/mfa.component';
 import { CaseEntryComponent } from './public/case-entry/case-entry.component';
-import { InternationalPhoneNumberModule } from 'ngx-international-phone-number';
 import { ListCasesComponent } from './public/list-cases/list-cases.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ProfileComponent } from './secure/profile/profile.component';
 import { TagInputModule } from 'ngx-chips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { AppRoutingModule } from './app-routing.module';
 import { AppInterceptorProviders } from './app-interceptor.provider';
 import { InitiativeFormComponent } from './secure/initiative-form/initiative-form.component';
 import { CaseFormComponent } from './secure/case-form/case-form.component';
-import {SharedModule} from './shared/shared.module';
+import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { CarouselAppComponent } from './public/carousel-app/carousel-app.component';
 import { ServicesAppComponent } from './public/services-app/services-app.component';
@@ -41,15 +41,15 @@ import { InitiativesAppComponent } from './public/initiatives-app/initiatives-ap
 import { AboutComponent } from './public/about/about.component';
 import { AreWeComponent } from './public/about/are-we/are-we.component';
 import { PurposeComponent } from './public/about/purpose/purpose.component';
-import {ListInitiativesComponent} from './public/list-initiatives/list-initiatives.component';
-import {InitiativeEntryComponent} from './public/initiative-entry/initiative-entry.component';
-import {InitiativeViewComponent} from './public/initiative-view/initiative-view.component';
-import {InitiativePageComponent} from './public/initiative-page/initiative-page.component';
+import { ListInitiativesComponent } from './public/list-initiatives/list-initiatives.component';
+import { InitiativeEntryComponent } from './public/initiative-entry/initiative-entry.component';
+import { InitiativeViewComponent } from './public/initiative-view/initiative-view.component';
+import { InitiativePageComponent } from './public/initiative-page/initiative-page.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { JoinComponent } from './public/about/join/join.component';
 import { HeroesComponent } from './public/about/heroes/heroes.component';
 import { PoweredComponent } from './public/about/powered/powered.component';
-
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -93,14 +93,15 @@ import { PoweredComponent } from './public/about/powered/powered.component';
     HttpClientModule,
     TagInputModule,
     ReactiveFormsModule,
-    InternationalPhoneNumberModule,
     NgbModule,
     BrowserAnimationsModule,
     NgMultiSelectDropDownModule.forRoot(),
     ModalModule.forRoot(),
     AppRoutingModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    BsDropdownModule.forRoot(),
+    NgxIntlTelInputModule,
   ],
   providers: [
     CognitoUtil,

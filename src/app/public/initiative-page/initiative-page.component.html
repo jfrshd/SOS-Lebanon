@@ -7,20 +7,19 @@
   <p>
   <h4 class="page-title">Check all the open and fulfilled cases </h4>
 
-  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="selectedTab" class="nav-tabs">
     <li ngbNavItem>
       <a ngbNavLink>Open Cases</a>
       <ng-template ngbNavContent>
-        <app-list-cases></app-list-cases>
+        <app-list-cases [allowEdit]="true" [fulfilled]="false"></app-list-cases>
       </ng-template>
     </li>
     <li ngbNavItem>
       <a ngbNavLink>Fulfilled cases</a>
       <ng-template ngbNavContent>
-        <app-list-cases></app-list-cases>
+        <app-list-cases [allowEdit]="false" [fulfilled]="true"></app-list-cases>
       </ng-template>
     </li>
   </ul>
   <div [ngbNavOutlet]="nav"></div>
-
 </div>
