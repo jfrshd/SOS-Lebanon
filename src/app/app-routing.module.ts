@@ -17,6 +17,7 @@ import { PublicGuard } from './app.public.guard';
 import { AboutComponent } from './public/about/about.component';
 import {ListInitiativesComponent} from './public/list-initiatives/list-initiatives.component';
 import {InitiativePageComponent} from './public/initiative-page/initiative-page.component';
+import { QaComponent } from './public/qa/qa.component';
 
 const homeRoutes: Routes = [
   {
@@ -29,6 +30,7 @@ const homeRoutes: Routes = [
     component: HomeComponent,
     children: [
       { path: 'about', component: AboutComponent },
+      { path: 'qa', component:  QaComponent},
       { path: 'login', component: LoginComponent, canActivate: [PublicGuard] },
       { path: 'register', component: InitiativeFormComponent, canActivate: [PublicGuard] },
       { path: 'confirmRegistration/:username', component: RegistrationConfirmationComponent, canActivate: [PublicGuard] },

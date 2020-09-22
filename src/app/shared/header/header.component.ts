@@ -44,6 +44,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   addInitiative(): void {
     this.router.navigate(['/home/register']);
   }
+  QA():void{
+    this.router.navigate(['/home/qa']);
+  }
 
   listInitiatives(): void {
     this.router.navigate(['/home/initiatives']);

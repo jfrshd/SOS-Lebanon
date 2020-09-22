@@ -50,6 +50,9 @@ import { JoinComponent } from './public/about/join/join.component';
 import { HeroesComponent } from './public/about/heroes/heroes.component';
 import { PoweredComponent } from './public/about/powered/powered.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { QaComponent } from './public/qa/qa.component';
+import { FrequentlyAskComponent } from './public/qa/frequently-ask/frequently-ask.component';
+import { ContactUsComponent } from './public/qa/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +88,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     PurposeComponent,
     JoinComponent,
     HeroesComponent,
-    PoweredComponent
+    PoweredComponent,
+    QaComponent,
+    FrequentlyAskComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
