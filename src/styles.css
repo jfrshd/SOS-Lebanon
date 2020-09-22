@@ -221,7 +221,24 @@ body {
   font-weight: 400;
   font-size: 1.5rem !important;
 }
-
+.font-size-sub-title{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.5rem !important;
+}
+.font-size-title-tab{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.5rem !important;
+}
+.font-size-des-tab-panel{
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.5rem !important;
+}
 .position-btn-login {
   float: right !important;
 }
@@ -297,6 +314,36 @@ body {
 }
 
 @media (max-width: 767px) {
+  .panel-heading [data-toggle="collapse"]:after {
+    font-family: 'fontawesome';
+    content: "\f054"; /* "play" icon */
+    float: right;
+    color: #454444;
+    font-size: 10px!important;
+    line-height: 22px;
+    /* rotate "play" icon from > (right arrow) to down arrow */
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.panel-heading [data-toggle="collapse"].collapsed:after {
+    /* rotate "play" icon from > (right arrow) to ^ (up arrow) */
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    color: #454444;
+}
+  .font-size-title-tab {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem !important;
+}
   .container {
     margin-left: 20px;
     margin-right: 20px;
@@ -511,4 +558,8 @@ app-footer {
 
 .intl-tel-input {
   width: 100%;
+}
+
+.marginTopTitleQa{
+margin-top: 60px;
 }
